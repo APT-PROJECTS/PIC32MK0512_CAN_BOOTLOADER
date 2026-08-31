@@ -1,0 +1,973 @@
+configVersion: 1.0.0
+componentName: core
+coreVersion: 5.9.0
+device: PIC32MK1024MCM064
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: core
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.22.6
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: core
+          x: '67'
+          y: '23'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    ADD_LINKER_FILE:
+      attributes:
+        id: ADD_LINKER_FILE
+        label: Add linker file to project
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    BSP_PIN_11_DIR:
+      attributes:
+        id: BSP_PIN_11_DIR
+        label: Direction
+      children:
+      - children:
+        - attributes:
+            value: Out
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_11_FUNCTION_NAME:
+      attributes:
+        id: BSP_PIN_11_FUNCTION_NAME
+        label: Name
+      children:
+      - children:
+        - attributes:
+            value: LED_BLUE
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_11_FUNCTION_TYPE:
+      attributes:
+        id: BSP_PIN_11_FUNCTION_TYPE
+        label: Type
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_11_MODE:
+      attributes:
+        id: BSP_PIN_11_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_12_DIR:
+      attributes:
+        id: BSP_PIN_12_DIR
+        label: Direction
+      children:
+      - children:
+        - attributes:
+            value: Out
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_12_FUNCTION_NAME:
+      attributes:
+        id: BSP_PIN_12_FUNCTION_NAME
+        label: Name
+      children:
+      - children:
+        - attributes:
+            value: LED_GREEN
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_12_FUNCTION_TYPE:
+      attributes:
+        id: BSP_PIN_12_FUNCTION_TYPE
+        label: Type
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_12_MODE:
+      attributes:
+        id: BSP_PIN_12_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_1_MODE:
+      attributes:
+        id: BSP_PIN_1_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_21_FUNCTION_NAME:
+      attributes:
+        id: BSP_PIN_21_FUNCTION_NAME
+        label: Name
+      children:
+      - children:
+        - attributes:
+            value: CAN1_TX
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_21_FUNCTION_TYPE:
+      attributes:
+        id: BSP_PIN_21_FUNCTION_TYPE
+        label: Type
+      children:
+      - children:
+        - attributes:
+            value: C1TX
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_21_MODE:
+      attributes:
+        id: BSP_PIN_21_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_22_FUNCTION_NAME:
+      attributes:
+        id: BSP_PIN_22_FUNCTION_NAME
+        label: Name
+      children:
+      - children:
+        - attributes:
+            value: CAN1_RX
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_22_FUNCTION_TYPE:
+      attributes:
+        id: BSP_PIN_22_FUNCTION_TYPE
+        label: Type
+      children:
+      - children:
+        - attributes:
+            value: C1RX
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_22_MODE:
+      attributes:
+        id: BSP_PIN_22_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_2_MODE:
+      attributes:
+        id: BSP_PIN_2_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_32_MODE:
+      attributes:
+        id: BSP_PIN_32_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_34_MODE:
+      attributes:
+        id: BSP_PIN_34_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_39_DIR:
+      attributes:
+        id: BSP_PIN_39_DIR
+        label: Direction
+      children:
+      - children:
+        - attributes:
+            value: Out
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_39_FUNCTION_NAME:
+      attributes:
+        id: BSP_PIN_39_FUNCTION_NAME
+        label: Name
+      children:
+      - children:
+        - attributes:
+            value: LED_RED
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_39_FUNCTION_TYPE:
+      attributes:
+        id: BSP_PIN_39_FUNCTION_TYPE
+        label: Type
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_39_MODE:
+      attributes:
+        id: BSP_PIN_39_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_3_MODE:
+      attributes:
+        id: BSP_PIN_3_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_42_MODE:
+      attributes:
+        id: BSP_PIN_42_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_43_MODE:
+      attributes:
+        id: BSP_PIN_43_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_44_MODE:
+      attributes:
+        id: BSP_PIN_44_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_50_MODE:
+      attributes:
+        id: BSP_PIN_50_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_51_MODE:
+      attributes:
+        id: BSP_PIN_51_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_52_MODE:
+      attributes:
+        id: BSP_PIN_52_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_53_MODE:
+      attributes:
+        id: BSP_PIN_53_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_54_MODE:
+      attributes:
+        id: BSP_PIN_54_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_55_MODE:
+      attributes:
+        id: BSP_PIN_55_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_58_MODE:
+      attributes:
+        id: BSP_PIN_58_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_59_MODE:
+      attributes:
+        id: BSP_PIN_59_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_60_MODE:
+      attributes:
+        id: BSP_PIN_60_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_61_MODE:
+      attributes:
+        id: BSP_PIN_61_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_62_MODE:
+      attributes:
+        id: BSP_PIN_62_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_63_MODE:
+      attributes:
+        id: BSP_PIN_63_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_64_MODE:
+      attributes:
+        id: BSP_PIN_64_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_7_MODE:
+      attributes:
+        id: BSP_PIN_7_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    CAN1_CLOCK_ENABLE:
+      attributes:
+        id: CAN1_CLOCK_ENABLE
+        label: CAN1 Clock Enable
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CAN1_CLOCK_FREQUENCY:
+      attributes:
+        id: CAN1_CLOCK_FREQUENCY
+        label: CAN1 Clock Frequency
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '120000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    CoreMainFile:
+      attributes:
+        id: CoreMainFile
+        label: Generate Main Source File
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CoreSysCallsFile:
+      attributes:
+        id: CoreSysCallsFile
+        label: Generate LIBC Syscalls
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CoreSysExceptionFile:
+      attributes:
+        id: CoreSysExceptionFile
+        label: Generate System Exception
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CoreSysInitFile:
+      attributes:
+        id: CoreSysInitFile
+        label: Generate System Initialization
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CoreSysIntFile:
+      attributes:
+        id: CoreSysIntFile
+        label: Generate System Interrupts
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CoreSysStartupFile:
+      attributes:
+        id: CoreSysStartupFile
+        label: Generate System Startup
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CoreSysStdioSyscallsFile:
+      attributes:
+        id: CoreSysStdioSyscallsFile
+        label: Generate STDIO Syscalls
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    DEBUG_CONSOLE_C:
+      attributes:
+        id: DEBUG_CONSOLE_C
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'false'
+          type: Boolean
+        type: Attributes
+      type: File
+    EVIC_31_ENABLE:
+      attributes:
+        id: EVIC_31_ENABLE
+        label: Enable Flash Control Event Interrupt
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_31_HANDLER_LOCK:
+      attributes:
+        id: EVIC_31_HANDLER_LOCK
+        label: EVIC_31_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_31_INTERRUPT_HANDLER:
+      attributes:
+        id: EVIC_31_INTERRUPT_HANDLER
+        label: EVIC_31_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: FLASH_CONTROL_Handler
+          type: Dynamic
+        type: Values
+      type: String
+    EXCEPTIONS_C:
+      attributes:
+        id: EXCEPTIONS_C
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'false'
+          type: Boolean
+        type: Attributes
+      type: File
+    FLASH_CONTROL_INTERRUPT_ENABLE:
+      attributes:
+        id: FLASH_CONTROL_INTERRUPT_ENABLE
+        label: Vector Peripheral Enable
+      children:
+      - children:
+        - attributes:
+            id: nvm
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    FLASH_CONTROL_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: FLASH_CONTROL_INTERRUPT_ENABLE_UPDATE
+        label: FLASH_CONTROL_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    FLASH_CONTROL_INTERRUPT_HANDLER:
+      attributes:
+        id: FLASH_CONTROL_INTERRUPT_HANDLER
+        label: Vector Peripheral Handler
+      children:
+      - children:
+        - attributes:
+            id: nvm
+            value: FLASH_CONTROL_Handler
+          type: Dynamic
+        type: Values
+      type: String
+    FLASH_CONTROL_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: FLASH_CONTROL_INTERRUPT_HANDLER_LOCK
+        label: Vector Peripheral Handler Lock
+      children:
+      - children:
+        - attributes:
+            id: nvm
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    INITIALIZATION_C:
+      attributes:
+        id: INITIALIZATION_C
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'false'
+          type: Boolean
+        type: Attributes
+      type: File
+    INTERRUPTS_C:
+      attributes:
+        id: INTERRUPTS_C
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'false'
+          type: Boolean
+        type: Attributes
+      type: File
+    INTERRUPTS_H:
+      attributes:
+        id: INTERRUPTS_H
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'false'
+          type: Boolean
+        type: Attributes
+      type: File
+    IOLOCK_ENABLE:
+      attributes:
+        id: IOLOCK_ENABLE
+        label: Enable Peripheral Pin Select Lock bit (IOLOCK)
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    LINKER_SCRIPT:
+      attributes:
+        id: LINKER_SCRIPT
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'false'
+          type: Boolean
+        type: Attributes
+      type: File
+    MAIN_C:
+      attributes:
+        id: MAIN_C
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'false'
+          type: Boolean
+        type: Attributes
+      type: File
+    PMD5_REG_VALUE:
+      attributes:
+        id: PMD5_REG_VALUE
+        label: PMD5 Register Value
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '3809427263'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PMDLOCK_ENABLE:
+      attributes:
+        id: PMDLOCK_ENABLE
+        label: Enable Peripheral Module Disable Lock bit (PMDLOCK)
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    SYS_PORT_A_ANSEL:
+      attributes:
+        id: SYS_PORT_A_ANSEL
+        label: ANSELA Value
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '6144'
+          type: Dynamic
+        type: Values
+      type: Hex
+    SYS_PORT_A_TRIS:
+      attributes:
+        id: SYS_PORT_A_TRIS
+        label: TRISACLR Value
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '6144'
+          type: Dynamic
+        type: Values
+      type: Hex
+    SYS_PORT_C_ANSEL:
+      attributes:
+        id: SYS_PORT_C_ANSEL
+        label: ANSELC Value
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '4099'
+          type: Dynamic
+        type: Values
+      type: Hex
+    SYS_PORT_C_TRIS:
+      attributes:
+        id: SYS_PORT_C_TRIS
+        label: TRISCCLR Value
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '4096'
+          type: Dynamic
+        type: Values
+      type: Hex
+    SYS_PORT_PPS_INPUT_FUNCTION_0:
+      attributes:
+        id: SYS_PORT_PPS_INPUT_FUNCTION_0
+        label: Function
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            value: C1RX
+          type: User
+        type: Values
+      type: Combo
+    SYS_PORT_PPS_INPUT_PIN_0:
+      attributes:
+        id: SYS_PORT_PPS_INPUT_PIN_0
+        label: Pin
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            value: '31'
+          type: User
+        type: Values
+      type: KeyValueSet
+    SYS_PORT_PPS_OUTPUT_FUNCTION_0:
+      attributes:
+        id: SYS_PORT_PPS_OUTPUT_FUNCTION_0
+        label: Function
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            value: '28'
+          type: User
+        type: Values
+      type: KeyValueSet
+    SYS_PORT_PPS_OUTPUT_PIN_0:
+      attributes:
+        id: SYS_PORT_PPS_OUTPUT_PIN_0
+        label: Pin
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            value: RPC0
+          type: User
+        type: Values
+      type: Combo
+    USE_PPS_INPUT_0:
+      attributes:
+        id: USE_PPS_INPUT_0
+        label: USE PPS Input0
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    USE_PPS_OUTPUT_0:
+      attributes:
+        id: USE_PPS_OUTPUT_0
+        label: USE PPS Output0
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    XC32_LINKER_PREPROC_MARCOS:
+      attributes:
+        id: XC32_LINKER_PREPROC_MARCOS
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'false'
+          type: Boolean
+        type: Attributes
+      type: Setting
+  userData:
+    children:
+    - attributes:
+        canvasHeight: '0'
+        canvasWidth: '0'
+      type: GraphSettings
+    - children:
+      - attributes:
+          id: profile0
+          name: Main
+        type: Profile
+      type: PowerProfiles
+    type: UserData

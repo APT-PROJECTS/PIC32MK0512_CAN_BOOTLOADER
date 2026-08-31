@@ -1,0 +1,191 @@
+configVersion: 1.0.0
+componentName: can_bootloader
+coreVersion: 5.9.0
+device: PIC32MK1024MCM064
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: can_bootloader
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: bootloader
+  type: package
+  version: v3.9.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments:
+    children:
+    - children:
+      - attributes:
+          id: btl_CAN_dependency
+        children:
+        - children:
+          - attributes:
+              id: targetComponentID
+            children:
+            - type: Value
+              value: can1
+            type: String
+          - attributes:
+              id: targetAttachmentID
+            children:
+            - type: Value
+              value: CAN1_CAN
+            type: String
+          type: Attributes
+        type: DirectDependency
+      - attributes:
+          id: btl_MEMORY_dependency
+        children:
+        - children:
+          - attributes:
+              id: targetComponentID
+            children:
+            - type: Value
+              value: nvm
+            type: String
+          - attributes:
+              id: targetAttachmentID
+            children:
+            - type: Value
+              value: NVM_MEMORY
+            type: String
+          type: Attributes
+        type: DirectDependency
+      type: Attachments
+    type: can_bootloader
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: can_bootloader
+          x: '288'
+          y: '112'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    BTL_APP_JUMP_ADDRESS:
+      attributes:
+        id: BTL_APP_JUMP_ADDRESS
+        label: Application Jump Address
+      type: String
+    BTL_CAN_PRESENT:
+      attributes:
+        id: BTL_CAN_PRESENT
+        label: BTL_CAN_PRESENT
+      type: Boolean
+    BTL_DEVCFG_ADDRESS:
+      attributes:
+        id: BTL_DEVCFG_ADDRESS
+        label: Device Configuration Address
+      type: String
+    BTL_DUAL_BANK:
+      attributes:
+        id: BTL_DUAL_BANK
+        label: Use Dual Bank For Safe Flash Update
+      type: Boolean
+    BTL_FUSE_PROGRAM_ENABLE:
+      attributes:
+        id: BTL_FUSE_PROGRAM_ENABLE
+        label: Enable Fuse Programming
+      type: Boolean
+    BTL_RAM_SIZE:
+      attributes:
+        id: BTL_RAM_SIZE
+        label: BTL_RAM_SIZE
+      type: String
+    BTL_RAM_START:
+      attributes:
+        id: BTL_RAM_START
+        label: BTL_RAM_START
+      type: String
+    BTL_SIZE:
+      attributes:
+        id: BTL_SIZE
+        label: Bootloader Size (Bytes)
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: '16384'
+          type: Dynamic
+        type: Values
+      type: String
+    BTL_START:
+      attributes:
+        id: BTL_START
+        label: Bootloader Start Address
+      type: String
+    BTL_TRIGGER_ENABLE:
+      attributes:
+        id: BTL_TRIGGER_ENABLE
+        label: Enable Bootloader Trigger From Firmware
+      type: Boolean
+    BTL_TRIGGER_LEN:
+      attributes:
+        id: BTL_TRIGGER_LEN
+        label: Number Of Bytes To Reserve From Start Of RAM
+      type: String
+    BTL_TYPE:
+      attributes:
+        id: BTL_TYPE
+        label: Bootloader Type
+      type: String
+    BTL_WDOG_ENABLE:
+      attributes:
+        id: BTL_WDOG_ENABLE
+        label: Enable Watchdog Refresh If Enabled Through FUSE
+      type: Boolean
+    MEM_USED:
+      attributes:
+        id: MEM_USED
+        label: Bootloader NVM Memory Used
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: NVM
+          type: Dynamic
+        type: Values
+      type: String
+    PERIPH_CANFD_USED:
+      attributes:
+        id: PERIPH_CANFD_USED
+        label: PERIPH_CANFD_USED
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: CANFD
+          type: Dynamic
+        type: Values
+      type: String
+    PERIPH_NAME:
+      attributes:
+        id: PERIPH_NAME
+        label: PERIPH_NAME
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: CAN
+          type: Dynamic
+        type: Values
+      type: String
+    PERIPH_USED:
+      attributes:
+        id: PERIPH_USED
+        label: Bootloader Peripheral Used
+      children:
+      - children:
+        - attributes:
+            id: can_bootloader
+            value: CAN1
+          type: Dynamic
+        type: Values
+      type: String
+  userData: {}
