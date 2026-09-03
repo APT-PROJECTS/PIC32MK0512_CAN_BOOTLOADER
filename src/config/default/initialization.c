@@ -192,6 +192,7 @@ void SYS_Initialize ( void* data )
     }
 
 
+    CORETIMER_Initialize();
     CAN1_Initialize();
 
     NVM_Initialize();

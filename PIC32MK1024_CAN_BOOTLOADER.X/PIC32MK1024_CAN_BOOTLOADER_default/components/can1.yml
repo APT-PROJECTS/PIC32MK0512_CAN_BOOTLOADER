@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 componentName: can1
-coreVersion: 5.9.0
+coreVersion: 5.9.1
 device: PIC32MK1024MCM064
 library: []
 dependency:
@@ -363,6 +363,12 @@ data:
       attributes:
         id: CAN1_FIFO1_SIZE
         label: Number of Message Buffer
+      children:
+      - children:
+        - attributes:
+            value: '16'
+          type: User
+        type: Values
       type: Integer
     CAN1_FIFO1_TXEN:
       attributes:
@@ -638,6 +644,12 @@ data:
       attributes:
         id: CAN1_FIFO2_SIZE
         label: Number of Message Buffer
+      children:
+      - children:
+        - attributes:
+            value: '16'
+          type: User
+        type: Values
       type: Integer
     CAN1_FIFO2_TXEN:
       attributes:
@@ -1907,6 +1919,9 @@ data:
             id: can_bootloader
             value: '0'
           type: Dynamic
+        - attributes:
+            value: '0'
+          type: User
         type: Values
       type: KeyValueSet
     CAN_TIMESTAMP_ENABLE:

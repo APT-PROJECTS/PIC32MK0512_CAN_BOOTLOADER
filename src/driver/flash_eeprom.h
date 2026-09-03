@@ -1,0 +1,34 @@
+#ifndef FLASH_EEPROM_H
+#define FLASH_EEPROM_H
+
+#include <stdint.h>
+#include <stdbool.h>
+
+#define FLASH_PAGE_SIZE       4096U
+#define EEPROM_HEADER_SIZE    20U
+#define EEPROM_DATA_SIZE      (FLASH_PAGE_SIZE - EEPROM_HEADER_SIZE)
+
+// For PIC32MK1024MCM064. Reserve 0x9D0FF000 - 0x9D0FFFFF in the linker.
+#define EEPROM_PAGE_ADDR      0x9D0FF000U
+
+// For PIC32MK0512MCM064. Reserve 0x9D07F000 - 0x9D07FFFF in the linker.
+//#define EEPROM_PAGE_ADDR      0x9D07F000U
+
+#define EEPROM_VALID_MARKER   0xFFFFFFFE
+
+typedef enum {
+    FLASH_EEPROM_OK = 0,
+    FLASH_EEPROM_ERROR,
+    FLASH_EEPROM_CRC_ERROR,
+    FLASH_EEPROM_NO_VALID_PAGE
+} FLASH_EEPROM_STATUS;
+
+
+FLASH_EEPROM_STATUS FLASH_EEPROM_Init(void);
+FLASH_EEPROM_STATUS FLASH_EEPROM_Write_Page(uint8_t *data, uint32_t length);
+FLASH_EEPROM_STATUS FLASH_EEPROM_Read_Page(uint8_t *data, uint32_t length);
+FLASH_EEPROM_STATUS FLASH_EEPROM_WriteWord(uint32_t address, uint32_t data);
+FLASH_EEPROM_STATUS FLASH_EEPROM_ReadWord(uint32_t address, uint32_t *data);
+FLASH_EEPROM_STATUS FLASH_EEPROM_EraseAll(void);
+
+#endif

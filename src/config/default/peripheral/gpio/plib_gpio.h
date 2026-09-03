@@ -62,25 +62,25 @@
 // *****************************************************************************
 
 
-/*** Macros for LED_BLUE pin ***/
-#define LED_BLUE_Set()               (LATASET = (1U<<12))
-#define LED_BLUE_Clear()             (LATACLR = (1U<<12))
-#define LED_BLUE_Toggle()            (LATAINV= (1U<<12))
-#define LED_BLUE_OutputEnable()      (TRISACLR = (1U<<12))
-#define LED_BLUE_InputEnable()       (TRISASET = (1U<<12))
-#define LED_BLUE_Get()               ((PORTA >> 12) & 0x1U)
-#define LED_BLUE_GetLatch()          ((LATA >> 12) & 0x1U)
-#define LED_BLUE_PIN                  GPIO_PIN_RA12
+/*** Macros for BLUE_LED pin ***/
+#define BLUE_LED_Set()               (LATASET = (1U<<12))
+#define BLUE_LED_Clear()             (LATACLR = (1U<<12))
+#define BLUE_LED_Toggle()            (LATAINV= (1U<<12))
+#define BLUE_LED_OutputEnable()      (TRISACLR = (1U<<12))
+#define BLUE_LED_InputEnable()       (TRISASET = (1U<<12))
+#define BLUE_LED_Get()               ((PORTA >> 12) & 0x1U)
+#define BLUE_LED_GetLatch()          ((LATA >> 12) & 0x1U)
+#define BLUE_LED_PIN                  GPIO_PIN_RA12
 
-/*** Macros for LED_GREEN pin ***/
-#define LED_GREEN_Set()               (LATASET = (1U<<11))
-#define LED_GREEN_Clear()             (LATACLR = (1U<<11))
-#define LED_GREEN_Toggle()            (LATAINV= (1U<<11))
-#define LED_GREEN_OutputEnable()      (TRISACLR = (1U<<11))
-#define LED_GREEN_InputEnable()       (TRISASET = (1U<<11))
-#define LED_GREEN_Get()               ((PORTA >> 11) & 0x1U)
-#define LED_GREEN_GetLatch()          ((LATA >> 11) & 0x1U)
-#define LED_GREEN_PIN                  GPIO_PIN_RA11
+/*** Macros for GREEN_LED pin ***/
+#define GREEN_LED_Set()               (LATASET = (1U<<11))
+#define GREEN_LED_Clear()             (LATACLR = (1U<<11))
+#define GREEN_LED_Toggle()            (LATAINV= (1U<<11))
+#define GREEN_LED_OutputEnable()      (TRISACLR = (1U<<11))
+#define GREEN_LED_InputEnable()       (TRISASET = (1U<<11))
+#define GREEN_LED_Get()               ((PORTA >> 11) & 0x1U)
+#define GREEN_LED_GetLatch()          ((LATA >> 11) & 0x1U)
+#define GREEN_LED_PIN                  GPIO_PIN_RA11
 
 /*** Macros for CAN1_TX pin ***/
 #define CAN1_TX_Get()               ((PORTC >> 0) & 0x1U)
@@ -92,15 +92,15 @@
 #define CAN1_RX_GetLatch()          ((LATC >> 1) & 0x1U)
 #define CAN1_RX_PIN                  GPIO_PIN_RC1
 
-/*** Macros for LED_RED pin ***/
-#define LED_RED_Set()               (LATCSET = (1U<<12))
-#define LED_RED_Clear()             (LATCCLR = (1U<<12))
-#define LED_RED_Toggle()            (LATCINV= (1U<<12))
-#define LED_RED_OutputEnable()      (TRISCCLR = (1U<<12))
-#define LED_RED_InputEnable()       (TRISCSET = (1U<<12))
-#define LED_RED_Get()               ((PORTC >> 12) & 0x1U)
-#define LED_RED_GetLatch()          ((LATC >> 12) & 0x1U)
-#define LED_RED_PIN                  GPIO_PIN_RC12
+/*** Macros for RED_LED pin ***/
+#define RED_LED_Set()               (LATCSET = (1U<<12))
+#define RED_LED_Clear()             (LATCCLR = (1U<<12))
+#define RED_LED_Toggle()            (LATCINV= (1U<<12))
+#define RED_LED_OutputEnable()      (TRISCCLR = (1U<<12))
+#define RED_LED_InputEnable()       (TRISCSET = (1U<<12))
+#define RED_LED_Get()               ((PORTC >> 12) & 0x1U)
+#define RED_LED_GetLatch()          ((LATC >> 12) & 0x1U)
+#define RED_LED_PIN                  GPIO_PIN_RC12
 
 
 // *****************************************************************************

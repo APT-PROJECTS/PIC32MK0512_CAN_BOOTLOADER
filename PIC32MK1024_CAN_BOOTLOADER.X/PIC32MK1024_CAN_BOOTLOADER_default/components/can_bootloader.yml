@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 componentName: can_bootloader
-coreVersion: 5.9.0
+coreVersion: 5.9.1
 device: PIC32MK1024MCM064
 library: []
 dependency:
@@ -124,6 +124,12 @@ data:
       attributes:
         id: BTL_TRIGGER_ENABLE
         label: Enable Bootloader Trigger From Firmware
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
       type: Boolean
     BTL_TRIGGER_LEN:
       attributes:
