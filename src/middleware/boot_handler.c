@@ -474,8 +474,23 @@ void Boot_App_Erase_Handler(void)
     {
         if ((address % ERASE_BLOCK_SIZE) == 0)
         {
-            NVM_PageErase(address);
-            while (NVM_IsBusy());
+            if (!NVM_PageErase(address))
+            {
+                txBuf[3] = BOOT_CAN_CMD_3_FAIL;
+                CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
+                return;
+            }
+
+            while (NVM_IsBusy())
+            {
+            }
+
+            if (NVM_ErrorGet() != NVM_ERROR_NONE)
+            {
+                txBuf[3] = BOOT_CAN_CMD_3_FAIL;
+                CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
+                return;
+            }
         }
     }
 
