@@ -5,7 +5,8 @@
 #include <stdint.h>
 #include <SPIFFS.h>
 
-#define CAN_RX_TIMEOUT 3000
+/* PIC32MK application erase can take several seconds (page erase + verify). */
+#define CAN_RX_TIMEOUT 15000
 #define OTA_APP_CHUNK_SIZE  1024U
 #define OTA_FRAME_DATA       4U  // CAN bytes 4..7; bytes 0..3 are protocol
 

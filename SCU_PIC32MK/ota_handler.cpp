@@ -41,6 +41,9 @@ static size_t totalSent = 0;
 static uint8_t chunkIndex = 1U;
 static size_t bytesSentInChunk = 0U;
 static bool waitingChunkAck = false;
+static size_t chunkFileStartOffset = 0U;
+static size_t chunkDataBytes = 0U;
+static uint32_t chunkCrcStart = 0xFFFFFFFFU;
 static uint32_t firmwareCrc32 = 0xFFFFFFFFU;
 
 static uint32_t otaRxStartTime = 0;
@@ -587,6 +590,8 @@ bool OTA_Handler_CORE1(void) {
           chunkIndex = 1U;
           bytesSentInChunk = 0U;
           waitingChunkAck = false;
+          chunkFileStartOffset = 0U;
+          chunkDataBytes = 0U;
           firmwareCrc32 = 0xFFFFFFFFU;
           fileOpened = true;
 
@@ -602,6 +607,12 @@ bool OTA_Handler_CORE1(void) {
           Serial.println("OTA CORE1: All application chunks acknowledged");
           otaCore1State = OTA_CORE1_READ_APP_CRC;
           break;
+        }
+
+        if (bytesSentInChunk == 0U) {
+          chunkFileStartOffset = fwFile.position();
+          chunkDataBytes = 0U;
+          chunkCrcStart = firmwareCrc32;
         }
 
         uint8_t payload[OTA_FRAME_DATA] = { 0xFF, 0xFF, 0xFF, 0xFF };
@@ -620,6 +631,7 @@ bool OTA_Handler_CORE1(void) {
           }
           firmwareCrc32 = OTA_CRC32_Update(firmwareCrc32, payload, bytesToRead);
           totalSent += bytesToRead;
+          chunkDataBytes += bytesToRead;
         }
 
         txBuf[0] = OTA_CAN_CMD_0_APP_CHUNK;
@@ -1090,7 +1102,7 @@ bool OTA_Handler_CORE1(void) {
                           }
                           break;
 
-                        case OTA_CAN_CMD_1_APP_JUMP:
+                              case OTA_CAN_CMD_1_APP_JUMP:
                           {
                             switch (rx.data[3]) {
                               case OTA_CAN_CMD_3_SUCCESS:
@@ -1106,7 +1118,13 @@ bool OTA_Handler_CORE1(void) {
 
                               case OTA_CAN_CMD_3_FAIL:
                                 {
-                                  Serial.println("OTA CORE1: APP JUMP FAIL");
+                                  uint32_t resetWord =
+                                    ((uint32_t)rx.data[4] << 24) |
+                                    ((uint32_t)rx.data[5] << 16) |
+                                    ((uint32_t)rx.data[6] << 8) |
+                                    (uint32_t)rx.data[7];
+                                  Serial.printf("OTA CORE1: APP JUMP FAIL (reset word: 0x%08lX)\n",
+                                                (unsigned long)resetWord);
                                   sendReport = true;
                                   otaReportStatus = APP_JUMP_FAIL;
 
@@ -1357,7 +1375,20 @@ bool OTA_Handler_CORE1(void) {
                 break;
             }
           } else {
-            otaCore1State = otaPrevTxState;  // retry previous TX state
+            /* Rewind the current chunk before retrying its CAN frames. */
+            if ((otaPrevTxState == OTA_CORE1_WRITE_APP_CHUNK) &&
+                waitingChunkAck && fwFile)
+            {
+              (void)fwFile.seek(chunkFileStartOffset);
+              totalSent -= chunkDataBytes;
+              bytesSentInChunk = 0U;
+              chunkDataBytes = 0U;
+              firmwareCrc32 = chunkCrcStart;
+              waitingChunkAck = false;
+            }
+
+            otaRxStartTime = millis();
+            otaCore1State = otaPrevTxState;
           }
         }
       }
@@ -1379,6 +1410,9 @@ bool OTA_Handler_CORE1(void) {
         chunkIndex = 1U;
         bytesSentInChunk = 0U;
         waitingChunkAck = false;
+        chunkFileStartOffset = 0U;
+        chunkDataBytes = 0U;
+        chunkCrcStart = 0xFFFFFFFFU;
         firmwareCrc32 = 0xFFFFFFFFU;
         fileOpened = false;
 

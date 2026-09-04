@@ -68,7 +68,9 @@
 
 
 #define APP_START_ADDRESS                       ((uint32_t)(PA_TO_KVA0(0x1d000000U)))
-#define APP_JUMP_ADDRESS                        ((uint32_t)(PA_TO_KVA0(0x1d000200U)))
+/* PIC32MK application reset section is linked at KSEG1 0xBD000000.
+ * Keep the automatic startup path consistent with Boot_App_Jump(). */
+#define APP_JUMP_ADDRESS                        (0xBD000000UL)
 
 
 

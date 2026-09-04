@@ -152,21 +152,23 @@ void bootloader_TriggerReset(void)
 
 void run_Application(uint32_t address)
 {
-    uint32_t jumpAddrVal = *(uint32_t *)(address & WORD_ALIGN_MASK);
+    __builtin_disable_interrupts();
+    
+    uint32_t jumpAddrVal = *(uint32_t *)(address + 4);
 
     void (*fptr)(void);
 
-    fptr = (void (*)(void))address;
+    fptr = (void (*)(void))(address + 4);
 
     if (jumpAddrVal == 0xffffffffU)
     {
+        RED_LED_Set();
+        
         return;
     }
 
     /* Call Deinitialize routine to free any resources acquired by Bootloader */
-    SYS_DeInitialize(NULL);
-
-   (void) __builtin_disable_interrupts();
+    //SYS_DeInitialize(NULL);
 
     fptr();
 }

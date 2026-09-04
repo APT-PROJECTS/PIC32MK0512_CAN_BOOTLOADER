@@ -15,7 +15,7 @@ float writeMatrix[ROWS][COLS];
 static int MCU_ID = 0;
 static int BOOT_FLAG = 0;
 
-#define BOOT_STAY_WINDOW_COUNT    2000UL
+#define BOOT_STAY_WINDOW_COUNT    20000000UL
 
 void Get_MAC_ID(void)
 {

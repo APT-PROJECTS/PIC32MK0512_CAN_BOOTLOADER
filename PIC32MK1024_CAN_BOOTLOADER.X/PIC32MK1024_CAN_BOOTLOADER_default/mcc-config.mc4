@@ -1,5 +1,5 @@
 configVersion: 1.0.0
-coreVersion: 5.9.0
+coreVersion: 5.9.1
 spaHostVersion: 1.3.0
 device: PIC32MK1024MCM064
 deviceLibrary: {}
@@ -19,9 +19,9 @@ generatedFileHashHistoryMap:
 - file: ..\src\config\default\bootloader\bootloader_common.c
   hash: 9fe49b3829c221e5beaa95f81a327d6094c45eb0911c1614fa5a7e67f57b0481
 - file: ..\src\config\default\bootloader\bootloader_common.h
-  hash: a89da964a5fe9924508d346ef8fbf36ba8b29e3381dcd9ab4ff503155d60a0ca
+  hash: ace43204723d1e7f2935ae075cf23a433fb2256444e7ccf5c9677848b945e8be
 - file: ..\src\config\default\btl.ld
-  hash: 301c7db3e51e0372a72752f7849d933b45f00b3b8c7463a9f07ddc8951ea6b30
+  hash: c5e4d8b9f061658dee821b3bfa98274518f8655e1ecc038ff8bae8f61e6b937f
 - file: ..\src\config\default\definitions.h
   hash: 1e50f60674fa77c60d052728741c36abb376b6a3c033249cedd07a7027b16b1d
 - file: ..\src\config\default\device.h

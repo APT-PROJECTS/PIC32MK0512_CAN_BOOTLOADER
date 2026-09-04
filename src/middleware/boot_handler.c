@@ -5,7 +5,7 @@
 #include "device_stat.h"
 
 #define FLASH_CHUNK_SIZE    1024U
-#define FLASH_ROW_SIZE      (NVM_FLASH_ROWSIZE * sizeof(uint32_t))
+#define FLASH_ROW_SIZE      (NVM_FLASH_ROWSIZE)
 #define BOOT_FLASH_PAGE_SIZE (NVM_FLASH_PAGESIZE * sizeof(uint32_t))
 #define CAN_DATA_SIZE       4U
 
@@ -138,10 +138,10 @@ void Boot_Software_ID_Handler(void) {
                     firmwareUpdateActive);
 
             if (commitFirmwareUpdate) {
-                //                if (!firmwareUpdateFailed && (flashBufferIndex > 0U) &&
-                //                        !App_Firmware_Write_Flash()) {
-                //                    firmwareUpdateFailed = true;
-                //                }
+                if (!firmwareUpdateFailed && (flashBufferIndex > 0U) &&
+                        !App_Firmware_Write_Flash()) {
+                    firmwareUpdateFailed = true;
+                }
 
                 if (firmwareUpdateFailed || !firmwareCrcVerified) {
                     txBuf[0] = BOOT_CAN_CMD_0_SOFTWARE_ID;
@@ -314,46 +314,26 @@ void Boot_App_Size_Handler(void) {
 }
 
 bool Boot_Is_App_Present(void) {
-    uint32_t appEntryAddress;
+    uint32_t resetInstruction;
 
-    appEntryAddress = *(volatile const uint32_t *) APPLICATION_START_ADDRESS;
+    /* The application reset section contains MIPS instructions, not an
+     * address-valued vector entry as used by the PIC32AK implementation. */
+    /* Read through KSEG0, the same flash alias used by the NVM writer and
+     * CRC routine.  The application reset code itself is linked at the
+     * equivalent KSEG1 address APPLICATION_JUMP_ADDRESS. */
+    resetInstruction = *(volatile const uint32_t *)(uintptr_t)APPLICATION_JUMP_ADDRESS;
 
-    if ((appEntryAddress == 0xFFFFFFFFUL) ||
-            (appEntryAddress == 0x00000000UL)) {
-        return false;
-    }
-
-    if ((appEntryAddress < APPLICATION_START_ADDRESS) ||
-            (appEntryAddress > APPLICATION_END_ADDRESS)) {
-        return false;
-    }
-
-    return true;
+    return ((resetInstruction != 0xFFFFFFFFUL) &&
+            (resetInstruction != 0x00000000UL));
 }
 
 void Boot_App_Jump(void) {
-    if (Boot_Is_App_Present() == false) {
-        return;
-    }
+    // if (Boot_Is_App_Present() == false) {
+    //     return;
+    // }
 
-    __builtin_disable_interrupts();
-
-    uint32_t jumpAddrVal = *(uint32_t *) (APPLICATION_JUMP_ADDRESS + 4);
-
-    void (*fptr)(void);
-
-    fptr = (void (*)(void))(APPLICATION_JUMP_ADDRESS + 4);
-
-    if (jumpAddrVal == 0xffffffffU) {
-        RED_LED_Set();
-
-        return;
-    }
-
-    /* Call Deinitialize routine to free any resources acquired by Bootloader */
-    //SYS_DeInitialize(NULL);
-
-    fptr();
+    /* run_Application performs the PIC32MK interrupt disable and handoff. */
+    run_Application(APPLICATION_JUMP_ADDRESS);
 
     while (1) {
         /* Should never return */
@@ -392,12 +372,7 @@ void Boot_Jump_Handler(void) {
 
             if (FLASH_EEPROM_Write_Page(eepromBuffer,
                     sizeof (writeMatrix)) == FLASH_EEPROM_OK) {
-                SYSKEY = 0x00000000U;
-                SYSKEY = 0xAA996655U;
-                SYSKEY = 0x556699AAU;
-
-                RSWRSTSET = _RSWRST_SWRST_MASK;
-                (void) RSWRST;
+                bootloader_TriggerReset();
             }
             break;
 
@@ -413,9 +388,9 @@ void Boot_Jump_Handler(void) {
             /* Safety fallback: never accept a received image without CRC. */
             if (firmwareUpdateActive && !firmwareUpdateFailed &&
                     (flashBufferIndex > 0U)) {
-//                if (!App_Firmware_Write_Flash()) {
-//                    firmwareUpdateFailed = true;
-//                }
+                               if (!App_Firmware_Write_Flash()) {
+                                   firmwareUpdateFailed = true;
+                               }
             }
 
             if (firmwareUpdateActive) {
@@ -433,8 +408,14 @@ void Boot_Jump_Handler(void) {
                 txBuf[3] = BOOT_CAN_CMD_3_SUCCESS;
                 CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
                 Boot_App_Jump();
-            } else {
+            }else {
+                uint32_t resetWord = *(volatile const uint32_t *)(uintptr_t)APPLICATION_JUMP_ADDRESS;
+
                 txBuf[3] = BOOT_CAN_CMD_3_FAIL;
+                txBuf[4] = (uint8_t)(resetWord >> 24);
+                txBuf[5] = (uint8_t)(resetWord >> 16);
+                txBuf[6] = (uint8_t)(resetWord >> 8);
+                txBuf[7] = (uint8_t)resetWord;
                 CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
             }
             break;
@@ -488,15 +469,15 @@ void Boot_App_Erase_Handler(void) {
     }
 
     /* Verify erased flash */
-    for (address = APPLICATION_START_ADDRESS;
-            address <= APPLICATION_END_ADDRESS;
-            address += 4U) {
-        if (*(volatile const uint32_t *) address != 0xFFFFFFFFUL) {
-            txBuf[3] = BOOT_CAN_CMD_3_FAIL;
-            CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
-            return;
-        }
-    }
+    // for (address = APPLICATION_START_ADDRESS;
+    //         address <= APPLICATION_END_ADDRESS;
+    //         address += 4U) {
+    //     if (*(volatile const uint32_t *) address != 0xFFFFFFFFUL) {
+    //         txBuf[3] = BOOT_CAN_CMD_3_FAIL;
+    //         CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
+    //         return;
+    //     }
+    // }
 
     firmwareUpdateActive = true;
 
@@ -505,237 +486,179 @@ void Boot_App_Erase_Handler(void) {
     CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
 }
 
-//static bool App_Firmware_Write_Flash(void)
-//{
-//    uint32_t rowAddr;
-//    uint32_t offset;
-//    uint32_t bytesToWrite = flashBufferIndex;
+/* PIC32MK program-flash row programming (NVM_FLASH_ROWSIZE is bytes). */
+static bool App_Firmware_Write_Flash(void) {
+    uint32_t rowAddr = flashWriteAddress;
+    uint32_t offset;
+    /* The PIC32MK row API consumes exactly 512 source bytes.  Keep this as a
+     * byte buffer (as in the working automatic bootloader) so CAN/file byte
+     * order is preserved, and align it for the NVM/DMA source address. */
+    static uint8_t rowData[NVM_FLASH_ROWSIZE]
+            __attribute__((aligned(16)));
+
+    for (offset = 0U; offset < flashBufferIndex; offset += FLASH_ROW_SIZE) {
+        uint32_t rowBytes = flashBufferIndex - offset;
+
+        if (rowBytes > FLASH_ROW_SIZE) {
+            rowBytes = FLASH_ROW_SIZE;
+        }
+
+        if ((rowAddr < APPLICATION_START_ADDRESS) ||
+                (rowAddr > (APPLICATION_END_ADDRESS - (FLASH_ROW_SIZE - 1U)))) {
+            return false;
+        }
+
+        __builtin_memset(rowData, 0xFF, sizeof (rowData));
+        (void) memcpy(rowData, &flashBuffer[offset], rowBytes);
+
+        if (!NVM_RowWrite((uint32_t *)(void *)rowData, rowAddr)) {
+            return false;
+        }
+
+        while (NVM_IsBusy()) {
+        }
+
+        if (NVM_ErrorGet() != NVM_ERROR_NONE) {
+            return false;
+        }
+
+        /* Read back through KSEG1 so the data cache cannot hide a failure. */
+        if (memcmp((const void *) KVA0_TO_KVA1(rowAddr), rowData,
+                FLASH_ROW_SIZE) != 0) {
+            return false;
+        }
+
+        rowAddr += FLASH_ROW_SIZE;
+    }
+
+    flashWriteAddress = rowAddr;
+    flashBufferIndex = 0U;
+    __builtin_memset(flashBuffer, 0xFF, sizeof (flashBuffer));
+    return true;
+}
+
+static uint8_t Next_Chunk_Index(uint8_t chunkIndex) {
+    return (chunkIndex == 0xFFU) ? 1U : (uint8_t) (chunkIndex + 1U);
+}
+
+static void Boot_App_Chunk_Ack(uint8_t chunkIndex, uint8_t result) {
+    uint8_t txBuf[8] = {0U};
+
+    txBuf[0] = BOOT_CAN_CMD_0_APP_CHUNK;
+    txBuf[1] = chunkIndex;
+    txBuf[2] = BOOT_CAN_CMD_2_WRITE;
+    txBuf[3] = result;
+    CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
+}
+
+void Boot_App_Chunk_Handler(void) {
+    uint8_t chunkIndex = canRxBuffer[1];
+
+    if ((canRxBuffer[0] != BOOT_CAN_CMD_0_APP_CHUNK) ||
+            (canRxBuffer[2] != BOOT_CAN_CMD_2_WRITE) ||
+            (chunkIndex == 0U) || !firmwareUpdateActive || firmwareUpdateFailed) {
+        Boot_App_Chunk_Ack(chunkIndex, BOOT_CAN_CMD_3_FAIL);
+        return;
+    }
+
+    /* A lost ACK may cause the sender to repeat the completed chunk. */
+    if (chunkIndex == lastAcceptedChunkIndex) {
+        Boot_App_Chunk_Ack(chunkIndex, BOOT_CAN_CMD_3_SUCCESS);
+        return;
+    }
+
+    if ((chunkIndex != expectedChunkIndex) ||
+            ((flashBufferIndex + CAN_DATA_SIZE) > FLASH_CHUNK_SIZE)) {
+        Boot_App_Chunk_Ack(chunkIndex, BOOT_CAN_CMD_3_FAIL);
+        return;
+    }
+
+    (void) memcpy(&flashBuffer[flashBufferIndex], &canRxBuffer[4],
+            CAN_DATA_SIZE);
+    flashBufferIndex += CAN_DATA_SIZE;
+
+    /* One protocol chunk contains 1024 firmware bytes. */
+    if (flashBufferIndex < FLASH_CHUNK_SIZE) {
+        return;
+    }
+
+    if (!App_Firmware_Write_Flash()) {
+        firmwareUpdateFailed = true;
+        Boot_App_Chunk_Ack(chunkIndex, BOOT_CAN_CMD_3_FAIL);
+        return;
+    }
+
+    lastAcceptedChunkIndex = chunkIndex;
+    expectedChunkIndex = Next_Chunk_Index(chunkIndex);
+    Boot_App_Chunk_Ack(chunkIndex, BOOT_CAN_CMD_3_SUCCESS);
+}
+
 //
-//    /* NVM_FLASH_ROWSIZE is in 32-bit words; the NVM needs all 512 bytes. */
-//    static uint32_t rowData[NVM_FLASH_ROWSIZE] __attribute__((aligned(4)));
-//
-//    if (bytesToWrite == 0U)
-//    {
-//        return true;
-//    }
-//
-//    rowAddr = flashWriteAddress;
-//
-//    for (offset = 0; offset < bytesToWrite; offset += FLASH_ROW_SIZE)
-//    {
-//        uint32_t rowBytes;
-//
-//        if (rowAddr > (APPLICATION_END_ADDRESS - (FLASH_ROW_SIZE - 1U)))
-//        {
-//            return false;
-//        }
-//
-//        __builtin_memset(rowData, 0xFF, sizeof(rowData));
-//
-//        rowBytes = FLASH_ROW_SIZE < (bytesToWrite - offset)
-//                       ? FLASH_ROW_SIZE
-//                       : (bytesToWrite - offset);
-//
-//        (void)memcpy(
-//            rowData,
-//            &flashBuffer[offset],
-//            rowBytes);
-//
-//        if (NVM_RowWrite(rowData, rowAddr) == false)
-//        {
-//            return false;
-//        }
-//
-//        while (NVM_IsBusy())
-//        {
-//        }
-//
-//        if (NVM_ErrorGet() != NVM_ERROR_NONE)
-//        {
-//            return false;
-//        }
-//
-//        /* Do not acknowledge a corrupt row to the OTA device. */
-//        if (memcmp((const void *)rowAddr, rowData, FLASH_ROW_SIZE) != 0)
-//        {
-//            return false;
-//        }
-//
-//        rowAddr += FLASH_ROW_SIZE;
-//    }
-//
-//    flashWriteAddress += bytesToWrite;
-//    flashBufferIndex = 0;
-//
-//    __builtin_memset(flashBuffer, 0xFF, sizeof(flashBuffer));
-//
-//    return true;
-//}
-//
-//static uint8_t Next_Chunk_Index(uint8_t chunkIndex)
-//{
-//    return (chunkIndex == 0xFFU) ? 1U : (uint8_t)(chunkIndex + 1U);
-//}
-//
-//static void Boot_App_Chunk_Ack(uint8_t chunkIndex, uint8_t result)
-//{
-//    uint8_t txBuf[8] = {0U};
-//
-//    txBuf[0] = BOOT_CAN_CMD_0_APP_CHUNK;
-//    txBuf[1] = chunkIndex;
-//    txBuf[2] = BOOT_CAN_CMD_2_WRITE;
-//    txBuf[3] = result;
-//
-//    CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
-//}
-//
-//void Boot_App_Chunk_Handler(void)
-//{
-//    uint8_t chunkIndex = canRxBuffer[1];
-//
-//    if ((canRxBuffer[0] != BOOT_CAN_CMD_0_APP_CHUNK) ||
-//        (canRxBuffer[2] != BOOT_CAN_CMD_2_WRITE) ||
-//        (chunkIndex == 0U) || !firmwareUpdateActive || firmwareUpdateFailed)
-//    {
-//        Boot_App_Chunk_Ack(chunkIndex, BOOT_CAN_CMD_3_FAIL);
-//        return;
-//    }
-//
-//    /* An ACK can be lost. Re-ACK a duplicate without programming it twice. */
-//    if (chunkIndex == lastAcceptedChunkIndex)
-//    {
-//        Boot_App_Chunk_Ack(chunkIndex, BOOT_CAN_CMD_3_SUCCESS);
-//        return;
-//    }
-//
-//    if ((chunkIndex != expectedChunkIndex) ||
-//        ((flashBufferIndex + CAN_DATA_SIZE) > FLASH_CHUNK_SIZE))
-//    {
-//        Boot_App_Chunk_Ack(chunkIndex, BOOT_CAN_CMD_3_FAIL);
-//        return;
-//    }
-//
-//    memcpy(&flashBuffer[flashBufferIndex], &canRxBuffer[4], CAN_DATA_SIZE);
-//    flashBufferIndex += CAN_DATA_SIZE;
-//
-//    /* One OTA chunk is 256 four-byte frames (1024 bytes). */
-//    if (flashBufferIndex < FLASH_CHUNK_SIZE)
-//    {
-//        return;
-//    }
-//
-//    if (!App_Firmware_Write_Flash())
-//    {
-//        firmwareUpdateFailed = true;
-//        flashBufferIndex = 0U;
-//        Boot_App_Chunk_Ack(chunkIndex, BOOT_CAN_CMD_3_FAIL);
-//        return;
-//    }
-//
-//    lastAcceptedChunkIndex = chunkIndex;
-//    expectedChunkIndex = Next_Chunk_Index(chunkIndex);
-//    Boot_App_Chunk_Ack(chunkIndex, BOOT_CAN_CMD_3_SUCCESS);
-//}
-//
-//static uint32_t Boot_APP_CRC32_Software(const volatile uint8_t *data, uint32_t length)
-//{
-//    uint32_t crc = 0xFFFFFFFFU;
-//    uint8_t bit;
-//
-//    while (length-- > 0U)
-//    {
-//        crc ^= *data++;
-//
-//        for (bit = 0U; bit < 8U; bit++)
-//        {
-//            crc = ((crc & 1U) != 0U) ?
-//                  ((crc >> 1U) ^ 0xEDB88320U) : (crc >> 1U);
-//        }
-//    }
-//
-//    return crc ^ 0xFFFFFFFFU;
-//}
-//
-//void Boot_APP_CRC_Handler(void)
-//{
-//    uint8_t txBuf[8] = {0U};
-//    uint32_t flashCrc;
-//
-//    if ((canRxBuffer[0] != BOOT_CAN_CMD_0_APP_CRC) ||
-//        (canRxBuffer[2] != BOOT_CAN_CMD_2_READ))
-//    {
-//        return;
-//    }
-//
-//    txBuf[0] = BOOT_CAN_CMD_0_APP_CRC;
-//    txBuf[2] = BOOT_CAN_CMD_2_READ;
-//
-//    /* Every 1 KiB CAN chunk must have been acknowledged and written first. */
-//    if (!firmwareUpdateActive)
-//    {
-//        firmwareCrcVerified = false;
-//        txBuf[3] = BOOT_CAN_CMD_3_FAIL;
-//        CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
-//        return;
-//    }
-//
-//    if (firmwareUpdateFailed)
-//    {
-//        firmwareCrcVerified = false;
-//        txBuf[3] = BOOT_CAN_CMD_3_FAIL;
-//        CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
-//        return;
-//    }
-//
-//    if (firmwareExpectedSize == 0U)
-//    {
-//        firmwareCrcVerified = false;
-//        txBuf[3] = BOOT_CAN_CMD_3_FAIL;
-//        CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
-//        return;
-//    }
-//
-//    if (flashBufferIndex != 0U)
-//    {
-//        firmwareCrcVerified = false;
-//        txBuf[3] = BOOT_CAN_CMD_3_FAIL;
-//        CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
-//        return;
-//    }
-//
-//    /* CRC-32/ISO-HDLC over real firmware bytes; excludes final CAN padding. */
-//    flashCrc = Boot_APP_CRC32_Software(
-//        (const volatile uint8_t *)APPLICATION_START_ADDRESS,
-//        firmwareExpectedSize);
-//
-//    /* The OTA host compares this returned CRC with its source-file CRC. */
-//    firmwareCrcVerified = true;
-//    txBuf[3] = BOOT_CAN_CMD_3_SUCCESS;
-//    txBuf[4] = (uint8_t)(flashCrc >> 24);
-//    txBuf[5] = (uint8_t)(flashCrc >> 16);
-//    txBuf[6] = (uint8_t)(flashCrc >> 8);
-//    txBuf[7] = (uint8_t)flashCrc;
-//    CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
-//}
-//
-//void Boot_Stay_In_Boot_Handler(void)
-//{
-//    uint8_t txBuf[8] = {0U};
-//
-//    if (canRxBuffer[0] == BOOT_CAN_CMD_0_STAY_IN_BOOT)
-//    {
-//        bootStayRequested = true;
-//    }
-//    
-//    txBuf[0] = BOOT_CAN_CMD_0_STAY_IN_BOOT;
-//    txBuf[3] = BOOT_CAN_CMD_3_SUCCESS;
-//    CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
-//}
-//
-//bool Boot_Stay_In_Boot_Requested(void)
-//{
-//    return bootStayRequested;
-//}
+
+static uint32_t Boot_APP_CRC32_Software(const volatile uint8_t *data,
+        uint32_t length) {
+    uint32_t crc = 0xFFFFFFFFU;
+    uint8_t bit;
+
+    while (length-- > 0U) {
+        crc ^= *data++;
+        for (bit = 0U; bit < 8U; bit++) {
+            crc = ((crc & 1U) != 0U) ?
+                    ((crc >> 1U) ^ 0xEDB88320U) : (crc >> 1U);
+        }
+    }
+
+    return crc ^ 0xFFFFFFFFU;
+}
+
+void Boot_APP_CRC_Handler(void) {
+    uint8_t txBuf[8] = {0U};
+    uint32_t flashCrc;
+
+    if ((canRxBuffer[0] != BOOT_CAN_CMD_0_APP_CRC) ||
+            (canRxBuffer[2] != BOOT_CAN_CMD_2_READ)) {
+        return;
+    }
+
+    txBuf[0] = BOOT_CAN_CMD_0_APP_CRC;
+    txBuf[2] = BOOT_CAN_CMD_2_READ;
+
+    if (!firmwareUpdateActive || firmwareUpdateFailed ||
+            (firmwareExpectedSize == 0U) || (flashBufferIndex != 0U)) {
+        firmwareCrcVerified = false;
+        txBuf[3] = BOOT_CAN_CMD_3_FAIL;
+        CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
+        return;
+    }
+
+    flashCrc = Boot_APP_CRC32_Software(
+            (const volatile uint8_t *)APPLICATION_START_ADDRESS,
+            firmwareExpectedSize);
+
+    firmwareCrcVerified = true;
+    txBuf[3] = BOOT_CAN_CMD_3_SUCCESS;
+    txBuf[4] = (uint8_t) (flashCrc >> 24);
+    txBuf[5] = (uint8_t) (flashCrc >> 16);
+    txBuf[6] = (uint8_t) (flashCrc >> 8);
+    txBuf[7] = (uint8_t) flashCrc;
+    CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
+}
+
+void Boot_Stay_In_Boot_Handler(void) {
+    uint8_t txBuf[8] = {0U};
+
+    if (canRxBuffer[0] == BOOT_CAN_CMD_0_STAY_IN_BOOT) {
+        bootStayRequested = true;
+    }
+
+    txBuf[0] = BOOT_CAN_CMD_0_STAY_IN_BOOT;
+    txBuf[3] = BOOT_CAN_CMD_3_SUCCESS;
+    CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
+}
+
+bool Boot_Stay_In_Boot_Requested(void) {
+    return bootStayRequested;
+}
 
 void Run_Boot_Handler(uint32_t ID, uint8_t *rxBuffer) {
     __builtin_memcpy(canRxBuffer, rxBuffer, sizeof (canRxBuffer));
@@ -780,23 +703,23 @@ void Run_Boot_Handler(uint32_t ID, uint8_t *rxBuffer) {
                     break;
                 }
                     //
-                    //                case BOOT_CAN_CMD_0_APP_CHUNK:
-                    //                {
-                    //                    Boot_App_Chunk_Handler();
-                    //                    break;
-                    //                }
+                case BOOT_CAN_CMD_0_APP_CHUNK:
+                {
+                    Boot_App_Chunk_Handler();
+                    break;
+                }
                     //
-                    //                case BOOT_CAN_CMD_0_APP_CRC:
-                    //                {
-                    //                    Boot_APP_CRC_Handler();
-                    //                    break;
-                    //                }
-                    //
-                    //                case BOOT_CAN_CMD_0_STAY_IN_BOOT:
-                    //                {
-                    //                    Boot_Stay_In_Boot_Handler();
-                    //                    break;
-                    //                }
+                case BOOT_CAN_CMD_0_APP_CRC:
+                {
+                    Boot_APP_CRC_Handler();
+                    break;
+                }
+
+                case BOOT_CAN_CMD_0_STAY_IN_BOOT:
+                {
+                    Boot_Stay_In_Boot_Handler();
+                    break;
+                }
 
                 default:
                     break;
