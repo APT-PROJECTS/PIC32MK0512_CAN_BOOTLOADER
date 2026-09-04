@@ -8,7 +8,7 @@
             "device": "PIC32MK1024MCM064",
             "imageType": "application",
             "imagePath": "./out/PIC32MK1024_CAN_BOOTLOADER/default.elf",
-            "tool": "pickitbasic",
+            "tool": "PICkit Basic",
             "packs": [
                 {
                     "name": "PIC32MK-MC_DFP",

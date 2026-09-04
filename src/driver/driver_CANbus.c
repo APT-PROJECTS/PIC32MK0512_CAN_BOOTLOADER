@@ -29,10 +29,8 @@ void CANbus_read(void) {
         rstat = 0;
 
         // For OTA Bootloader Updates
-        if (msg_id == 0xB0) {
-            static uint8_t data[8] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
-//            Run_Boot_Handler(msg_id, Rdata);
-            CAN1_MessageTransmit(0xB1, 8, data, 1, 0, 0);
+        if (msg_id == BOOT_CAN_ID_HOST) {
+            Run_Boot_Handler(msg_id, Rdata);
         }
     }
     Nop();

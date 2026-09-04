@@ -1,5 +1,5 @@
 configVersion: 1.0.0
-coreVersion: 5.9.1
+coreVersion: 5.9.0
 spaHostVersion: 1.3.0
 device: PIC32MK1024MCM064
 deviceLibrary: {}
@@ -29,7 +29,7 @@ generatedFileHashHistoryMap:
 - file: ..\src\config\default\initialization.c
   hash: 050d610e8a2f2b52f6db45e5530a54bf857add5c80323997cbe7d95dbfa93fae
 - file: ..\src\config\default\peripheral\canfd\plib_canfd1.c
-  hash: 4e247c50e12c417b78a1495badd4b42c3008c12844af89f6752330deb2b1fd9b
+  hash: 10f9032293883bc1a90c65bd9f66dfc9cdd8442be94f083b5b353f6bc1f8516e
 - file: ..\src\config\default\peripheral\canfd\plib_canfd1.h
   hash: 022d46ca04683c15b1a6cdb86baa08f7aaab73705570f3207e8293f6a930dc53
 - file: ..\src\config\default\peripheral\canfd\plib_canfd_common.h

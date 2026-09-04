@@ -8,33 +8,22 @@
 extern "C" {
 #endif    
     
-///* =====================================================
-// * FLASH MEMORY MAP       // 64KB
-// * =====================================================*/
-//#define BOOTLOADER_START_ADDRESS        (0x800000UL)
-//#define BOOTLOADER_END_ADDRESS          (0x807FFFUL)
-//    
-//#define APPLICATION_START_ADDRESS       (0x808000UL)
-//#define APPLICATION_END_ADDRESS         (0x80EFFFUL)
-//
-//#define EEPROM_START_ADDRESS            (0x80F000UL)
-//#define EEPROM_END_ADDRESS              (0x80FFFFUL)
-//
-//#define APPLICATION_IVT_ADDRESS         (APPLICATION_START_ADDRESS + 0x40U)
-    
 /* =====================================================
- * FLASH MEMORY MAP         // 128KB
+ * PIC32MK1024MCM064 FLASH MEMORY MAP
+ *
+ * These are KSEG0 virtual addresses, matching the linker scripts used by
+ * this project.  The bootloader executes from the 16-KiB upper boot flash
+ * region and the application executes from program flash.  The final 4 KiB
+ * program-flash page is reserved for EEPROM emulation.
  * =====================================================*/
-#define BOOTLOADER_START_ADDRESS        (0x800000UL)
-#define BOOTLOADER_END_ADDRESS          (0x807FFFUL)
-    
-#define APPLICATION_START_ADDRESS       (0x808000UL)
-#define APPLICATION_END_ADDRESS         (0x81EFFFUL)
+#define BOOTLOADER_START_ADDRESS        (0x9FC01000UL)
+#define BOOTLOADER_END_ADDRESS          (0x9FC04FFFUL)
 
-#define EEPROM_START_ADDRESS            (0x81F000UL)
-#define EEPROM_END_ADDRESS              (0x81FFFFUL)
+#define APPLICATION_START_ADDRESS       (0x9D001000UL)
+#define APPLICATION_END_ADDRESS         (0x9D0FEFFFUL)
 
-#define APPLICATION_IVT_ADDRESS         (APPLICATION_START_ADDRESS + 0x40U)
+#define EEPROM_START_ADDRESS            (0x9D0FF000UL)
+#define EEPROM_END_ADDRESS              (0x9D0FFFFFUL)
     
 /* =====================================================
  * CAN_ID
