@@ -27,7 +27,7 @@ void Get_MAC_ID(void)
 
 void EEPROM_Initialize(void) {
     FLASH_EEPROM_Init();
-//    Load_Read_Matrix();
+    // Load_Read_Matrix();
 }
 
 void Load_Read_Matrix(void) {

@@ -19,11 +19,13 @@ extern "C" {
 #define BOOTLOADER_START_ADDRESS        (0x9FC01000UL)
 #define BOOTLOADER_END_ADDRESS          (0x9FC04FFFUL)
 
-#define APPLICATION_START_ADDRESS       (0x9D001000UL)
+#define APPLICATION_START_ADDRESS       (0x9D000000UL)
 #define APPLICATION_END_ADDRESS         (0x9D0FEFFFUL)
 
 #define EEPROM_START_ADDRESS            (0x9D0FF000UL)
 #define EEPROM_END_ADDRESS              (0x9D0FFFFFUL)
+
+#define APPLICATION_JUMP_ADDRESS        (0xBD000000UL)
     
 /* =====================================================
  * CAN_ID
