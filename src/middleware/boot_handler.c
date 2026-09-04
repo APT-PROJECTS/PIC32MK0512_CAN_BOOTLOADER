@@ -138,10 +138,10 @@ void Boot_Software_ID_Handler(void) {
                     firmwareUpdateActive);
 
             if (commitFirmwareUpdate) {
-//                if (!firmwareUpdateFailed && (flashBufferIndex > 0U) &&
-//                        !App_Firmware_Write_Flash()) {
-//                    firmwareUpdateFailed = true;
-//                }
+                //                if (!firmwareUpdateFailed && (flashBufferIndex > 0U) &&
+                //                        !App_Firmware_Write_Flash()) {
+                //                    firmwareUpdateFailed = true;
+                //                }
 
                 if (firmwareUpdateFailed || !firmwareCrcVerified) {
                     txBuf[0] = BOOT_CAN_CMD_0_SOFTWARE_ID;
@@ -413,9 +413,9 @@ void Boot_Jump_Handler(void) {
             /* Safety fallback: never accept a received image without CRC. */
             if (firmwareUpdateActive && !firmwareUpdateFailed &&
                     (flashBufferIndex > 0U)) {
-                if (!App_Firmware_Write_Flash()) {
-                    firmwareUpdateFailed = true;
-                }
+//                if (!App_Firmware_Write_Flash()) {
+//                    firmwareUpdateFailed = true;
+//                }
             }
 
             if (firmwareUpdateActive) {
@@ -444,74 +444,65 @@ void Boot_Jump_Handler(void) {
     }
 }
 
-void Boot_App_Erase_Handler(void)
-{
-   uint8_t txBuf[8] = {0};
-   uint32_t address;
+void Boot_App_Erase_Handler(void) {
+    uint8_t txBuf[8] = {0};
+    uint32_t address;
 
-   flashWriteAddress = APPLICATION_START_ADDRESS;
-   flashBufferIndex = 0;
-   firmwareUpdateActive = false;
-   firmwareUpdateFailed = false;
-   firmwareImageReady = false;
-   firmwareCrcVerified = false;
-   expectedChunkIndex = 1U;
-   lastAcceptedChunkIndex = 0U;
+    flashWriteAddress = APPLICATION_START_ADDRESS;
+    flashBufferIndex = 0;
+    firmwareUpdateActive = false;
+    firmwareUpdateFailed = false;
+    firmwareImageReady = false;
+    firmwareCrcVerified = false;
+    expectedChunkIndex = 1U;
+    lastAcceptedChunkIndex = 0U;
 
-   __builtin_memset(flashBuffer, 0xFF, sizeof(flashBuffer));
+    __builtin_memset(flashBuffer, 0xFF, sizeof (flashBuffer));
 
-   if (canRxBuffer[0] != BOOT_CAN_CMD_0_APP_ERASE)
-   {
-       return;
-   }
+    if (canRxBuffer[0] != BOOT_CAN_CMD_0_APP_ERASE) {
+        return;
+    }
 
-   txBuf[0] = BOOT_CAN_CMD_0_APP_ERASE;
+    txBuf[0] = BOOT_CAN_CMD_0_APP_ERASE;
 
-   /* Erase complete application region */
-   for (address = APPLICATION_START_ADDRESS;
-        address < APPLICATION_END_ADDRESS;
-        address += ERASE_BLOCK_SIZE)
-    {
-        if ((address % ERASE_BLOCK_SIZE) == 0)
-        {
-            if (!NVM_PageErase(address))
-            {
+    /* Erase complete application region */
+    for (address = APPLICATION_START_ADDRESS;
+            address < APPLICATION_END_ADDRESS;
+            address += ERASE_BLOCK_SIZE) {
+        if ((address % ERASE_BLOCK_SIZE) == 0) {
+            if (!NVM_PageErase(address)) {
                 txBuf[3] = BOOT_CAN_CMD_3_FAIL;
-                CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
+                CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
                 return;
             }
 
-            while (NVM_IsBusy())
-            {
+            while (NVM_IsBusy()) {
             }
 
-            if (NVM_ErrorGet() != NVM_ERROR_NONE)
-            {
+            if (NVM_ErrorGet() != NVM_ERROR_NONE) {
                 txBuf[3] = BOOT_CAN_CMD_3_FAIL;
-                CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
+                CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
                 return;
             }
         }
     }
 
-   /* Verify erased flash */
-   for (address = APPLICATION_START_ADDRESS;
-        address <= APPLICATION_END_ADDRESS;
-        address += 4U)
-   {
-       if (*(volatile const uint32_t *)address != 0xFFFFFFFFUL)
-       {
-           txBuf[3] = BOOT_CAN_CMD_3_FAIL;
-           CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
-           return;
-       }
-   }
+    /* Verify erased flash */
+    for (address = APPLICATION_START_ADDRESS;
+            address <= APPLICATION_END_ADDRESS;
+            address += 4U) {
+        if (*(volatile const uint32_t *) address != 0xFFFFFFFFUL) {
+            txBuf[3] = BOOT_CAN_CMD_3_FAIL;
+            CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
+            return;
+        }
+    }
 
-   firmwareUpdateActive = true;
+    firmwareUpdateActive = true;
 
-   /* Erase successful */
-   txBuf[3] = BOOT_CAN_CMD_3_SUCCESS;
-   CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof(txBuf));
+    /* Erase successful */
+    txBuf[3] = BOOT_CAN_CMD_3_SUCCESS;
+    CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
 }
 
 //static bool App_Firmware_Write_Flash(void)
@@ -776,18 +767,18 @@ void Run_Boot_Handler(uint32_t ID, uint8_t *rxBuffer) {
                     Boot_App_Size_Handler();
                     break;
                 }
-                    //
-                    //                case BOOT_CAN_CMD_0_JUMP:
-                    //                {
-                    //                    Boot_Jump_Handler();
-                    //                    break;
-                    //                }
-                    //
-                    //                case BOOT_CAN_CMD_0_APP_ERASE:
-                    //                {
-                    //                    Boot_App_Erase_Handler();
-                    //                    break;
-                    //                }
+
+                case BOOT_CAN_CMD_0_JUMP:
+                {
+                    Boot_Jump_Handler();
+                    break;
+                }
+
+                case BOOT_CAN_CMD_0_APP_ERASE:
+                {
+                    Boot_App_Erase_Handler();
+                    break;
+                }
                     //
                     //                case BOOT_CAN_CMD_0_APP_CHUNK:
                     //                {

@@ -209,7 +209,8 @@
                 "src/config/default/initialization.c",
                 "src/config/default/btl.ld",
                 "src/config/default/bootloader/bootloader_common.c",
-                "src/config/default/peripheral/nvm/plib_nvm.c"
+                "src/config/default/peripheral/nvm/plib_nvm.c",
+                "PIC32MK1024_CAN_BOOTLOADER.X/dist/default/debug/PIC32MK1024_CAN_BOOTLOADER.X.debug.elf"
             ]
         }
     ]
