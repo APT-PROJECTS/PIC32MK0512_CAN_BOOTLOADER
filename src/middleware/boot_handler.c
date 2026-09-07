@@ -315,24 +315,20 @@ void Boot_App_Size_Handler(void) {
     }
 }
 
-bool Boot_Is_App_Present(void)
-{
+bool Boot_Is_App_Present(void) {
     uint32_t jumpAddrVal;
 
-    jumpAddrVal = *(uint32_t *)(APPLICATION_JUMP_ADDRESS + 4U);
+    jumpAddrVal = *(uint32_t *) (APPLICATION_JUMP_ADDRESS + 4U);
 
-    if (jumpAddrVal == 0xFFFFFFFFU)
-    {
+    if (jumpAddrVal == 0xFFFFFFFFU) {
         return false;
     }
 
     return true;
 }
 
-void Boot_App_Jump(void)
-{
-    if (!Boot_Is_App_Present())
-    {
+void Boot_App_Jump(void) {
+    if (!Boot_Is_App_Present()) {
         RED_LED_Set();
         return;
     }
@@ -343,8 +339,7 @@ void Boot_App_Jump(void)
 
     fptr();
 
-    while (1)
-    {
+    while (1) {
         /* Should never return */
     }
 }
@@ -424,13 +419,7 @@ void Boot_Jump_Handler(void) {
                 CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
                 Boot_App_Jump();
             } else {
-                uint32_t resetWord = *(volatile const uint32_t *) (uintptr_t) APPLICATION_JUMP_ADDRESS;
-
                 txBuf[3] = BOOT_CAN_CMD_3_FAIL;
-                txBuf[4] = (uint8_t) (resetWord >> 24);
-                txBuf[5] = (uint8_t) (resetWord >> 16);
-                txBuf[6] = (uint8_t) (resetWord >> 8);
-                txBuf[7] = (uint8_t) resetWord;
                 CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
             }
             break;

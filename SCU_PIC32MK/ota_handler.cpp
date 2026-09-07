@@ -1118,10 +1118,7 @@ bool OTA_Handler_CORE1(void) {
 
                               case OTA_CAN_CMD_3_FAIL:
                                 {
-                                  uint32_t resetWord =
-                                    ((uint32_t)rx.data[4] << 24) | ((uint32_t)rx.data[5] << 16) | ((uint32_t)rx.data[6] << 8) | (uint32_t)rx.data[7];
-                                  Serial.printf("OTA CORE1: APP JUMP FAIL (reset word: 0x%08lX)\n",
-                                                (unsigned long)resetWord);
+                                  Serial.println("OTA CORE1: APP JUMP FAIL");
                                   sendReport = true;
                                   otaReportStatus = APP_JUMP_FAIL;
 
