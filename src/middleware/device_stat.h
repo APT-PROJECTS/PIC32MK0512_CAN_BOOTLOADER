@@ -6,7 +6,7 @@
 extern "C" {
 #endif
     
-#include "../driver/flash_eeprom.h"
+#include "driver.h"
     
 extern uint32_t devsn[4];
 

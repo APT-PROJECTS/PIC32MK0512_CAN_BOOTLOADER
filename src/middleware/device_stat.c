@@ -1,9 +1,6 @@
 #include "definitions.h"
-#include "device_stat.h"
-#include "mcu_config.h"
-#include "boot_handler.h"
-#include "../driver/driver_CANbus.h"
-#include "../driver/flash_eeprom.h"
+#include "driver.h"
+#include "middleware.h"
 
 uint32_t devsn[4];
 

@@ -1,7 +1,6 @@
-#include <string.h>
 #include "sys/kmem.h"
 #include "definitions.h"
-#include "flash_eeprom.h"
+#include "driver.h"
 
 typedef struct {
     uint32_t marker;

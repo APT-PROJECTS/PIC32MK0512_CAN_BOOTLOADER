@@ -205,7 +205,10 @@
                 "src/main.c",
                 "src/config/default/initialization.c",
                 "src/config/default/stdio/xc32_monitor.c",
-                "PIC32MK1024_CAN_BOOTLOADER.X/dist/default/production/PIC32MK1024_CAN_BOOTLOADER.X.production.elf"
+                "PIC32MK1024_CAN_BOOTLOADER.X/dist/default/production/PIC32MK1024_CAN_BOOTLOADER.X.production.elf",
+                "src/software/software.h",
+                "src/middleware/middleware.h",
+                "src/driver/driver.h"
             ]
         }
     ]

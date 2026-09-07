@@ -1,8 +1,7 @@
 #ifndef _BOOT_HANDLER_NAME_H 
 #define _BOOT_HANDLER_NAME_H
 
-#include <stdbool.h>
-#include <stdint.h>
+#include "definitions.h"
 
 #ifdef __cplusplus
 extern "C" {

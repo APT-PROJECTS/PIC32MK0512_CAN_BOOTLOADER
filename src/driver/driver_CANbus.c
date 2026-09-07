@@ -1,7 +1,7 @@
 #include "definitions.h"
 #include "device.h"
-#include "driver_CANbus.h"
-#include "../middleware/boot_handler.h"
+#include "driver.h"
+#include "middleware.h"
 
 #define CANSTB_PIN LATCbits.LATC15
 

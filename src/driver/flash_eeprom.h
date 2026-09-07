@@ -1,8 +1,7 @@
 #ifndef FLASH_EEPROM_H
 #define FLASH_EEPROM_H
 
-#include <stdint.h>
-#include <stdbool.h>
+#include "definitions.h"
 
 #define FLASH_PAGE_SIZE       4096U
 #define EEPROM_HEADER_SIZE    20U

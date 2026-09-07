@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-#include <stdint.h>
+#include "definitions.h"
 
 //--------------------------------------------------
 // STATE ENUM
@@ -21,8 +21,6 @@ typedef enum
 // PUBLIC FUNCTIONS
 //--------------------------------------------------
 void STATE_ENGINE_Tasks(void);
-void drive_init(int * p_adr, float * CONFIG_THROTTLE_ZERO_adr, float * CONFIG_THROTTLE_MAX_adr, float motor_TfaultC, float ESC_TfaultC, float * rpm_to_speed_adr);
-void state_init(void);
 
 #ifdef __cplusplus
 }

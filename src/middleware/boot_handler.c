@@ -1,9 +1,7 @@
-#include <string.h>
 #include "sys/kmem.h"
 #include "definitions.h"
-#include "boot_handler.h"
-#include "../driver/driver_CANbus.h"
-#include "device_stat.h"
+#include "driver.h"
+#include "middleware.h"
 
 #define ERASE_BLOCK_SIZE        (4096UL)
 #define FLASH_CHUNK_SIZE        1024U

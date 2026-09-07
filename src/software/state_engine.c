@@ -1,8 +1,7 @@
-#include <math.h>
 #include "definitions.h"
-#include "state_engine.h"
-#include "../driver/driver_CANbus.h"
-#include "../middleware/device_stat.h"
+#include "driver.h"
+#include "middleware.h"
+#include "software.h"
 
 //--------------------------------------------------
 // STATIC STATE VARIABLE
