@@ -3,6 +3,7 @@
 #include "middleware.h"
 
 uint32_t devsn[4];
+uint32_t devid;
 
 uint8_t eepromBuffer[EEPROM_DATA_SIZE];
 
@@ -14,12 +15,14 @@ static int BOOT_FLAG = 0;
 
 #define BOOT_STAY_WINDOW_COUNT    2000000UL
 
-void Get_MAC_ID(void)
+void Get_PIC_ID(void)
 {
     devsn[0] = DEVSN0;
     devsn[1] = DEVSN1;
     devsn[2] = DEVSN2;
     devsn[3] = DEVSN3;
+    
+    devid = DEVID & 0x0FFFFFFFU;
 }
 
 void EEPROM_Initialize(void) {

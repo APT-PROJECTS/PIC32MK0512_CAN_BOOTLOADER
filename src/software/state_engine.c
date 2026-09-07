@@ -20,7 +20,7 @@ void STATE_ENGINE_Tasks(void) {
         case STATE_INIT:
             //--------------------------------------------------
         {
-            Get_MAC_ID();
+            Get_PIC_ID();
             currentState = STATE_RUN;
             break;
         }

@@ -354,28 +354,28 @@ bool OTA_Handler_CORE1(void) {
       {
         if (otaServerVersionUpdated) {
           LED_Green_On();
-          otaCore1State = OTA_CORE1_READ_PIC_ID_1;
+          otaCore1State = OTA_CORE1_READ_PIC_MAC_ID_1;
         }
       }
       break;
 
     // ==================================================
-    case OTA_CORE1_READ_PIC_ID_1:
+    case OTA_CORE1_READ_PIC_MAC_ID_1:
       {
         uint8_t txBuf[8] = { 0 };
 
         memset(PIC_ID_RAW, 0, sizeof(PIC_ID_RAW));
 
         txBuf[0] = OTA_CAN_CMD_0_PIC_ID;
-        txBuf[1] = OTA_CAN_CMD_1_PIC_ID_1;
+        txBuf[1] = OTA_CAN_CMD_1_PIC_MAC_ID_1;
         txBuf[2] = OTA_CAN_CMD_2_READ;
 
         if (!CAN_WriteFrame(OTA_CAN_ID_HOST, txBuf, sizeof(txBuf))) {
-          Serial.println("OTA CORE1: PICID_1 REQUEST SEND FAIL");
+          Serial.println("OTA CORE1: PIC_MAC_ID_1 REQUEST SEND FAIL");
           break;
         }
 
-        Serial.println("OTA CORE1: PICID_1 REQUEST SEND SUCCESS");
+        Serial.println("OTA CORE1: PIC_MAC_ID_1 REQUEST SEND SUCCESS");
 
         otaPrevTxState = otaCore1State;
         otaRxStartTime = millis();
@@ -384,20 +384,20 @@ bool OTA_Handler_CORE1(void) {
       break;
 
     // ==================================================
-    case OTA_CORE1_READ_PIC_ID_2:
+    case OTA_CORE1_READ_PIC_MAC_ID_2:
       {
         uint8_t txBuf[8] = { 0 };
 
         txBuf[0] = OTA_CAN_CMD_0_PIC_ID;
-        txBuf[1] = OTA_CAN_CMD_1_PIC_ID_2;
+        txBuf[1] = OTA_CAN_CMD_1_PIC_MAC_ID_2;
         txBuf[2] = OTA_CAN_CMD_2_READ;
 
         if (!CAN_WriteFrame(OTA_CAN_ID_HOST, txBuf, sizeof(txBuf))) {
-          Serial.println("OTA CORE1: PICID_2 REQUEST SEND FAIL");
+          Serial.println("OTA CORE1: PIC_MAC_ID_2 REQUEST SEND FAIL");
           break;
         }
 
-        Serial.println("OTA CORE1: PICID_2 REQUEST SEND SUCCESS");
+        Serial.println("OTA CORE1: PIC_MAC_ID_2 REQUEST SEND SUCCESS");
 
         otaPrevTxState = otaCore1State;
         otaRxStartTime = millis();
@@ -406,20 +406,20 @@ bool OTA_Handler_CORE1(void) {
       break;
 
     // ==================================================
-    case OTA_CORE1_READ_PIC_ID_3:
+    case OTA_CORE1_READ_PIC_MAC_ID_3:
       {
         uint8_t txBuf[8] = { 0 };
 
         txBuf[0] = OTA_CAN_CMD_0_PIC_ID;
-        txBuf[1] = OTA_CAN_CMD_1_PIC_ID_3;
+        txBuf[1] = OTA_CAN_CMD_1_PIC_MAC_ID_3;
         txBuf[2] = OTA_CAN_CMD_2_READ;
 
         if (!CAN_WriteFrame(OTA_CAN_ID_HOST, txBuf, sizeof(txBuf))) {
-          Serial.println("OTA CORE1: PICID_3 REQUEST SEND FAIL");
+          Serial.println("OTA CORE1: PIC_MAC_ID_3 REQUEST SEND FAIL");
           break;
         }
 
-        Serial.println("OTA CORE1: PICID_3 REQUEST SEND SUCCESS");
+        Serial.println("OTA CORE1: PIC_MAC_ID_3 REQUEST SEND SUCCESS");
 
         otaPrevTxState = otaCore1State;
         otaRxStartTime = millis();
@@ -428,20 +428,42 @@ bool OTA_Handler_CORE1(void) {
       break;
 
     // ==================================================
-    case OTA_CORE1_READ_PIC_ID_4:
+    case OTA_CORE1_READ_PIC_MAC_ID_4:
       {
         uint8_t txBuf[8] = { 0 };
 
         txBuf[0] = OTA_CAN_CMD_0_PIC_ID;
-        txBuf[1] = OTA_CAN_CMD_1_PIC_ID_4;
+        txBuf[1] = OTA_CAN_CMD_1_PIC_MAC_ID_4;
         txBuf[2] = OTA_CAN_CMD_2_READ;
 
         if (!CAN_WriteFrame(OTA_CAN_ID_HOST, txBuf, sizeof(txBuf))) {
-          Serial.println("OTA CORE1: PICID_4 REQUEST SEND FAIL");
+          Serial.println("OTA CORE1: PIC_MAC_ID_4 REQUEST SEND FAIL");
           break;
         }
 
-        Serial.println("OTA CORE1: PICID_4 REQUEST SEND SUCCESS");
+        Serial.println("OTA CORE1: PIC_MAC_ID_4 REQUEST SEND SUCCESS");
+
+        otaPrevTxState = otaCore1State;
+        otaRxStartTime = millis();
+        otaCore1State = OTA_CORE1_CAN_RX_HANDLE;
+      }
+      break;
+
+    // ==================================================
+    case OTA_CORE1_READ_PIC_DEVICE_ID:
+      {
+        uint8_t txBuf[8] = { 0 };
+
+        txBuf[0] = OTA_CAN_CMD_0_PIC_ID;
+        txBuf[1] = OTA_CAN_CMD_1_PIC_DEVICE_ID;
+        txBuf[2] = OTA_CAN_CMD_2_READ;
+
+        if (!CAN_WriteFrame(OTA_CAN_ID_HOST, txBuf, sizeof(txBuf))) {
+          Serial.println("OTA CORE1: PIC DEVICE ID REQUEST SEND FAIL");
+          break;
+        }
+
+        Serial.println("OTA CORE1: PIC DEVICE ID REQUEST SEND SUCCESS");
 
         otaPrevTxState = otaCore1State;
         otaRxStartTime = millis();
@@ -784,28 +806,28 @@ bool OTA_Handler_CORE1(void) {
                               case OTA_CAN_CMD_3_SUCCESS:
 
                                 switch (rx.data[1]) {
-                                  case OTA_CAN_CMD_1_PIC_ID_1:
+                                  case OTA_CAN_CMD_1_PIC_MAC_ID_1:
                                     {
                                       memcpy(&PIC_ID_RAW[0], &rx.data[4], 4);
-                                      otaCore1State = OTA_CORE1_READ_PIC_ID_2;
+                                      otaCore1State = OTA_CORE1_READ_PIC_MAC_ID_2;
                                     }
                                     break;
 
-                                  case OTA_CAN_CMD_1_PIC_ID_2:
+                                  case OTA_CAN_CMD_1_PIC_MAC_ID_2:
                                     {
                                       memcpy(&PIC_ID_RAW[4], &rx.data[4], 4);
-                                      otaCore1State = OTA_CORE1_READ_PIC_ID_3;
+                                      otaCore1State = OTA_CORE1_READ_PIC_MAC_ID_3;
                                     }
                                     break;
 
-                                  case OTA_CAN_CMD_1_PIC_ID_3:
+                                  case OTA_CAN_CMD_1_PIC_MAC_ID_3:
                                     {
                                       memcpy(&PIC_ID_RAW[8], &rx.data[4], 4);
-                                      otaCore1State = OTA_CORE1_READ_PIC_ID_4;
+                                      otaCore1State = OTA_CORE1_READ_PIC_MAC_ID_4;
                                     }
                                     break;
 
-                                  case OTA_CAN_CMD_1_PIC_ID_4:
+                                  case OTA_CAN_CMD_1_PIC_MAC_ID_4:
                                     {
                                       memcpy(&PIC_ID_RAW[12], &rx.data[4], 4);
                                       memcpy(PIC_ID, PIC_ID_RAW, 16);
@@ -816,7 +838,29 @@ bool OTA_Handler_CORE1(void) {
                                       }
                                       Serial.println();
 
-                                      otaCore1State = OTA_CORE1_READ_PROJECT_ID;
+                                      otaCore1State = OTA_CORE1_READ_PIC_DEVICE_ID;
+                                    }
+                                    break;
+
+                                  case OTA_CAN_CMD_1_PIC_DEVICE_ID:
+                                    {
+                                      const uint32_t deviceId =
+                                        ((uint32_t)rx.data[4] << 24) |
+                                        ((uint32_t)rx.data[5] << 16) |
+                                        ((uint32_t)rx.data[6] << 8) |
+                                        (uint32_t)rx.data[7];
+
+                                      if (deviceId != 0x08B02053UL) {
+                                        Serial.printf("OTA CORE1: PIC DEVICE ID MISMATCH (0x%08lX)\n",
+                                                      (unsigned long)deviceId);
+                                        sendReport = true;
+                                        otaReportStatus = PIC_ID_READ_FAIL;
+                                        otaCore1State = OTA_CORE1_ERROR;
+                                        otaCore0State = OTA_CORE0_REPORT;
+                                      } else {
+                                        Serial.println("OTA CORE1: PIC DEVICE ID VERIFIED (0x08B02053)");
+                                        otaCore1State = OTA_CORE1_READ_PROJECT_ID;
+                                      }
                                     }
                                     break;
 
@@ -1248,10 +1292,11 @@ bool OTA_Handler_CORE1(void) {
 
             switch (otaPrevTxState) {
               /* ---------- PIC ID FAILURE ---------- */
-              case OTA_CORE1_READ_PIC_ID_1:
-              case OTA_CORE1_READ_PIC_ID_2:
-              case OTA_CORE1_READ_PIC_ID_3:
-              case OTA_CORE1_READ_PIC_ID_4:
+              case OTA_CORE1_READ_PIC_MAC_ID_1:
+              case OTA_CORE1_READ_PIC_MAC_ID_2:
+              case OTA_CORE1_READ_PIC_MAC_ID_3:
+              case OTA_CORE1_READ_PIC_MAC_ID_4:
+              case OTA_CORE1_READ_PIC_DEVICE_ID:
                 {
                   Serial.println("OTA CORE1: FAILED TO GET PIC ID");
 

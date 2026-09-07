@@ -9,6 +9,7 @@ extern "C" {
 #include "driver.h"
     
 extern uint32_t devsn[4];
+extern uint32_t devid;
 
 //--------------------------------------------------
 // MATRIX SIZE
@@ -220,7 +221,7 @@ extern float writeMatrix[ROWS][COLS];
 #define R_FF0F_03                    readMatrix[15][2]
 #define R_FF0F_04                    readMatrix[15][3]
     
-void Get_MAC_ID(void);
+void Get_PIC_ID(void);
 void EEPROM_Initialize(void);
 void Load_Read_Matrix(void);
 void Get_Config(void);

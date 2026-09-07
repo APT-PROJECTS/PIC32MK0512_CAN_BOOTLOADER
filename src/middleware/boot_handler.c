@@ -25,7 +25,7 @@ static uint8_t canRxBuffer[8] = {0U};
 
 void Boot_PIC_ID_Handler(void) {
     uint8_t txBuf[8];
-    uint32_t udidValue;
+    uint32_t picid;
 
     if (canRxBuffer[0] != BOOT_CAN_CMD_0_PIC_ID) {
         return;
@@ -50,30 +50,34 @@ void Boot_PIC_ID_Handler(void) {
             }
 
             switch (canRxBuffer[1]) {
-                case BOOT_CAN_CMD_1_PIC_ID_1:
-                    udidValue = devsn[0];
+                case BOOT_CAN_CMD_1_PIC_MAC_ID_1:
+                    picid = devsn[0];
                     break;
 
-                case BOOT_CAN_CMD_1_PIC_ID_2:
-                    udidValue = devsn[1];
+                case BOOT_CAN_CMD_1_PIC_MAC_ID_2:
+                    picid = devsn[1];
                     break;
 
-                case BOOT_CAN_CMD_1_PIC_ID_3:
-                    udidValue = devsn[2];
+                case BOOT_CAN_CMD_1_PIC_MAC_ID_3:
+                    picid = devsn[2];
                     break;
 
-                case BOOT_CAN_CMD_1_PIC_ID_4:
-                    udidValue = devsn[3];
+                case BOOT_CAN_CMD_1_PIC_MAC_ID_4:
+                    picid = devsn[3];
+                    break;
+                    
+                case BOOT_CAN_CMD_1_PIC_DEVICE_ID:
+                    picid = devid;
                     break;
 
                 default:
                     return;
             }
 
-            txBuf[4] = (uint8_t) (udidValue >> 24);
-            txBuf[5] = (uint8_t) (udidValue >> 16);
-            txBuf[6] = (uint8_t) (udidValue >> 8);
-            txBuf[7] = (uint8_t) (udidValue);
+            txBuf[4] = (uint8_t) (picid >> 24);
+            txBuf[5] = (uint8_t) (picid >> 16);
+            txBuf[6] = (uint8_t) (picid >> 8);
+            txBuf[7] = (uint8_t) (picid);
 
             CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
             break;
