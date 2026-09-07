@@ -1102,7 +1102,7 @@ bool OTA_Handler_CORE1(void) {
                           }
                           break;
 
-                              case OTA_CAN_CMD_1_APP_JUMP:
+                        case OTA_CAN_CMD_1_APP_JUMP:
                           {
                             switch (rx.data[3]) {
                               case OTA_CAN_CMD_3_SUCCESS:
@@ -1119,10 +1119,7 @@ bool OTA_Handler_CORE1(void) {
                               case OTA_CAN_CMD_3_FAIL:
                                 {
                                   uint32_t resetWord =
-                                    ((uint32_t)rx.data[4] << 24) |
-                                    ((uint32_t)rx.data[5] << 16) |
-                                    ((uint32_t)rx.data[6] << 8) |
-                                    (uint32_t)rx.data[7];
+                                    ((uint32_t)rx.data[4] << 24) | ((uint32_t)rx.data[5] << 16) | ((uint32_t)rx.data[6] << 8) | (uint32_t)rx.data[7];
                                   Serial.printf("OTA CORE1: APP JUMP FAIL (reset word: 0x%08lX)\n",
                                                 (unsigned long)resetWord);
                                   sendReport = true;
@@ -1205,10 +1202,7 @@ bool OTA_Handler_CORE1(void) {
                         break;
                       }
 
-                      picCrc = ((uint32_t)rx.data[4] << 24) |
-                               ((uint32_t)rx.data[5] << 16) |
-                               ((uint32_t)rx.data[6] << 8)  |
-                               ((uint32_t)rx.data[7]);
+                      picCrc = ((uint32_t)rx.data[4] << 24) | ((uint32_t)rx.data[5] << 16) | ((uint32_t)rx.data[6] << 8) | ((uint32_t)rx.data[7]);
 
                       if ((rx.data[3] == OTA_CAN_CMD_3_SUCCESS) && (picCrc == hostCrc)) {
                         Serial.printf("OTA CORE1: APP CRC VERIFIED (HOST/PIC: 0x%08lX)\n", picCrc);
@@ -1376,9 +1370,7 @@ bool OTA_Handler_CORE1(void) {
             }
           } else {
             /* Rewind the current chunk before retrying its CAN frames. */
-            if ((otaPrevTxState == OTA_CORE1_WRITE_APP_CHUNK) &&
-                waitingChunkAck && fwFile)
-            {
+            if ((otaPrevTxState == OTA_CORE1_WRITE_APP_CHUNK) && waitingChunkAck && fwFile) {
               (void)fwFile.seek(chunkFileStartOffset);
               totalSent -= chunkDataBytes;
               bytesSentInChunk = 0U;

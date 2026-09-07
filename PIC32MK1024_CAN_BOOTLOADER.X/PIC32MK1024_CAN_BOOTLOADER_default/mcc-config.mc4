@@ -1,35 +1,31 @@
 configVersion: 1.0.0
-coreVersion: 5.9.1
+coreVersion: 5.9.0
 spaHostVersion: 1.3.0
 device: PIC32MK1024MCM064
 deviceLibrary: {}
 groupModules: []
 modules:
 - can1
-- can_bootloader
 - core
-- core_timer
 - dfp
 - nvm
 generatedFileHashHistoryMap:
-- file: ..\src\config\default\bootloader\bootloader_can.c
-  hash: 5abb6af1b7c0a62117059827017967ce6c03304d92674d38840ed7b326dcbb5e
-- file: ..\src\config\default\bootloader\bootloader_can.h
-  hash: 8067b83045205844606e7b9b8637974433ba54adb909da7bf71b4a26c2577f9c
-- file: ..\src\config\default\bootloader\bootloader_common.c
-  hash: 9fe49b3829c221e5beaa95f81a327d6094c45eb0911c1614fa5a7e67f57b0481
-- file: ..\src\config\default\bootloader\bootloader_common.h
-  hash: ace43204723d1e7f2935ae075cf23a433fb2256444e7ccf5c9677848b945e8be
-- file: ..\src\config\default\btl.ld
-  hash: c5e4d8b9f061658dee821b3bfa98274518f8655e1ecc038ff8bae8f61e6b937f
 - file: ..\src\config\default\definitions.h
-  hash: 1e50f60674fa77c60d052728741c36abb376b6a3c033249cedd07a7027b16b1d
+  hash: 58ef8cf4264992eba60aae098a94cf1e345f0c35f5e1965283098a5d4fd934b5
 - file: ..\src\config\default\device.h
   hash: 4d4341a6f9628cea0bf73f980b639f7cb81089e55a60ad7e434be2a71e477442
+- file: ..\src\config\default\exceptions.c
+  hash: 265c985839caadb2fa9e8fc76e7bc3c160e31e9b2c96dc4006add33e5d7ee212
 - file: ..\src\config\default\initialization.c
-  hash: 050d610e8a2f2b52f6db45e5530a54bf857add5c80323997cbe7d95dbfa93fae
+  hash: 4a5900ea282bc9312c237b2f1ee941bbd44e5f5bbea7dc5b421e8638795816d0
+- file: ..\src\config\default\interrupts.c
+  hash: b5d822b2761e646ea0f95b2cf7cbb318a48917240973aec14908e8d98fa71931
+- file: ..\src\config\default\interrupts.h
+  hash: bd51c3c5264a10459c01fabb79b440af80e049a39110c43f28566cb6a73fe3ed
+- file: ..\src\config\default\p32MK1024MCM064.ld
+  hash: b8998b4af35d2554f3852d6ba6d8ef3bf0307efef8938c0cb4ea4194182da098
 - file: ..\src\config\default\peripheral\canfd\plib_canfd1.c
-  hash: 10f9032293883bc1a90c65bd9f66dfc9cdd8442be94f083b5b353f6bc1f8516e
+  hash: 2a7988885debc5e16d34bf592c530ba33cbe99c28dc7773be4563caeec27f0b8
 - file: ..\src\config\default\peripheral\canfd\plib_canfd1.h
   hash: 022d46ca04683c15b1a6cdb86baa08f7aaab73705570f3207e8293f6a930dc53
 - file: ..\src\config\default\peripheral\canfd\plib_canfd_common.h
@@ -38,22 +34,20 @@ generatedFileHashHistoryMap:
   hash: 27419376e0188291475d21737972be885cdcbaf23b766c0d3bc6ec94360cab9d
 - file: ..\src\config\default\peripheral\clk\plib_clk.h
   hash: 35384f2e13e59b7190bf77f6996baf3ea2377ec42df94979a6f793326def5255
-- file: ..\src\config\default\peripheral\coretimer\plib_coretimer.c
-  hash: d10c7566bd457c5c8e903244be4c7e4a3d34a08b9f20416f6c9001f8ef471b95
-- file: ..\src\config\default\peripheral\coretimer\plib_coretimer.h
-  hash: d34b7063ef1a236b9af04cfb49df2e60e3f1e5a74e5c2018d2f9c0208b9657f8
 - file: ..\src\config\default\peripheral\evic\plib_evic.c
-  hash: 88add2ab44053a8a245e063c0abb23d0078a622af076cb284e33890562aee52d
+  hash: 4499620d8ae493f1a8842776aa2d5317c3d999c8d74e44a048ea64594fbfa4e2
 - file: ..\src\config\default\peripheral\evic\plib_evic.h
   hash: 7ca2c90979d4e8932f07e4dc6bcea310c2a9404bb0eb5bcfb3712b362db61eac
 - file: ..\src\config\default\peripheral\gpio\plib_gpio.c
-  hash: bf24a66fde8d2c9f0820302a9f58803723e56e4caa8762c10659ef3279bd031d
+  hash: 13e193370cf938061df845666d40f3fc37dd66d56764b9f04c38f8a906170861
 - file: ..\src\config\default\peripheral\gpio\plib_gpio.h
   hash: a1b498351bdd33966e9fe2fad59a252bd4fea29add80496a7478feb2eab6b44e
 - file: ..\src\config\default\peripheral\nvm\plib_nvm.c
-  hash: 75c454442bd1456ff92e4d69b255de9670c87198fccde45c477310ea95e87dbc
+  hash: 4828bbaa510b2478e420b6254d34f58c39dfa5da427788713e8199c30724cf4d
 - file: ..\src\config\default\peripheral\nvm\plib_nvm.h
-  hash: 4640de0cab312ecaddadf6470566c18151007daeb92cee21c3e77d646e55e9c6
+  hash: 22d6babe0c6be56519ceb8e9ac83788f078580d447d8c64f29183f062dc5818d
+- file: ..\src\config\default\stdio\xc32_monitor.c
+  hash: 858f8710d4287200a5ee7f3b3ad7c24f505aed9c05c16956ab0ff9f7bb162a6a
 - file: ..\src\config\default\toolchain_specifics.h
   hash: b4de6e02e3e48c62f7ba233405ffdf6ef31bb971d1a7b49efa1676f45cabc1ac
 - file: ..\src\main.c

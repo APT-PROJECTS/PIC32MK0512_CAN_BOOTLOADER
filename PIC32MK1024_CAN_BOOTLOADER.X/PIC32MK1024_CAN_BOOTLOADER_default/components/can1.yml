@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 componentName: can1
-coreVersion: 5.9.1
+coreVersion: 5.9.0
 device: PIC32MK1024MCM064
 library: []
 dependency:
@@ -14,29 +14,7 @@ dependency:
   version: v3.22.6
 customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
 data:
-  attachments:
-    children:
-    - children:
-      - attributes:
-          id: CAN1_CAN
-        children:
-        - children:
-          - attributes:
-              id: targetComponentID
-            children:
-            - type: Value
-              value: can_bootloader
-            type: String
-          - attributes:
-              id: targetAttachmentID
-            children:
-            - type: Value
-              value: btl_CAN_dependency
-            type: String
-          type: Attributes
-        type: DirectCapability
-      type: Attachments
-    type: can1
+  attachments: {}
   elementPosition:
     attributes:
       id: __ROOTVIEW
@@ -45,7 +23,7 @@ data:
       - attributes:
           id: can1
           x: '66'
-          y: '167'
+          y: '71'
         type: ElementPosition
       type: ElementPositions
     type: ComponentGraph
@@ -64,25 +42,11 @@ data:
       attributes:
         id: CALCULATED_DATA_BITRATE
         label: Calculated Bit Rate (Kbps)
-      children:
-      - children:
-        - attributes:
-            id: can1
-            value: '500'
-          type: Dynamic
-        type: Values
       type: Integer
     CALCULATED_DATA_ERRORRATE:
       attributes:
         id: CALCULATED_DATA_ERRORRATE
         label: Error %
-      children:
-      - children:
-        - attributes:
-            id: can1
-            value: '0.000'
-          type: Dynamic
-        type: Values
       type: String
     CALCULATED_NOMINAL_BITRATE:
       attributes:
@@ -883,49 +847,21 @@ data:
       attributes:
         id: CAN1_FILTER0_ID
         label: Filter ID
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: '1114'
-          type: Dynamic
-        type: Values
       type: Hex
     CAN1_FILTER0_ID_DECIMAL:
       attributes:
         id: CAN1_FILTER0_ID_DECIMAL
         label: CAN1_FILTER0_ID_DECIMAL
-      children:
-      - children:
-        - attributes:
-            id: can1
-            value: '1114'
-          type: Dynamic
-        type: Values
       type: Integer
     CAN1_FILTER0_MASK_ID:
       attributes:
         id: CAN1_FILTER0_MASK_ID
         label: Mask ID
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: '1114'
-          type: Dynamic
-        type: Values
       type: Hex
     CAN1_FILTER0_MASK_ID_DECIMAL:
       attributes:
         id: CAN1_FILTER0_MASK_ID_DECIMAL
         label: CAN1_FILTER0_MASK_ID_DECIMAL
-      children:
-      - children:
-        - attributes:
-            id: can1
-            value: '1114'
-          type: Dynamic
-        type: Values
       type: Integer
     CAN1_FILTER10_ENABLE:
       attributes:
@@ -1901,13 +1837,6 @@ data:
       attributes:
         id: CAN_OPMODE
         label: CAN Operation Mode
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: '0'
-          type: Dynamic
-        type: Values
       type: KeyValueSet
     CAN_TIMESTAMP_ENABLE:
       attributes:
@@ -1943,13 +1872,6 @@ data:
       attributes:
         id: DATA_TIME_QUANTA_PERIOD
         label: Time Quanta (ns)
-      children:
-      - children:
-        - attributes:
-            id: can1
-            value: '125.000'
-          type: Dynamic
-        type: Values
       type: String
     DBT_BRP:
       attributes:
@@ -1960,13 +1882,6 @@ data:
       attributes:
         id: DBT_SJW
         label: Synchronization Jump Width (TQ)
-      children:
-      - children:
-        - attributes:
-            id: can1
-            value: '4'
-          type: Dynamic
-        type: Values
       type: Integer
     DBT_SYNC:
       attributes:
@@ -1977,37 +1892,16 @@ data:
       attributes:
         id: DBT_TOTAL_TIME_QUANTA
         label: Total Time Quanta (TQ)
-      children:
-      - children:
-        - attributes:
-            id: can1
-            value: '16'
-          type: Dynamic
-        type: Values
       type: Integer
     DBT_TSEG1:
       attributes:
         id: DBT_TSEG1
         label: Time Segment Before Sample Point (TQ)
-      children:
-      - children:
-        - attributes:
-            id: can1
-            value: '11'
-          type: Dynamic
-        type: Values
       type: Integer
     DBT_TSEG2:
       attributes:
         id: DBT_TSEG2
         label: Time Segment After Sample Point (TQ)
-      children:
-      - children:
-        - attributes:
-            id: can1
-            value: '4'
-          type: Dynamic
-        type: Values
       type: Integer
     FIFO_OFFSET:
       attributes:
@@ -2099,13 +1993,6 @@ data:
       attributes:
         id: NUMBER_OF_FILTER
         label: Number of Filters
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: '1'
-          type: Dynamic
-        type: Values
       type: Integer
     TX_EVENT_FIFO_MESSAGE_BUFFER:
       attributes:

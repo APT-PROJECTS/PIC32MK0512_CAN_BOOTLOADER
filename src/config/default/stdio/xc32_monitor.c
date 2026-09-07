@@ -1,21 +1,22 @@
 /*******************************************************************************
-  Interface definition of Core Timer PLIB.
+ Debug Console Source file
 
   Company:
     Microchip Technology Inc.
 
   File Name:
-    plib_coretimer.h
+    xc32_monitor.c
 
   Summary:
-    Interface definition of the Core Timer Plib .
+    debug console Source File
 
   Description:
-    This file defines the interface for the Core Timer Plib.
+    None
+
 *******************************************************************************/
 
 /*******************************************************************************
-* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -36,37 +37,18 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
+#include <stddef.h>
 
-#ifndef PLIB_CORETIMER_H    // Guards against multiple inclusion
-#define PLIB_CORETIMER_H
-
-#include <stdint.h>
-#include <stdbool.h>
-
-#ifdef __cplusplus // Provide C++ Compatibility
-    extern "C" {
-#endif
-
-#define CORE_TIMER_FREQUENCY    (60000000U)
+extern int read(int handle, void *buffer, unsigned int len);
+extern int write(int handle, void * buffer, size_t count);
 
 
+int read(int handle, void *buffer, unsigned int len)
+{
+   return -1;
+}
 
-#define CORE_TIMER_COMPARE_VALUE    0xea60
-
-void CORETIMER_Initialize(void);
-void CORETIMER_Start(void);
-void CORETIMER_Stop(void);
-uint32_t CORETIMER_FrequencyGet (void);
-void CORETIMER_CompareSet ( uint32_t compare);
-uint32_t CORETIMER_CounterGet (void);
-bool CORETIMER_CompareHasExpired(void);
-
-
-void CORETIMER_DelayMs (uint32_t delay_ms);
-void CORETIMER_DelayUs (uint32_t delay_us);
-
-#ifdef __cplusplus // Provide C++ Compatibility
- }
-#endif
-
-#endif
+int write(int handle, void * buffer, size_t count)
+{
+   return -1;
+}

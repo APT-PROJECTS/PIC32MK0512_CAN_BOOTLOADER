@@ -1,19 +1,22 @@
 /*******************************************************************************
-  CAN Bootloader Header File
+ System Interrupts File
+
+  Company:
+    Microchip Technology Inc.
 
   File Name:
-    bootloader_can.h
+    interrupt.h
 
   Summary:
-    This file contains Interface definitions of bootloder
+    Interrupt vectors mapping
 
   Description:
-    This file defines interface for bootloader.
+    This file contains declarations of device vectors used by Harmony 3
  *******************************************************************************/
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2025 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -36,60 +39,25 @@
  *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef BOOTLOADER_CAN_H
-#define BOOTLOADER_CAN_H
+#ifndef INTERRUPTS_H
+#define INTERRUPTS_H
 
+// *****************************************************************************
+// *****************************************************************************
+// Section: Included Files
+// *****************************************************************************
+// *****************************************************************************
 #include <stdint.h>
-#include <stdbool.h>
-#include "bootloader_common.h"
-
-#include "sys/kmem.h"
-
-
 
 
 
 // *****************************************************************************
-/* Function:
-    void bootloader_CAN_Tasks( void )
+// *****************************************************************************
+// Section: Handler Routines
+// *****************************************************************************
+// *****************************************************************************
+void NVM_InterruptHandler( void );
 
- Summary:
-    Starts bootloader execution.
 
- Description:
-    This function can be used to start bootloader execution.
 
-    The function continuously waits for application firmware from the HOST via
-    selected communication protocol to program into internal flash memory.
-
-    Once the complete application is received, programmed and verified successfully,
-    It resets the device to jump into programmed application.
-
-    Note:
-    For Optimized Bootloaders:
-        - This function never returns.
-        - This function will be directly called from main function
-
-    For Unified and File System based Bootloaders:
-        - This function returns once the state machine execution is completed
-        - This function will be called from SYS_Tasks() routine from the super loop
-
- Precondition:
-    bootloader_Trigger() must be called to check for bootloader triggers at startup.
-
- Parameters:
-    None.
-
- Returns:
-    None
-
- Example:
-    <code>
-
-        bootloader_CAN_Tasks();
-
-    </code>
-*/
-void bootloader_CAN_Tasks( void );
-
-#endif  //BOOTLOADER_CAN_H
+#endif // INTERRUPTS_H

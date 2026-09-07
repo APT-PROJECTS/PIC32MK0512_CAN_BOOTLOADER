@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 componentName: nvm
-coreVersion: 5.9.1
+coreVersion: 5.9.0
 device: PIC32MK1024MCM064
 library: []
 dependency:
@@ -14,29 +14,7 @@ dependency:
   version: v3.22.6
 customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
 data:
-  attachments:
-    children:
-    - children:
-      - attributes:
-          id: NVM_MEMORY
-        children:
-        - children:
-          - attributes:
-              id: targetComponentID
-            children:
-            - type: Value
-              value: can_bootloader
-            type: String
-          - attributes:
-              id: targetAttachmentID
-            children:
-            - type: Value
-              value: btl_MEMORY_dependency
-            type: String
-          type: Attributes
-        type: DirectCapability
-      type: Attachments
-    type: nvm
+  attachments: {}
   elementPosition:
     attributes:
       id: __ROOTVIEW
@@ -44,8 +22,8 @@ data:
     - children:
       - attributes:
           id: nvm
-          x: '70'
-          y: '62'
+          x: '231'
+          y: '70'
         type: ElementPosition
       type: ElementPositions
     type: ComponentGraph
@@ -94,13 +72,6 @@ data:
       attributes:
         id: INTERRUPT_ENABLE
         label: Enable Interrupt?
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: 'false'
-          type: Dynamic
-        type: Values
       type: Boolean
     MEMORY_MEDIA_SIZE:
       attributes:

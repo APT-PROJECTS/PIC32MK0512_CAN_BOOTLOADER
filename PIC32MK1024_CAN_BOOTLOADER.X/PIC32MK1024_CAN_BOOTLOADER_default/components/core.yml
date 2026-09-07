@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 componentName: core
-coreVersion: 5.9.1
+coreVersion: 5.9.0
 device: PIC32MK1024MCM064
 library: []
 dependency:
@@ -32,13 +32,6 @@ data:
       attributes:
         id: ADD_LINKER_FILE
         label: Add linker file to project
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: 'false'
-          type: Dynamic
-        type: Values
       type: Boolean
     BSP_PIN_11_DIR:
       attributes:
@@ -508,85 +501,36 @@ data:
       attributes:
         id: CoreMainFile
         label: Generate Main Source File
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: 'false'
-          type: Dynamic
-        type: Values
       type: Boolean
     CoreSysCallsFile:
       attributes:
         id: CoreSysCallsFile
         label: Generate LIBC Syscalls
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: 'false'
-          type: Dynamic
-        type: Values
       type: Boolean
     CoreSysExceptionFile:
       attributes:
         id: CoreSysExceptionFile
         label: Generate System Exception
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: 'false'
-          type: Dynamic
-        type: Values
       type: Boolean
     CoreSysInitFile:
       attributes:
         id: CoreSysInitFile
         label: Generate System Initialization
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: 'false'
-          type: Dynamic
-        type: Values
       type: Boolean
     CoreSysIntFile:
       attributes:
         id: CoreSysIntFile
         label: Generate System Interrupts
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: 'false'
-          type: Dynamic
-        type: Values
       type: Boolean
     CoreSysStartupFile:
       attributes:
         id: CoreSysStartupFile
         label: Generate System Startup
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: 'false'
-          type: Dynamic
-        type: Values
       type: Boolean
     CoreSysStdioSyscallsFile:
       attributes:
         id: CoreSysStdioSyscallsFile
         label: Generate STDIO Syscalls
-      children:
-      - children:
-        - attributes:
-            id: can_bootloader
-            value: 'false'
-          type: Dynamic
-        type: Values
       type: Boolean
     DEBUG_CONSOLE_C:
       attributes:
@@ -597,7 +541,7 @@ data:
             id: enabled
           children:
           - type: Value
-            value: 'false'
+            value: 'true'
           type: Boolean
         type: Attributes
       type: File
@@ -609,7 +553,7 @@ data:
       - children:
         - attributes:
             id: core
-            value: 'false'
+            value: 'true'
           type: Dynamic
         type: Values
       type: Boolean
@@ -621,7 +565,7 @@ data:
       - children:
         - attributes:
             id: core
-            value: 'false'
+            value: 'true'
           type: Dynamic
         type: Values
       type: Boolean
@@ -633,7 +577,7 @@ data:
       - children:
         - attributes:
             id: core
-            value: FLASH_CONTROL_Handler
+            value: NVM_InterruptHandler
           type: Dynamic
         type: Values
       type: String
@@ -646,7 +590,7 @@ data:
             id: enabled
           children:
           - type: Value
-            value: 'false'
+            value: 'true'
           type: Boolean
         type: Attributes
       type: File
@@ -658,7 +602,7 @@ data:
       - children:
         - attributes:
             id: nvm
-            value: 'false'
+            value: 'true'
           type: Dynamic
         type: Values
       type: Boolean
@@ -670,7 +614,7 @@ data:
       - children:
         - attributes:
             id: core
-            value: 'true'
+            value: 'false'
           type: Dynamic
         type: Values
       type: Boolean
@@ -682,7 +626,7 @@ data:
       - children:
         - attributes:
             id: nvm
-            value: FLASH_CONTROL_Handler
+            value: NVM_InterruptHandler
           type: Dynamic
         type: Values
       type: String
@@ -694,7 +638,7 @@ data:
       - children:
         - attributes:
             id: nvm
-            value: 'false'
+            value: 'true'
           type: Dynamic
         type: Values
       type: Boolean
@@ -707,7 +651,7 @@ data:
             id: enabled
           children:
           - type: Value
-            value: 'false'
+            value: 'true'
           type: Boolean
         type: Attributes
       type: File
@@ -720,7 +664,7 @@ data:
             id: enabled
           children:
           - type: Value
-            value: 'false'
+            value: 'true'
           type: Boolean
         type: Attributes
       type: File
@@ -733,7 +677,7 @@ data:
             id: enabled
           children:
           - type: Value
-            value: 'false'
+            value: 'true'
           type: Boolean
         type: Attributes
       type: File
@@ -758,7 +702,7 @@ data:
             id: enabled
           children:
           - type: Value
-            value: 'false'
+            value: 'true'
           type: Boolean
         type: Attributes
       type: File
@@ -771,7 +715,7 @@ data:
             id: enabled
           children:
           - type: Value
-            value: 'false'
+            value: 'true'
           type: Boolean
         type: Attributes
       type: File
@@ -986,13 +930,6 @@ data:
       attributes:
         id: CORE_TIMER_INTERRUPT_ENABLE
         label: Vector Peripheral Enable
-      children:
-      - children:
-        - attributes:
-            id: core_timer
-            value: 'false'
-          type: Dynamic
-        type: Values
       type: Boolean
     EVIC_0_HANDLER_LOCK:
       attributes:
@@ -1010,13 +947,6 @@ data:
       attributes:
         id: CORE_TIMER_INTERRUPT_HANDLER_LOCK
         label: Vector Peripheral Handler Lock
-      children:
-      - children:
-        - attributes:
-            id: core_timer
-            value: 'false'
-          type: Dynamic
-        type: Values
       type: Boolean
     EVIC_0_INTERRUPT_HANDLER:
       attributes:
@@ -1034,13 +964,6 @@ data:
       attributes:
         id: CORE_TIMER_INTERRUPT_HANDLER
         label: Vector Peripheral Handler
-      children:
-      - children:
-        - attributes:
-            id: core_timer
-            value: CORE_TIMER_Handler
-          type: Dynamic
-        type: Values
       type: String
   userData:
     children:

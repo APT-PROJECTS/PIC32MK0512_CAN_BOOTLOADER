@@ -1,13 +1,15 @@
 #include <string.h>
+#include "sys/kmem.h"
 #include "definitions.h"
 #include "boot_handler.h"
 #include "../driver/driver_CANbus.h"
 #include "device_stat.h"
 
-#define FLASH_CHUNK_SIZE    1024U
-#define FLASH_ROW_SIZE      (NVM_FLASH_ROWSIZE)
-#define BOOT_FLASH_PAGE_SIZE (NVM_FLASH_PAGESIZE * sizeof(uint32_t))
-#define CAN_DATA_SIZE       4U
+#define ERASE_BLOCK_SIZE        (4096UL)
+#define FLASH_CHUNK_SIZE        1024U
+#define FLASH_ROW_SIZE          (NVM_FLASH_ROWSIZE)
+#define BOOT_FLASH_PAGE_SIZE    (NVM_FLASH_PAGESIZE * sizeof(uint32_t))
+#define CAN_DATA_SIZE           4U
 
 static uint8_t flashBuffer[FLASH_CHUNK_SIZE];
 static uint32_t flashBufferIndex = 0;
@@ -313,29 +315,36 @@ void Boot_App_Size_Handler(void) {
     }
 }
 
-bool Boot_Is_App_Present(void) {
-    uint32_t resetInstruction;
+bool Boot_Is_App_Present(void)
+{
+    uint32_t jumpAddrVal;
 
-    /* The application reset section contains MIPS instructions, not an
-     * address-valued vector entry as used by the PIC32AK implementation. */
-    /* Read through KSEG0, the same flash alias used by the NVM writer and
-     * CRC routine.  The application reset code itself is linked at the
-     * equivalent KSEG1 address APPLICATION_JUMP_ADDRESS. */
-    resetInstruction = *(volatile const uint32_t *)(uintptr_t)APPLICATION_JUMP_ADDRESS;
+    jumpAddrVal = *(uint32_t *)(APPLICATION_JUMP_ADDRESS + 4U);
 
-    return ((resetInstruction != 0xFFFFFFFFUL) &&
-            (resetInstruction != 0x00000000UL));
+    if (jumpAddrVal == 0xFFFFFFFFU)
+    {
+        return false;
+    }
+
+    return true;
 }
 
-void Boot_App_Jump(void) {
-    // if (Boot_Is_App_Present() == false) {
-    //     return;
-    // }
+void Boot_App_Jump(void)
+{
+    if (!Boot_Is_App_Present())
+    {
+        RED_LED_Set();
+        return;
+    }
 
-    /* run_Application performs the PIC32MK interrupt disable and handoff. */
-    run_Application(APPLICATION_JUMP_ADDRESS);
+    __builtin_disable_interrupts();
 
-    while (1) {
+    void (*fptr)(void) = (void (*)(void))(APPLICATION_JUMP_ADDRESS + 4U);
+
+    fptr();
+
+    while (1)
+    {
         /* Should never return */
     }
 }
@@ -372,7 +381,13 @@ void Boot_Jump_Handler(void) {
 
             if (FLASH_EEPROM_Write_Page(eepromBuffer,
                     sizeof (writeMatrix)) == FLASH_EEPROM_OK) {
-                bootloader_TriggerReset();
+                /* Perform system unlock sequence */
+                SYSKEY = 0x00000000U;
+                SYSKEY = 0xAA996655U;
+                SYSKEY = 0x556699AAU;
+
+                RSWRSTSET = _RSWRST_SWRST_MASK;
+                (void) RSWRST;
             }
             break;
 
@@ -388,9 +403,9 @@ void Boot_Jump_Handler(void) {
             /* Safety fallback: never accept a received image without CRC. */
             if (firmwareUpdateActive && !firmwareUpdateFailed &&
                     (flashBufferIndex > 0U)) {
-                               if (!App_Firmware_Write_Flash()) {
-                                   firmwareUpdateFailed = true;
-                               }
+                if (!App_Firmware_Write_Flash()) {
+                    firmwareUpdateFailed = true;
+                }
             }
 
             if (firmwareUpdateActive) {
@@ -408,14 +423,14 @@ void Boot_Jump_Handler(void) {
                 txBuf[3] = BOOT_CAN_CMD_3_SUCCESS;
                 CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
                 Boot_App_Jump();
-            }else {
-                uint32_t resetWord = *(volatile const uint32_t *)(uintptr_t)APPLICATION_JUMP_ADDRESS;
+            } else {
+                uint32_t resetWord = *(volatile const uint32_t *) (uintptr_t) APPLICATION_JUMP_ADDRESS;
 
                 txBuf[3] = BOOT_CAN_CMD_3_FAIL;
-                txBuf[4] = (uint8_t)(resetWord >> 24);
-                txBuf[5] = (uint8_t)(resetWord >> 16);
-                txBuf[6] = (uint8_t)(resetWord >> 8);
-                txBuf[7] = (uint8_t)resetWord;
+                txBuf[4] = (uint8_t) (resetWord >> 24);
+                txBuf[5] = (uint8_t) (resetWord >> 16);
+                txBuf[6] = (uint8_t) (resetWord >> 8);
+                txBuf[7] = (uint8_t) resetWord;
                 CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
             }
             break;
@@ -468,17 +483,6 @@ void Boot_App_Erase_Handler(void) {
         }
     }
 
-    /* Verify erased flash */
-    // for (address = APPLICATION_START_ADDRESS;
-    //         address <= APPLICATION_END_ADDRESS;
-    //         address += 4U) {
-    //     if (*(volatile const uint32_t *) address != 0xFFFFFFFFUL) {
-    //         txBuf[3] = BOOT_CAN_CMD_3_FAIL;
-    //         CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
-    //         return;
-    //     }
-    // }
-
     firmwareUpdateActive = true;
 
     /* Erase successful */
@@ -511,7 +515,7 @@ static bool App_Firmware_Write_Flash(void) {
         __builtin_memset(rowData, 0xFF, sizeof (rowData));
         (void) memcpy(rowData, &flashBuffer[offset], rowBytes);
 
-        if (!NVM_RowWrite((uint32_t *)(void *)rowData, rowAddr)) {
+        if (!NVM_RowWrite((uint32_t *) (void *) rowData, rowAddr)) {
             return false;
         }
 
@@ -702,13 +706,13 @@ void Run_Boot_Handler(uint32_t ID, uint8_t *rxBuffer) {
                     Boot_App_Erase_Handler();
                     break;
                 }
-                    //
+
                 case BOOT_CAN_CMD_0_APP_CHUNK:
                 {
                     Boot_App_Chunk_Handler();
                     break;
                 }
-                    //
+
                 case BOOT_CAN_CMD_0_APP_CRC:
                 {
                     Boot_APP_CRC_Handler();

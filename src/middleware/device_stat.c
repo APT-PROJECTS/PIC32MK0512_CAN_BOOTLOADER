@@ -15,7 +15,7 @@ float writeMatrix[ROWS][COLS];
 static int MCU_ID = 0;
 static int BOOT_FLAG = 0;
 
-#define BOOT_STAY_WINDOW_COUNT    20000000UL
+#define BOOT_STAY_WINDOW_COUNT    2000000UL
 
 void Get_MAC_ID(void)
 {
@@ -27,7 +27,7 @@ void Get_MAC_ID(void)
 
 void EEPROM_Initialize(void) {
     FLASH_EEPROM_Init();
-    // Load_Read_Matrix();
+    Load_Read_Matrix();
 }
 
 void Load_Read_Matrix(void) {
