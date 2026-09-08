@@ -65,7 +65,7 @@ void Boot_PIC_ID_Handler(void) {
                 case BOOT_CAN_CMD_1_PIC_MAC_ID_4:
                     picid = devsn[3];
                     break;
-                    
+
                 case BOOT_CAN_CMD_1_PIC_DEVICE_ID:
                     picid = devid;
                     break;
@@ -111,6 +111,10 @@ void Boot_Software_ID_Handler(void) {
 
                 case BOOT_CAN_CMD_1_FIRMWARE_ID:
                     softwareId = R_FIRMWARE_ID;
+                    break;
+
+                case BOOT_CAN_CMD_1_BOOT_VERSION:
+                    softwareId = R_BOOT_VERSION;
                     break;
 
                 default:
