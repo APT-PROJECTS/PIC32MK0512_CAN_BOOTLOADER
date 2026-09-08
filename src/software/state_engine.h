@@ -14,7 +14,6 @@ typedef enum
 {
     STATE_INIT = 0,
     STATE_RUN
-
 } STATE_ENGINE_STATES;
 
 //--------------------------------------------------

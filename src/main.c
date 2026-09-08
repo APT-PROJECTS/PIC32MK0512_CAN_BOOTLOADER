@@ -7,9 +7,9 @@
 
 int main(void) {
     SYS_Initialize(NULL);
-    
+
     RED_LED_Set();
-    
+
     EEPROM_Initialize();
 
     while (true) {

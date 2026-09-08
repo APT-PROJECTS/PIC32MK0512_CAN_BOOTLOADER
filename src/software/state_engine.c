@@ -14,7 +14,7 @@ static STATE_ENGINE_STATES currentState = STATE_INIT;
 //--------------------------------------------------
 
 void STATE_ENGINE_Tasks(void) {
-    
+
     switch (currentState) {
             //--------------------------------------------------
         case STATE_INIT:

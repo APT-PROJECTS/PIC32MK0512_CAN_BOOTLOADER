@@ -43,7 +43,7 @@ void Load_Matrix(void) {
     //--------------------------------------------------
     __builtin_memcpy(readMatrix, eepromBuffer, sizeof (readMatrix));
     R_BOOT_VERSION = bootVersion;
-    
+
     //--------------------------------------------------
     // Copy read matrix to write matrix     
     //--------------------------------------------------
