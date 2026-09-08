@@ -15,7 +15,7 @@ extern uint32_t devid;
 // MATRIX SIZE
 //--------------------------------------------------
 #define ROWS    16
-#define COLS    6
+#define COLS    5
 
 //--------------------------------------------------
 // EEPROM BUFFER
@@ -36,14 +36,12 @@ extern float writeMatrix[ROWS][COLS];
 #define R_BOOT_FLAG                  readMatrix[0][2]
 #define R_BOOT_VERSION               readMatrix[0][3]
 #define R_APP_SIZE                   readMatrix[0][4]
-#define R_APP_CRC                    readMatrix[0][5]
 
 #define W_PROJECT_ID                 writeMatrix[0][0]
 #define W_FIRMWARE_ID                writeMatrix[0][1]
 #define W_BOOT_FLAG                  writeMatrix[0][2]
 #define W_BOOT_VERSION               writeMatrix[0][3]
 #define W_APP_SIZE                   writeMatrix[0][4]
-#define W_APP_CRC                    writeMatrix[0][5]
 
     
 void Get_PIC_ID(void);

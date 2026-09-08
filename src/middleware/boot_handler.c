@@ -220,6 +220,7 @@ void Boot_Status_Handler(void) {
 
             txBuf[0] = BOOT_CAN_CMD_0_STATUS;
             txBuf[2] = BOOT_CAN_CMD_2_READ;
+            txBuf[3] = BOOT_CAN_CMD_3_SUCCESS;
 
             if ((addr >= BOOTLOADER_START_ADDRESS) &&
                     (addr <= BOOTLOADER_END_ADDRESS)) {
@@ -611,6 +612,7 @@ static uint32_t Boot_APP_CRC32_Software(const volatile uint8_t *data,
 void Boot_APP_CRC_Handler(void) {
     uint8_t txBuf[8] = {0U};
     uint32_t flashCrc;
+    uint32_t crcLength;
 
     if ((canRxBuffer[0] != BOOT_CAN_CMD_0_APP_CRC) ||
             (canRxBuffer[2] != BOOT_CAN_CMD_2_READ)) {
@@ -620,8 +622,12 @@ void Boot_APP_CRC_Handler(void) {
     txBuf[0] = BOOT_CAN_CMD_0_APP_CRC;
     txBuf[2] = BOOT_CAN_CMD_2_READ;
 
-    if (!firmwareUpdateActive || firmwareUpdateFailed ||
-            (firmwareExpectedSize == 0U) || (flashBufferIndex != 0U)) {
+    /* Use the active transfer length during OTA; otherwise calculate the CRC
+     * of the last stored application so this command works at any time. */
+    crcLength = ((firmwareUpdateActive && (firmwareExpectedSize != 0U)) ?
+            firmwareExpectedSize : (uint32_t) R_APP_SIZE);
+
+    if (crcLength == 0U) {
         firmwareCrcVerified = false;
         txBuf[3] = BOOT_CAN_CMD_3_FAIL;
         CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
@@ -630,7 +636,7 @@ void Boot_APP_CRC_Handler(void) {
 
     flashCrc = Boot_APP_CRC32_Software(
             (const volatile uint8_t *)APPLICATION_START_ADDRESS,
-            firmwareExpectedSize);
+            crcLength);
 
     firmwareCrcVerified = true;
     txBuf[3] = BOOT_CAN_CMD_3_SUCCESS;

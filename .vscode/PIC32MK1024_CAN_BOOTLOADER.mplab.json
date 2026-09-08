@@ -208,7 +208,8 @@
                 "src/software/software.h",
                 "src/middleware/middleware.h",
                 "src/driver/driver.h",
-                "PIC32MK1024_CAN_BOOTLOADER.X/dist/default/debug/PIC32MK1024_CAN_BOOTLOADER.X.debug.elf"
+                "PIC32MK1024_CAN_BOOTLOADER.X/dist/default/production/PIC32MK1024_CAN_BOOTLOADER.X.production.elf",
+                "PIC32MK1024_CAN_BOOTLOADER.X/dist/default/production/PIC32MK1024_CAN_BOOTLOADER.X.production.hex"
             ]
         }
     ]

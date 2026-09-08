@@ -799,6 +799,32 @@ bool OTA_Handler_CORE1(void) {
       break;
 
       // ==================================================
+    case OTA_CORE1_WRITE_APP_SIZE:
+      {
+        uint8_t txBuf[8] = { 0U };
+        uint32_t appSize = (uint32_t)totalFWSize;
+
+        txBuf[0] = OTA_CAN_CMD_0_APP_SIZE;
+        txBuf[2] = OTA_CAN_CMD_2_WRITE;
+        txBuf[4] = (uint8_t)(appSize >> 24);
+        txBuf[5] = (uint8_t)(appSize >> 16);
+        txBuf[6] = (uint8_t)(appSize >> 8);
+        txBuf[7] = (uint8_t)appSize;
+
+        if (!CAN_WriteFrame(OTA_CAN_ID_HOST, txBuf, sizeof(txBuf))) {
+          Serial.println("OTA CORE1: APP SIZE WRITE SEND FAIL");
+          break;
+        }
+
+        Serial.printf("OTA CORE1: APP SIZE WRITE SEND SUCCESS (%lu bytes)\n",
+                      (unsigned long)appSize);
+        otaPrevTxState = otaCore1State;
+        otaRxStartTime = millis();
+        otaCore1State = OTA_CORE1_CAN_RX_HANDLE;
+      }
+      break;
+
+      // ==================================================
     case OTA_CORE1_APP_JUMP:
       {
         uint8_t txBuf[8] = { 0 };
@@ -1101,7 +1127,7 @@ bool OTA_Handler_CORE1(void) {
                                         mcu_minor_latest = ota_server_minor;
 
                                         Serial.println("OTA CORE1: FIRMWARE_ID UPDATE SUCCESS");
-                                        otaCore1State = OTA_CORE1_APP_JUMP;
+                                        otaCore1State = OTA_CORE1_WRITE_APP_SIZE;
                                       }
                                       break;
 
@@ -1230,6 +1256,28 @@ bool OTA_Handler_CORE1(void) {
                   case OTA_CAN_CMD_0_APP_SIZE:
                     {
                       switch (rx.data[2]) {
+                        case OTA_CAN_CMD_2_WRITE:
+                          {
+                            switch (rx.data[3]) {
+                              case OTA_CAN_CMD_3_SUCCESS:
+                                Serial.println("OTA CORE1: APP SIZE UPDATE SUCCESS");
+                                otaCore1State = OTA_CORE1_APP_JUMP;
+                                break;
+
+                              case OTA_CAN_CMD_3_FAIL:
+                                Serial.println("OTA CORE1: APP SIZE UPDATE FAIL");
+                                sendReport = true;
+                                otaReportStatus = SOFTWARE_ID_WRITE_FAIL;
+                                otaCore1State = OTA_CORE1_ERROR;
+                                otaCore0State = OTA_CORE0_REPORT;
+                                break;
+
+                              default:
+                                break;
+                            }
+                          }
+                          break;
+
                         case OTA_CAN_CMD_2_COMPARE:
                           {
                             switch (rx.data[3]) {
@@ -1463,6 +1511,7 @@ bool OTA_Handler_CORE1(void) {
 
               case OTA_CORE1_WRITE_PROJECT_ID:
               case OTA_CORE1_WRITE_FIRMWARE_ID:
+              case OTA_CORE1_WRITE_APP_SIZE:
                 {
                   Serial.println("OTA CORE1: SOFTWARE ID UPDATE FAILED");
 
