@@ -417,8 +417,6 @@ void Boot_Jump_Handler(void) {
             }
 
             if (!firmwareUpdateFailed && (Boot_Is_App_Present() == true)) {
-                txBuf[3] = BOOT_CAN_CMD_3_SUCCESS;
-                CANbus_write(BOOT_CAN_ID_CLIENT, txBuf, sizeof (txBuf));
                 Boot_App_Jump();
             } else {
                 txBuf[3] = BOOT_CAN_CMD_3_FAIL;
