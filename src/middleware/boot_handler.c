@@ -591,8 +591,6 @@ void Boot_App_Chunk_Handler(void) {
     Boot_App_Chunk_Ack(chunkIndex, BOOT_CAN_CMD_3_SUCCESS);
 }
 
-//
-
 static uint32_t Boot_APP_CRC32_Software(const volatile uint8_t *data,
         uint32_t length) {
     uint32_t crc = 0xFFFFFFFFU;

@@ -12,7 +12,7 @@
 #include <string.h>
 #include <math.h>
 #include "middleware/boot_handler.h"
-#include "middleware/device_stat.h"
+#include "middleware/device_startup.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
