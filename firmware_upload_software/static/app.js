@@ -29,6 +29,18 @@ function setButtonState(status) {
   $('read-info').disabled = !status.connected || status.busy;
   $('force-update').disabled = !status.connected || status.busy;
   $('start-update').disabled = !status.connected || status.busy;
+  $('update-ids').disabled = status.busy;
+}
+
+function renderIdentifierEditor(controller, pendingIds) {
+  const projectInput = $('project-id-input');
+  const firmwareInput = $('firmware-id-input');
+  const source = pendingIds || controller;
+  if (document.activeElement !== projectInput && source.project_id && source.project_id !== '—') projectInput.value = Number(source.project_id).toFixed(1);
+  if (document.activeElement !== firmwareInput && source.firmware_id && source.firmware_id !== '—') firmwareInput.value = Number(source.firmware_id).toFixed(1);
+  $('identifier-note').textContent = pendingIds
+    ? `Queued: project ${Number(pendingIds.project_id).toFixed(1)}, firmware ${Number(pendingIds.firmware_id).toFixed(1)}. They will be written after CRC validation.`
+    : 'Read controller info or enter IDs to queue them.';
 }
 
 async function refreshPorts() {
@@ -72,7 +84,7 @@ function renderLogs(logs, generation) {
 }
 
 function renderStatus(data) {
-  const { status, controller, firmware, logs, log_generation } = data;
+  const { status, controller, firmware, pending_ids, logs, log_generation } = data;
   $('phase').textContent = status.phase;
   $('status-message').textContent = status.message;
   $('progress-label').textContent = `${status.progress}%`;
@@ -82,6 +94,7 @@ function renderStatus(data) {
   pill.className = `connection-pill ${status.connected ? 'online' : 'offline'}`;
   pill.lastChild.textContent = status.connected ? 'Connected' : 'Disconnected';
   controllerFields.forEach((field) => { $(field).textContent = controller[field] || '—'; });
+  renderIdentifierEditor(controller, pending_ids);
   if (firmware) $('file-info').textContent = `${firmware.name} · ${Number(firmware.size).toLocaleString()} bytes · ${firmware.crc}`;
   setButtonState(status);
   renderLogs(logs, log_generation);
@@ -122,6 +135,13 @@ $('start-update').addEventListener('click', guarded(async () => { await api('/ap
 $('force-update').addEventListener('click', guarded(async () => {
   if (!window.confirm('Force update keeps the bootloader active while the controller is reset, then erases and programs the selected firmware. Continue?')) return;
   await api('/api/force-update', { method: 'POST' }); await pollStatus();
+}));
+$('update-ids').addEventListener('click', guarded(async () => {
+  await api('/api/software-ids', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ project_id: $('project-id-input').value, firmware_id: $('firmware-id-input').value }),
+  });
+  await pollStatus();
 }));
 $('clear-log').addEventListener('click', guarded(async () => { await api('/api/logs/clear', { method: 'POST' }); await pollStatus(); }));
 

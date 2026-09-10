@@ -51,6 +51,11 @@
           <div><dt>Application size</dt><dd id="app_size">—</dd></div>
           <div><dt>Application CRC</dt><dd id="crc">—</dd></div>
         </dl>
+        <div class="identifier-editor">
+          <p>IDs are written only after firmware CRC validation.</p>
+          <div><label>Updated project ID<input id="project-id-input" type="number" inputmode="decimal" min="0" step="0.1" placeholder="e.g. 1.0"></label><label>Updated firmware ID<input id="firmware-id-input" type="number" inputmode="decimal" min="0" step="0.1" placeholder="e.g. 2.0"></label></div>
+          <button id="update-ids" class="button secondary">Update IDs</button><span id="identifier-note">Read controller info or enter IDs to queue them.</span>
+        </div>
       </section>
     </section>
 
