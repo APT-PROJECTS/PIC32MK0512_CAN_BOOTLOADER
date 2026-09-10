@@ -2,6 +2,9 @@ const $ = (id) => document.getElementById(id);
 const controllerFields = ['mac_id', 'device_id', 'device_name', 'project_id', 'firmware_id', 'boot_version', 'status', 'app_size', 'crc'];
 let latestLogId = 0;
 let logGeneration = null;
+// Status is polled while the operator is typing. Preserve unsaved values so a
+// poll cannot replace them with the controller's previous stored IDs.
+let identifierInputsEdited = false;
 
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
@@ -36,8 +39,11 @@ function renderIdentifierEditor(controller, pendingIds) {
   const projectInput = $('project-id-input');
   const firmwareInput = $('firmware-id-input');
   const source = pendingIds || controller;
-  if (document.activeElement !== projectInput && source.project_id && source.project_id !== '—') projectInput.value = Number(source.project_id).toFixed(1);
-  if (document.activeElement !== firmwareInput && source.firmware_id && source.firmware_id !== '—') firmwareInput.value = Number(source.firmware_id).toFixed(1);
+  if (pendingIds || !identifierInputsEdited) {
+    if (source.project_id && source.project_id !== '—') projectInput.value = Number(source.project_id).toFixed(1);
+    if (source.firmware_id && source.firmware_id !== '—') firmwareInput.value = Number(source.firmware_id).toFixed(1);
+  }
+  if (pendingIds) identifierInputsEdited = false;
   $('identifier-note').textContent = pendingIds
     ? `Queued: project ${Number(pendingIds.project_id).toFixed(1)}, firmware ${Number(pendingIds.firmware_id).toFixed(1)}. They will be written after CRC validation.`
     : 'Read controller info or enter IDs to queue them.';
@@ -136,10 +142,22 @@ $('force-update').addEventListener('click', guarded(async () => {
   if (!window.confirm('Force update keeps the bootloader active while the controller is reset, then erases and programs the selected firmware. Continue?')) return;
   await api('/api/force-update', { method: 'POST' }); await pollStatus();
 }));
+// Mark an input as operator-owned before a status poll can run. `focus` and
+// `pointerdown` cover mouse, keyboard and number-input spinner interaction.
+['project-id-input', 'firmware-id-input'].forEach((id) => {
+  const input = $(id);
+  ['focus', 'pointerdown', 'keydown', 'input', 'change'].forEach((eventName) => {
+    input.addEventListener(eventName, () => { identifierInputsEdited = true; });
+  });
+});
 $('update-ids').addEventListener('click', guarded(async () => {
+  // Capture both values before the asynchronous request so the exact operator
+  // entries are queued even if a status poll arrives while it is in flight.
+  const projectId = $('project-id-input').value;
+  const firmwareId = $('firmware-id-input').value;
   await api('/api/software-ids', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ project_id: $('project-id-input').value, firmware_id: $('firmware-id-input').value }),
+    body: JSON.stringify({ project_id: projectId, firmware_id: firmwareId }),
   });
   await pollStatus();
 }));
