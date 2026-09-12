@@ -1,5 +1,5 @@
 {
-    "mplab.clangd.compileCommandsDir": "${workspaceFolder}\\_build\\PIC32MK1024_CAN_BOOTLOADER\\default",
+    "mplab.clangd.compileCommandsDir": "${workspaceFolder}\\_build\\PIC32MK0512_CAN_BOOTLOADER\\default",
     "mplab.clangd.arguments": [
         "--header-insertion=never"
     ],
