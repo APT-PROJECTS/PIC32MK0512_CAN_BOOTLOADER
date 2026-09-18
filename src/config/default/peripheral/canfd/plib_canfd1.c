@@ -141,9 +141,9 @@ static inline void CAN1_ZeroInitialize(volatile void* pData, size_t dataSize)
     }
 }
 
-/* MISRAC 2012 deviation block start */
-/* MISRA C-2012 Rule 11.6 deviated 6 times. Deviation record ID -  H3_MISRAC_2012_R_11_6_DR_1 */
-/* MISRA C-2012 Rule 5.1 deviated 1 time. Deviation record ID -  H3_MISRAC_2012_R_5_1_DR_1 */
+/* MISRAC 2023 deviation block start */
+/* MISRA C-2023 Rule 11.6 deviated 6 times. Deviation record ID -  H3_MISRAC_2023_R_11_6_DR_1 */
+/* MISRA C-2023 Rule 5.1 deviated 1 time. Deviation record ID -  H3_MISRAC_2023_R_5_1_DR_1 */
 
 // *****************************************************************************
 // *****************************************************************************
@@ -980,4 +980,4 @@ bool CAN1_BitTimingSet(CANFD_BIT_TIMING *bitTiming)
 }
 
 
-/* MISRAC 2012 deviation block end */
+/* MISRAC 2023 deviation block end */

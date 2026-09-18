@@ -74,6 +74,12 @@ void GPIO_Initialize ( void )
     /* PORTF Initialization */
     /* PORTG Initialization */
 
+    /* Unlock system for PPS configuration */
+    SYSKEY = 0x00000000U;
+    SYSKEY = 0xAA996655U;
+    SYSKEY = 0x556699AAU;
+
+    CFGCONbits.IOLOCK = 0U;
 
     /* PPS Input Remapping */
     C1RXR = 6;
@@ -81,6 +87,10 @@ void GPIO_Initialize ( void )
     /* PPS Output Remapping */
     RPC0R = 12;
 
+        /* Lock back the system after PPS configuration */
+    CFGCONbits.IOLOCK = 1U;
+
+    SYSKEY = 0x00000000U;
 
 }
 

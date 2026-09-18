@@ -1,7 +1,7 @@
 configVersion: 1.0.0
 componentName: can1
 coreVersion: 5.9.0
-device: PIC32MK1024MCM064
+device: PIC32MK0512MCM064
 library: []
 dependency:
 - dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
@@ -11,7 +11,7 @@ dependency:
 - dependencyPackage: ''
   name: csp
   type: package
-  version: v3.22.6
+  version: v3.26.1
 customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
 data:
   attachments: {}
@@ -22,8 +22,8 @@ data:
     - children:
       - attributes:
           id: can1
-          x: '66'
-          y: '71'
+          x: '69'
+          y: '86'
         type: ElementPosition
       type: ElementPositions
     type: ComponentGraph

@@ -63,7 +63,7 @@ extern "C" {
 // DOM-IGNORE-END
 
 /* Device Information */
-#define DEVICE_NAME          "PIC32MK1024MCM064"
+#define DEVICE_NAME          "PIC32MK0512MCM064"
 #define DEVICE_ARCH          "MIPS"
 #define DEVICE_FAMILY        "PIC32MK1519"
 #define DEVICE_SERIES        "PIC32MK"

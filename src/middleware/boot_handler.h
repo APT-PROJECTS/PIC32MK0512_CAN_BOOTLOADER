@@ -1,5 +1,5 @@
-#ifndef _BOOT_HANDLER_NAME_H 
-#define _BOOT_HANDLER_NAME_H
+#ifndef _BOOT_HANDLER_H 
+#define _BOOT_HANDLER_H
 
 #include "definitions.h"
 

@@ -91,6 +91,7 @@ void CLK_Initialize( void )
     
     /* Peripheral Module Disable Configuration */
 
+    CFGCONbits.PMDLOCK = 0;
 
     PMD1 = 0x371U;
     PMD2 = 0x17001fU;
@@ -100,6 +101,7 @@ void CLK_Initialize( void )
     PMD6 = 0xf0d0000U;
     PMD7 = 0x0U;
 
+    CFGCONbits.PMDLOCK = 1;
 
  
       
