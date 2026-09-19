@@ -1,8 +1,0 @@
-{
-    "mplab.clangd.compileCommandsDir": "${workspaceFolder}\\_build\\PIC32MK0512_CAN_BOOTLOADER\\default",
-    "mplab.clangd.arguments": [
-        "--header-insertion=never"
-    ],
-    "mplab.clangd.path": "c:\\Program Files\\Microchip\\xc32\\v5.00\\bin\\xc32-clangd.exe",
-    "C_Cpp.intelliSenseEngine": "disabled"
-}
