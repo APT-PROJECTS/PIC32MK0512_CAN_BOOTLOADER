@@ -22,8 +22,8 @@ data:
     - children:
       - attributes:
           id: core
-          x: '70'
-          y: '35'
+          x: '65'
+          y: '25'
         type: ElementPosition
       type: ElementPositions
     type: ComponentGraph
@@ -127,6 +127,17 @@ data:
           type: User
         type: Values
       type: String
+    BSP_PIN_21_FUNCTION_NAME:
+      attributes:
+        id: BSP_PIN_21_FUNCTION_NAME
+        label: Name
+      children:
+      - children:
+        - attributes:
+            value: CAN1_TX
+          type: User
+        type: Values
+      type: String
     BSP_PIN_21_FUNCTION_TYPE:
       attributes:
         id: BSP_PIN_21_FUNCTION_TYPE
@@ -146,6 +157,17 @@ data:
       - children:
         - attributes:
             value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_22_FUNCTION_NAME:
+      attributes:
+        id: BSP_PIN_22_FUNCTION_NAME
+        label: Name
+      children:
+      - children:
+        - attributes:
+            value: CAN1_RX
           type: User
         type: Values
       type: String
@@ -196,6 +218,50 @@ data:
     BSP_PIN_34_MODE:
       attributes:
         id: BSP_PIN_34_MODE
+        label: Mode
+      children:
+      - children:
+        - attributes:
+            value: DIGITAL
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_39_DIR:
+      attributes:
+        id: BSP_PIN_39_DIR
+        label: Direction
+      children:
+      - children:
+        - attributes:
+            value: Out
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_39_FUNCTION_NAME:
+      attributes:
+        id: BSP_PIN_39_FUNCTION_NAME
+        label: Name
+      children:
+      - children:
+        - attributes:
+            value: RED_LED
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_39_FUNCTION_TYPE:
+      attributes:
+        id: BSP_PIN_39_FUNCTION_TYPE
+        label: Type
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_39_MODE:
+      attributes:
+        id: BSP_PIN_39_MODE
         label: Mode
       children:
       - children:
@@ -558,6 +624,18 @@ data:
           type: Dynamic
         type: Values
       type: Hex
+    SYS_PORT_C_TRIS:
+      attributes:
+        id: SYS_PORT_C_TRIS
+        label: TRISCCLR Value
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '4096'
+          type: Dynamic
+        type: Values
+      type: Hex
     SYS_PORT_PPS_INPUT_FUNCTION_0:
       attributes:
         id: SYS_PORT_PPS_INPUT_FUNCTION_0
@@ -656,84 +734,6 @@ data:
           type: User
         type: Values
       type: Boolean
-    BSP_PIN_21_FUNCTION_NAME:
-      attributes:
-        id: BSP_PIN_21_FUNCTION_NAME
-        label: Name
-      children:
-      - children:
-        - attributes:
-            value: CAN1_TX
-          type: User
-        type: Values
-      type: String
-    BSP_PIN_22_FUNCTION_NAME:
-      attributes:
-        id: BSP_PIN_22_FUNCTION_NAME
-        label: Name
-      children:
-      - children:
-        - attributes:
-            value: CAN1_RX
-          type: User
-        type: Values
-      type: String
-    BSP_PIN_39_MODE:
-      attributes:
-        id: BSP_PIN_39_MODE
-        label: Mode
-      children:
-      - children:
-        - attributes:
-            value: DIGITAL
-          type: User
-        type: Values
-      type: String
-    BSP_PIN_39_FUNCTION_TYPE:
-      attributes:
-        id: BSP_PIN_39_FUNCTION_TYPE
-        label: Type
-      children:
-      - children:
-        - attributes:
-            value: GPIO
-          type: User
-        type: Values
-      type: String
-    BSP_PIN_39_FUNCTION_NAME:
-      attributes:
-        id: BSP_PIN_39_FUNCTION_NAME
-        label: Name
-      children:
-      - children:
-        - attributes:
-            value: RED_LED
-          type: User
-        type: Values
-      type: String
-    SYS_PORT_C_TRIS:
-      attributes:
-        id: SYS_PORT_C_TRIS
-        label: TRISCCLR Value
-      children:
-      - children:
-        - attributes:
-            id: core
-            value: '4096'
-          type: Dynamic
-        type: Values
-      type: Hex
-    BSP_PIN_39_DIR:
-      attributes:
-        id: BSP_PIN_39_DIR
-        label: Direction
-      children:
-      - children:
-        - attributes:
-            value: Out
-          type: User
-        type: Values
-      type: String
   userData:
     children:
     - attributes:

@@ -51,3 +51,4 @@ generatedFileHashHistoryMap:
 - file: ..\src\config\default\toolchain_specifics.h
   hash: f6f3282ecb4ad8b5ba3487b7d7b8f6cfa3f977240726af07eaab058caf904381
 - file: ..\src\main.c
+  hash: d3c233d419e6304bfacbafc18cc68c0f5c26e365f23b20ea40ccfac458f664c5
