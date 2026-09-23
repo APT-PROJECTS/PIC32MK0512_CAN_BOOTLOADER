@@ -15,7 +15,7 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2025 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -118,11 +118,10 @@
 // *****************************************************************************
 // *****************************************************************************
 /* Following MISRA-C rules are deviated in the below code block */
-/* MISRA C-2023 Rule 7.2 - Deviation record ID - H3_MISRAC_2023_R_7_2_DR_1 */
-/* MISRA C-2023 Rule 11.1 - Deviation record ID - H3_MISRAC_2023_R_11_1_DR_1 */
-/* MISRA C-2023 Rule 11.3 - Deviation record ID - H3_MISRAC_2023_R_11_3_DR_1 */
-/* MISRA C-2023 Rule 11.8 - Deviation record ID - H3_MISRAC_2023_R_11_8_DR_1 */
-
+/* MISRA C-2023 Rule 7.2 */
+/* MISRA C-2023 Rule 11.1 */
+/* MISRA C-2023 Rule 11.3 */
+/* MISRA C-2023 Rule 11.8 */
 
 
 // *****************************************************************************
@@ -166,14 +165,12 @@
 
 void SYS_Initialize ( void* data )
 {
-
     /* MISRAC 2023 deviation block start */
     /* MISRA C-2023 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2023_R_2_2_DR_1 */
-
+    /* MISRA C-2023 Rule 11.6 deviated in this file.  Deviation record ID -  H3_MISRAC_2023_R_11_6_DR_1 */
     /* Start out with interrupts disabled before configuring any modules */
     (void)__builtin_disable_interrupts();
 
-  
     CLK_Initialize();
 
     /* Configure CP0.K0 for optimal performance (cached instruction pre-fetch) */
@@ -187,21 +184,30 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
+
+
+//    if (bootloader_Trigger() == false)
+//    {
+//        run_Application(APP_JUMP_ADDRESS);
+//    }
+
+
     CAN1_Initialize();
 
     NVM_Initialize();
 
 
-    EVIC_Initialize();
+    /* MISRAC 2023 deviation block start */
+    /* Following MISRA-C rules deviated in this block  */
+    /* MISRA C-2023 Rule 11.3 - Deviation record ID - H3_MISRAC_2023_R_11_3_DR_1 */
+    /* MISRA C-2023 Rule 11.8 - Deviation record ID - H3_MISRAC_2023_R_11_8_DR_1 */
 
-	/* Enable global interrupts */
-    (void)__builtin_enable_interrupts();
+
+
+    /* MISRAC 2023 deviation block end */
+    EVIC_Initialize();
 
 
 
     /* MISRAC 2023 deviation block end */
 }
-
-/*******************************************************************************
- End of File
-*/

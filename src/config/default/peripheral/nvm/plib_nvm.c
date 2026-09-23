@@ -50,7 +50,6 @@
 #include <string.h>
 #include "sys/kmem.h"
 #include "plib_nvm.h"
-#include "interrupts.h"
 
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -86,13 +85,6 @@ typedef enum
 #define NVM_INTERRUPT_ENABLE_MASK   0x80000000LU
 #define NVM_INTERRUPT_FLAG_MASK     0x80000000LU
 
-typedef struct
-{
-    NVM_CALLBACK CallbackFunc;
-    uintptr_t Context;
-}nvmCallbackObjType;
-
-static volatile nvmCallbackObjType nvmCallbackObj;
 /* ************************************************************************** */
 /* ************************************************************************** */
 // Section: Local Functions                                                   */
@@ -105,23 +97,6 @@ static volatile nvmCallbackObjType nvmCallbackObj;
 // *****************************************************************************
 // *****************************************************************************
 
-void NVM_CallbackRegister( NVM_CALLBACK callback, uintptr_t context )
-{
-    /* Register callback function */
-    nvmCallbackObj.CallbackFunc    = callback;
-    nvmCallbackObj.Context         = context;
-}
-
-void __attribute__((used)) NVM_InterruptHandler( void )
-{
-    IFS0CLR = NVM_INTERRUPT_FLAG_MASK;
-
-    if(nvmCallbackObj.CallbackFunc != NULL)
-    {
-        uintptr_t context = nvmCallbackObj.Context;
-        nvmCallbackObj.CallbackFunc(context);
-    }
-}
 
 static void NVM_WriteUnlockSequence( void )
 {
@@ -172,7 +147,6 @@ static void NVM_StartOperationAtAddress( uint32_t address,  NVM_OPERATION_MODE o
 
     __builtin_mtc0(12, 0, processorStatus);
 
-    IEC0SET   = NVM_INTERRUPT_ENABLE_MASK;
 }
 
 /* ************************************************************************** */

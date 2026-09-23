@@ -42,7 +42,6 @@
 
 #include "device.h"
 #include "plib_evic.h"
-#include "interrupts.h"
 
 
 // *****************************************************************************
@@ -56,7 +55,6 @@ void EVIC_Initialize( void )
     INTCONSET = _INTCON_MVEC_MASK;
 
     /* Set up priority and subpriority of enabled interrupts */
-    IPC7SET = 0x4000000U | 0x0U;  /* FLASH_CONTROL:  Priority 1 / Subpriority 0 */
 
 
 

@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 componentName: dfp
-coreVersion: 5.9.0
+coreVersion: 5.8.4
 device: PIC32MK0512MCM064
 library: []
 dependency:
@@ -22,8 +22,8 @@ data:
     - children:
       - attributes:
           id: dfp
-          x: '141'
-          y: '25'
+          x: '177'
+          y: '42'
         type: ElementPosition
       type: ElementPositions
     type: ComponentGraph

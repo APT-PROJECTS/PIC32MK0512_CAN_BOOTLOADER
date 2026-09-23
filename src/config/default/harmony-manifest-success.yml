@@ -4,17 +4,18 @@
 
 
 project: PIC32MK0512_CAN_BOOTLOADER
-creation_date: 2026-09-19T12:34:41.294+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2026-09-23T13:27:36.252+05:30[Asia/Calcutta]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 11
 mcc_mode: IDE            # [IDE|Standalone|Headless]
-mcc_version: v5.7.0
-mcc_core_version: v5.9.0
+mcc_version: v5.6.4
+mcc_core_version: v5.8.4
 mplabx_version: v6.30        # if MPLAB X plugin only
-harmony_version: 1.7.0
+harmony_version: v5.6.4
 compiler: XC32 5.00
 
 modules:
     - {name: "csp", version: "v3.26.1"}
+    - {name: "bootloader", version: "v3.9.0"}
 
 packs:
     - {name: "PIC32MK-MC_DFP", version: "1.11.151"}

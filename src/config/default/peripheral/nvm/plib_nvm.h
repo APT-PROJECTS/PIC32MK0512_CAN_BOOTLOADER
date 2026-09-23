@@ -122,7 +122,6 @@ typedef uint32_t NVM_BOOT_FLASH_WRITE_PROTECT;
 
 typedef uint32_t NVM_BOOT_FLASH_WRITE_PROTECT_LOCK;
 
-typedef void (*NVM_CALLBACK)( uintptr_t context );
 
 void NVM_Initialize( void );
 
@@ -154,7 +153,6 @@ void NVM_BootFlashWriteProtectDisable( NVM_BOOT_FLASH_WRITE_PROTECT writeProtect
 
 void NVM_BootFlashWriteProtectLock( NVM_BOOT_FLASH_WRITE_PROTECT_LOCK writeProtectLock );
 
-void NVM_CallbackRegister( NVM_CALLBACK callback, uintptr_t context );
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus // Provide C++ Compatibility
