@@ -485,7 +485,7 @@ void Boot_App_Erase_Handler(void) {
 }
 
 /* PIC32MK program-flash row programming (NVM_FLASH_ROWSIZE is bytes). */
-static bool App_Firmware_Write_Flash(void) {
+bool App_Firmware_Write_Flash(void) {
     uint32_t rowAddr = flashWriteAddress;
     uint32_t offset;
     /* The PIC32MK row API consumes exactly 512 source bytes.  Keep this as a
@@ -535,11 +535,11 @@ static bool App_Firmware_Write_Flash(void) {
     return true;
 }
 
-static uint8_t Next_Chunk_Index(uint8_t chunkIndex) {
+uint8_t Next_Chunk_Index(uint8_t chunkIndex) {
     return (chunkIndex == 0xFFU) ? 1U : (uint8_t) (chunkIndex + 1U);
 }
 
-static void Boot_App_Chunk_Ack(uint8_t chunkIndex, uint8_t result) {
+void Boot_App_Chunk_Ack(uint8_t chunkIndex, uint8_t result) {
     uint8_t txBuf[8] = {0U};
 
     txBuf[0] = BOOT_CAN_CMD_0_APP_CHUNK;
@@ -591,7 +591,7 @@ void Boot_App_Chunk_Handler(void) {
     Boot_App_Chunk_Ack(chunkIndex, BOOT_CAN_CMD_3_SUCCESS);
 }
 
-static uint32_t Boot_APP_CRC32_Software(const volatile uint8_t *data,
+uint32_t Boot_APP_CRC32_Software(const volatile uint8_t *data,
         uint32_t length) {
     uint32_t crc = 0xFFFFFFFFU;
     uint8_t bit;

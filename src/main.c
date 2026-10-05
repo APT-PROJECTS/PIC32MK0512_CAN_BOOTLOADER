@@ -10,7 +10,7 @@ int main(void) {
 
     RED_LED_Set();
 
-    EEPROM_Initialize();
+    NVM_EEPROM_Initialize();
 
     while (true) {
         STATE_ENGINE_Tasks();

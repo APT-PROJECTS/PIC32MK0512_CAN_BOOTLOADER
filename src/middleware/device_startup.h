@@ -45,7 +45,7 @@ extern float writeMatrix[ROWS][COLS];
 
     
 void Get_PIC_ID(void);
-void EEPROM_Initialize(void);
+void NVM_EEPROM_Initialize(void);
 void Load_Matrix(void);
 
 #ifdef __cplusplus

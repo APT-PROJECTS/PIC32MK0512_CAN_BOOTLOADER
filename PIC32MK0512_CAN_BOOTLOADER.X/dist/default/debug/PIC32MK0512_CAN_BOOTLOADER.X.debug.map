@@ -3,19 +3,19 @@ Optional file vector_offset_init.o not found
 Archive member included to satisfy reference by file (symbol)
 
 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
-                              C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o (_bootstrap_exception_handler)
+                              C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o (_bootstrap_exception_handler)
 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
-                              C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o (_on_reset)
+                              C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o (_on_reset)
 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
-                              C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o (_on_bootstrap)
+                              C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o (_on_bootstrap)
 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-nmi-handler.o)
-                              C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o (_nmi_handler)
+                              C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o (_nmi_handler)
 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(pic32_data_init_core.o)
-                              C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o (__pic32_data_init)
+                              C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o (__pic32_data_init)
 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(general-exception.o)
-                              C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o (_general_exception_context)
+                              C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o (_general_exception_context)
 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
-                              C:\Users\HP\AppData\Local\Temp\ccuIv2jD.o (_DefaultInterrupt)
+                              C:\Users\HP\AppData\Local\Temp\cc1aC3GX.o (_DefaultInterrupt)
 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
                               C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(general-exception.o) (_general_exception_handler)
 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
@@ -81,7 +81,7 @@ section                    address  length [bytes]      (dec)  Description
 .text.NVM_Read          0x9fc03560           0x2c          44   
 .text.memcpy            0x9fc0358c           0x2c          44   
 .text.memset            0x9fc035b8           0x28          40   
-.text.EEPROM_Initialize 0x9fc035e0           0x1c          28   
+.text.NVM_EEPROM_Initia 0x9fc035e0           0x1c          28   
 .MIPS.abiflags          0x9fc03600           0x18          24   
 .text                   0x9fc03618           0x30          48  App's exec code 
 .text.FLASH_EEPROM_Init 0x9fc03648           0x14          20   
@@ -149,11 +149,11 @@ Microchip PIC32 Memory-Usage Report By Module
         3844           5        1557        5406        151e    boot_handler.o                       build/default/debug/_ext/1375476428/boot_handler.o
          580           0        4736        5316        14c4    device_startup.o                     build/default/debug/_ext/1375476428/device_startup.o
          988           4        4076        5068        13cc    flash_eeprom.o                       build/default/debug/_ext/362756510/flash_eeprom.o
-        1088           0         228        1316         524    plib_canfd1.o                        build/default/debug/_ext/1984168316/plib_canfd1.o
+        1064           0         228        1292         50c    plib_canfd1.o                        build/default/debug/_ext/1984168316/plib_canfd1.o
         1248           0           0        1248         4e0    data_init                            data_init
-           0         920           0         920         398    ccAClHnf.o                           C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
+           0         920           0         920         398    ccPCdFTF.o                           C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
          580           0           0         580         244    plib_nvm.o                           build/default/debug/_ext/60176403/plib_nvm.o
-         492           0           0         492         1ec    ccutvZ3U.o                           C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
+         492           0           0         492         1ec    ccgkLTkw.o                           C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
          220           0           0         220          dc    general-exception.o                  libpic32.a
          168           0           0         168          a8    driver_CANbus.o                      build/default/debug/_ext/362756510/driver_CANbus.o
          144           0           0         144          90    pic32_data_init_core.o               libpic32.a
@@ -161,8 +161,8 @@ Microchip PIC32 Memory-Usage Report By Module
          116           0           0         116          74    plib_clk.o                           build/default/debug/_ext/60165520/plib_clk.o
           72           0           4          76          4c    state_engine.o                       build/default/debug/_ext/1200941409/state_engine.o
           72           0           0          72          48    default-bootstrap-exception-handler.olibpic32.a
-          72           0           0          72          48    default-general-exception-handler.o  libpic32.a
           72           0           0          72          48    defaultinterrupt.o                   libpic32.a
+          72           0           0          72          48    default-general-exception-handler.o  libpic32.a
           68           0           0          68          44    pic32_software_reset.o               C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\pic32_software_reset.o
           60           0           0          60          3c    main.o                               build/default/debug/_ext/1360937237/main.o
           56           0           0          56          38    memcmp.o                             libc-size-musl.a
@@ -173,6 +173,7 @@ Microchip PIC32 Memory-Usage Report By Module
           32           0           0          32          20    pic32_data_init_copy.o               libpic32.a
           24           0           0          24          18    default-nmi-handler.o                libpic32.a
           24           0           0          24          18    pic32_data_init_clear.o              libpic32.a
+          24           0           0          24          18    bootloader_can.o                     build/default/debug/_ext/1748409734/bootloader_can.o
           12           0           0          12           c    software-debug-break.o               C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
            8           0           0           8           8    default-on-bootstrap.o               libpic32.a
            8           0           0           8           8    default-on-reset.o                   libpic32.a
@@ -184,9 +185,75 @@ Microchip PIC32 Memory-Usage Report By Module
 
 Discarded input sections
 
+ .text          0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_can.o
+ .data          0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_can.o
+ .bss           0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_can.o
+ .reginfo       0x00000000       0x18 build/default/debug/_ext/1748409734/bootloader_can.o
+ .pdr           0x00000000       0x20 build/default/debug/_ext/1748409734/bootloader_can.o
+ .text.bootloader_CAN_Tasks
+                0x00000000      0x458 build/default/debug/_ext/1748409734/bootloader_can.o
+ .sbss.canBLActive
+                0x00000000        0x1 build/default/debug/_ext/1748409734/bootloader_can.o
+ .sbss.data_seq
+                0x00000000        0x1 build/default/debug/_ext/1748409734/bootloader_can.o
+ .bss.rx_msg    0x00000000       0x40 build/default/debug/_ext/1748409734/bootloader_can.o
+ .sbss.unlock_end
+                0x00000000        0x4 build/default/debug/_ext/1748409734/bootloader_can.o
+ .sbss.unlock_begin
+                0x00000000        0x4 build/default/debug/_ext/1748409734/bootloader_can.o
+ .sbss.flash_ptr
+                0x00000000        0x4 build/default/debug/_ext/1748409734/bootloader_can.o
+ .sbss.flash_size
+                0x00000000        0x4 build/default/debug/_ext/1748409734/bootloader_can.o
+ .sbss.flash_addr
+                0x00000000        0x4 build/default/debug/_ext/1748409734/bootloader_can.o
+ .bss.flash_data
+                0x00000000      0x200 build/default/debug/_ext/1748409734/bootloader_can.o
+ .debug_frame   0x00000000       0x34 build/default/debug/_ext/1748409734/bootloader_can.o
+ .debug_info    0x00000000      0x954 build/default/debug/_ext/1748409734/bootloader_can.o
+ .debug_abbrev  0x00000000      0x26d build/default/debug/_ext/1748409734/bootloader_can.o
+ .debug_loc     0x00000000      0x390 build/default/debug/_ext/1748409734/bootloader_can.o
+ .debug_aranges
+                0x00000000       0x20 build/default/debug/_ext/1748409734/bootloader_can.o
+ .debug_ranges  0x00000000      0x130 build/default/debug/_ext/1748409734/bootloader_can.o
+ .debug_line    0x00000000      0x501 build/default/debug/_ext/1748409734/bootloader_can.o
+ .debug_str     0x00000000      0x8e3 build/default/debug/_ext/1748409734/bootloader_can.o
+ .comment       0x00000000       0x36 build/default/debug/_ext/1748409734/bootloader_can.o
+ .text          0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_common.o
+ .data          0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_common.o
+ .bss           0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_common.o
+ .reginfo       0x00000000       0x18 build/default/debug/_ext/1748409734/bootloader_common.o
+ .MIPS.abiflags
+                0x00000000       0x18 build/default/debug/_ext/1748409734/bootloader_common.o
+ .pdr           0x00000000       0xc0 build/default/debug/_ext/1748409734/bootloader_common.o
+ .text.bootloader_Trigger
+                0x00000000        0x8 build/default/debug/_ext/1748409734/bootloader_common.o
+ .text.SYS_DeInitialize
+                0x00000000        0x8 build/default/debug/_ext/1748409734/bootloader_common.o
+ .text.bootloader_GetVersion
+                0x00000000        0x8 build/default/debug/_ext/1748409734/bootloader_common.o
+ .text.bootloader_CRCGenerate
+                0x00000000       0xa8 build/default/debug/_ext/1748409734/bootloader_common.o
+ .text.bootloader_TriggerReset
+                0x00000000       0x34 build/default/debug/_ext/1748409734/bootloader_common.o
+ .text.run_Application
+                0x00000000       0x54 build/default/debug/_ext/1748409734/bootloader_common.o
+ .debug_frame   0x00000000       0x90 build/default/debug/_ext/1748409734/bootloader_common.o
+ .debug_info    0x00000000      0x2d0 build/default/debug/_ext/1748409734/bootloader_common.o
+ .debug_abbrev  0x00000000      0x1fc build/default/debug/_ext/1748409734/bootloader_common.o
+ .debug_loc     0x00000000      0x2e8 build/default/debug/_ext/1748409734/bootloader_common.o
+ .debug_aranges
+                0x00000000       0x48 build/default/debug/_ext/1748409734/bootloader_common.o
+ .debug_ranges  0x00000000       0x38 build/default/debug/_ext/1748409734/bootloader_common.o
+ .debug_line    0x00000000      0x2f4 build/default/debug/_ext/1748409734/bootloader_common.o
+ .debug_str     0x00000000      0x4cd build/default/debug/_ext/1748409734/bootloader_common.o
+ .comment       0x00000000       0x36 build/default/debug/_ext/1748409734/bootloader_common.o
  .text          0x00000000        0x0 build/default/debug/_ext/1984168316/plib_canfd1.o
  .data          0x00000000        0x0 build/default/debug/_ext/1984168316/plib_canfd1.o
  .bss           0x00000000        0x0 build/default/debug/_ext/1984168316/plib_canfd1.o
+ .reginfo       0x00000000       0x18 build/default/debug/_ext/1984168316/plib_canfd1.o
+ .MIPS.abiflags
+                0x00000000       0x18 build/default/debug/_ext/1984168316/plib_canfd1.o
  .pdr           0x00000000      0x200 build/default/debug/_ext/1984168316/plib_canfd1.o
  .text.CAN1_MessageAbort
                 0x00000000       0x58 build/default/debug/_ext/1984168316/plib_canfd1.o
@@ -222,29 +289,6 @@ Discarded input sections
  .MIPS.abiflags
                 0x00000000       0x18 build/default/debug/_ext/60165520/plib_clk.o
  .pdr           0x00000000       0x20 build/default/debug/_ext/60165520/plib_clk.o
- .text          0x00000000        0x0 build/default/debug/_ext/1865254177/plib_gpio.o
- .data          0x00000000        0x0 build/default/debug/_ext/1865254177/plib_gpio.o
- .bss           0x00000000        0x0 build/default/debug/_ext/1865254177/plib_gpio.o
- .reginfo       0x00000000       0x18 build/default/debug/_ext/1865254177/plib_gpio.o
- .MIPS.abiflags
-                0x00000000       0x18 build/default/debug/_ext/1865254177/plib_gpio.o
- .pdr           0x00000000      0x120 build/default/debug/_ext/1865254177/plib_gpio.o
- .text.GPIO_PortRead
-                0x00000000       0x18 build/default/debug/_ext/1865254177/plib_gpio.o
- .text.GPIO_PortWrite
-                0x00000000       0x2c build/default/debug/_ext/1865254177/plib_gpio.o
- .text.GPIO_PortLatchRead
-                0x00000000       0x18 build/default/debug/_ext/1865254177/plib_gpio.o
- .text.GPIO_PortSet
-                0x00000000       0x1c build/default/debug/_ext/1865254177/plib_gpio.o
- .text.GPIO_PortClear
-                0x00000000       0x1c build/default/debug/_ext/1865254177/plib_gpio.o
- .text.GPIO_PortToggle
-                0x00000000       0x1c build/default/debug/_ext/1865254177/plib_gpio.o
- .text.GPIO_PortInputEnable
-                0x00000000       0x1c build/default/debug/_ext/1865254177/plib_gpio.o
- .text.GPIO_PortOutputEnable
-                0x00000000       0x1c build/default/debug/_ext/1865254177/plib_gpio.o
  .text          0x00000000        0x0 build/default/debug/_ext/1865200349/plib_evic.o
  .data          0x00000000        0x0 build/default/debug/_ext/1865200349/plib_evic.o
  .bss           0x00000000        0x0 build/default/debug/_ext/1865200349/plib_evic.o
@@ -274,85 +318,29 @@ Discarded input sections
                 0x00000000       0x58 build/default/debug/_ext/1865200349/plib_evic.o
  .text.EVIC_INT_SourceRestore
                 0x00000000       0x2c build/default/debug/_ext/1865200349/plib_evic.o
- .text          0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_can.o
- .data          0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_can.o
- .bss           0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_can.o
- .reginfo       0x00000000       0x18 build/default/debug/_ext/1748409734/bootloader_can.o
+ .text          0x00000000        0x0 build/default/debug/_ext/1865254177/plib_gpio.o
+ .data          0x00000000        0x0 build/default/debug/_ext/1865254177/plib_gpio.o
+ .bss           0x00000000        0x0 build/default/debug/_ext/1865254177/plib_gpio.o
+ .reginfo       0x00000000       0x18 build/default/debug/_ext/1865254177/plib_gpio.o
  .MIPS.abiflags
-                0x00000000       0x18 build/default/debug/_ext/1748409734/bootloader_can.o
- .pdr           0x00000000       0x20 build/default/debug/_ext/1748409734/bootloader_can.o
- .text.bootloader_CAN_Tasks
-                0x00000000      0x458 build/default/debug/_ext/1748409734/bootloader_can.o
- .sbss.canBLActive
-                0x00000000        0x1 build/default/debug/_ext/1748409734/bootloader_can.o
- .sbss.data_seq
-                0x00000000        0x1 build/default/debug/_ext/1748409734/bootloader_can.o
- .bss.rx_msg    0x00000000       0x40 build/default/debug/_ext/1748409734/bootloader_can.o
- .sbss.unlock_end
-                0x00000000        0x4 build/default/debug/_ext/1748409734/bootloader_can.o
- .sbss.unlock_begin
-                0x00000000        0x4 build/default/debug/_ext/1748409734/bootloader_can.o
- .sbss.flash_ptr
-                0x00000000        0x4 build/default/debug/_ext/1748409734/bootloader_can.o
- .sbss.flash_size
-                0x00000000        0x4 build/default/debug/_ext/1748409734/bootloader_can.o
- .sbss.flash_addr
-                0x00000000        0x4 build/default/debug/_ext/1748409734/bootloader_can.o
- .bss.flash_data
-                0x00000000      0x200 build/default/debug/_ext/1748409734/bootloader_can.o
- .debug_frame   0x00000000       0x34 build/default/debug/_ext/1748409734/bootloader_can.o
- .debug_info    0x00000000      0x954 build/default/debug/_ext/1748409734/bootloader_can.o
- .debug_abbrev  0x00000000      0x26d build/default/debug/_ext/1748409734/bootloader_can.o
- .debug_loc     0x00000000      0x390 build/default/debug/_ext/1748409734/bootloader_can.o
- .debug_aranges
-                0x00000000       0x20 build/default/debug/_ext/1748409734/bootloader_can.o
- .debug_ranges  0x00000000      0x130 build/default/debug/_ext/1748409734/bootloader_can.o
- .debug_line    0x00000000      0x501 build/default/debug/_ext/1748409734/bootloader_can.o
- .debug_str     0x00000000      0x8e3 build/default/debug/_ext/1748409734/bootloader_can.o
- .comment       0x00000000       0x36 build/default/debug/_ext/1748409734/bootloader_can.o
- .text          0x00000000        0x0 build/default/debug/_ext/1360937237/main.o
- .data          0x00000000        0x0 build/default/debug/_ext/1360937237/main.o
- .bss           0x00000000        0x0 build/default/debug/_ext/1360937237/main.o
- .reginfo       0x00000000       0x18 build/default/debug/_ext/1360937237/main.o
- .MIPS.abiflags
-                0x00000000       0x18 build/default/debug/_ext/1360937237/main.o
- .pdr           0x00000000       0x20 build/default/debug/_ext/1360937237/main.o
- .text          0x00000000        0x0 build/default/debug/_ext/1171490990/initialization.o
- .data          0x00000000        0x0 build/default/debug/_ext/1171490990/initialization.o
- .bss           0x00000000        0x0 build/default/debug/_ext/1171490990/initialization.o
- .reginfo       0x00000000       0x18 build/default/debug/_ext/1171490990/initialization.o
- .MIPS.abiflags
-                0x00000000       0x18 build/default/debug/_ext/1171490990/initialization.o
- .pdr           0x00000000       0x20 build/default/debug/_ext/1171490990/initialization.o
- .text          0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_common.o
- .data          0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_common.o
- .bss           0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_common.o
- .reginfo       0x00000000       0x18 build/default/debug/_ext/1748409734/bootloader_common.o
- .MIPS.abiflags
-                0x00000000       0x18 build/default/debug/_ext/1748409734/bootloader_common.o
- .pdr           0x00000000       0xc0 build/default/debug/_ext/1748409734/bootloader_common.o
- .text.bootloader_Trigger
-                0x00000000        0x8 build/default/debug/_ext/1748409734/bootloader_common.o
- .text.SYS_DeInitialize
-                0x00000000        0x8 build/default/debug/_ext/1748409734/bootloader_common.o
- .text.bootloader_GetVersion
-                0x00000000        0x8 build/default/debug/_ext/1748409734/bootloader_common.o
- .text.bootloader_CRCGenerate
-                0x00000000       0xa8 build/default/debug/_ext/1748409734/bootloader_common.o
- .text.bootloader_TriggerReset
-                0x00000000       0x34 build/default/debug/_ext/1748409734/bootloader_common.o
- .text.run_Application
-                0x00000000       0x54 build/default/debug/_ext/1748409734/bootloader_common.o
- .debug_frame   0x00000000       0x90 build/default/debug/_ext/1748409734/bootloader_common.o
- .debug_info    0x00000000      0x2d0 build/default/debug/_ext/1748409734/bootloader_common.o
- .debug_abbrev  0x00000000      0x1fc build/default/debug/_ext/1748409734/bootloader_common.o
- .debug_loc     0x00000000      0x2e8 build/default/debug/_ext/1748409734/bootloader_common.o
- .debug_aranges
-                0x00000000       0x48 build/default/debug/_ext/1748409734/bootloader_common.o
- .debug_ranges  0x00000000       0x38 build/default/debug/_ext/1748409734/bootloader_common.o
- .debug_line    0x00000000      0x2f4 build/default/debug/_ext/1748409734/bootloader_common.o
- .debug_str     0x00000000      0x4cd build/default/debug/_ext/1748409734/bootloader_common.o
- .comment       0x00000000       0x36 build/default/debug/_ext/1748409734/bootloader_common.o
+                0x00000000       0x18 build/default/debug/_ext/1865254177/plib_gpio.o
+ .pdr           0x00000000      0x120 build/default/debug/_ext/1865254177/plib_gpio.o
+ .text.GPIO_PortRead
+                0x00000000       0x18 build/default/debug/_ext/1865254177/plib_gpio.o
+ .text.GPIO_PortWrite
+                0x00000000       0x2c build/default/debug/_ext/1865254177/plib_gpio.o
+ .text.GPIO_PortLatchRead
+                0x00000000       0x18 build/default/debug/_ext/1865254177/plib_gpio.o
+ .text.GPIO_PortSet
+                0x00000000       0x1c build/default/debug/_ext/1865254177/plib_gpio.o
+ .text.GPIO_PortClear
+                0x00000000       0x1c build/default/debug/_ext/1865254177/plib_gpio.o
+ .text.GPIO_PortToggle
+                0x00000000       0x1c build/default/debug/_ext/1865254177/plib_gpio.o
+ .text.GPIO_PortInputEnable
+                0x00000000       0x1c build/default/debug/_ext/1865254177/plib_gpio.o
+ .text.GPIO_PortOutputEnable
+                0x00000000       0x1c build/default/debug/_ext/1865254177/plib_gpio.o
  .text          0x00000000        0x0 build/default/debug/_ext/60176403/plib_nvm.o
  .data          0x00000000        0x0 build/default/debug/_ext/60176403/plib_nvm.o
  .bss           0x00000000        0x0 build/default/debug/_ext/60176403/plib_nvm.o
@@ -376,6 +364,13 @@ Discarded input sections
                 0x00000000       0x50 build/default/debug/_ext/60176403/plib_nvm.o
  .text.NVM_BootFlashWriteProtectLock
                 0x00000000       0x50 build/default/debug/_ext/60176403/plib_nvm.o
+ .text          0x00000000        0x0 build/default/debug/_ext/1171490990/initialization.o
+ .data          0x00000000        0x0 build/default/debug/_ext/1171490990/initialization.o
+ .bss           0x00000000        0x0 build/default/debug/_ext/1171490990/initialization.o
+ .reginfo       0x00000000       0x18 build/default/debug/_ext/1171490990/initialization.o
+ .MIPS.abiflags
+                0x00000000       0x18 build/default/debug/_ext/1171490990/initialization.o
+ .pdr           0x00000000       0x20 build/default/debug/_ext/1171490990/initialization.o
  .text          0x00000000        0x0 build/default/debug/_ext/362756510/driver_CANbus.o
  .data          0x00000000        0x0 build/default/debug/_ext/362756510/driver_CANbus.o
  .bss           0x00000000        0x0 build/default/debug/_ext/362756510/driver_CANbus.o
@@ -406,7 +401,13 @@ Discarded input sections
  .reginfo       0x00000000       0x18 build/default/debug/_ext/1375476428/boot_handler.o
  .MIPS.abiflags
                 0x00000000       0x18 build/default/debug/_ext/1375476428/boot_handler.o
- .pdr           0x00000000      0x1c0 build/default/debug/_ext/1375476428/boot_handler.o
+ .pdr           0x00000000      0x220 build/default/debug/_ext/1375476428/boot_handler.o
+ .text.Next_Chunk_Index
+                0x00000000       0x20 build/default/debug/_ext/1375476428/boot_handler.o
+ .text.Boot_App_Chunk_Ack
+                0x00000000       0x48 build/default/debug/_ext/1375476428/boot_handler.o
+ .text.Boot_APP_CRC32_Software
+                0x00000000       0x64 build/default/debug/_ext/1375476428/boot_handler.o
  .text.Boot_Stay_In_Boot_Handler
                 0x00000000       0x50 build/default/debug/_ext/1375476428/boot_handler.o
  .text          0x00000000        0x0 build/default/debug/_ext/1375476428/device_startup.o
@@ -423,35 +424,42 @@ Discarded input sections
  .MIPS.abiflags
                 0x00000000       0x18 build/default/debug/_ext/1200941409/state_engine.o
  .pdr           0x00000000       0x20 build/default/debug/_ext/1200941409/state_engine.o
- .text          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
- .data          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
- .bss           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
- .reginfo       0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
+ .text          0x00000000        0x0 build/default/debug/_ext/1360937237/main.o
+ .data          0x00000000        0x0 build/default/debug/_ext/1360937237/main.o
+ .bss           0x00000000        0x0 build/default/debug/_ext/1360937237/main.o
+ .reginfo       0x00000000       0x18 build/default/debug/_ext/1360937237/main.o
  .MIPS.abiflags
-                0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
- .pdr           0x00000000       0xa0 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
- .text          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccwPNDhZ.o
- .data          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccwPNDhZ.o
- .bss           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccwPNDhZ.o
- .reginfo       0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccwPNDhZ.o
+                0x00000000       0x18 build/default/debug/_ext/1360937237/main.o
+ .pdr           0x00000000       0x20 build/default/debug/_ext/1360937237/main.o
+ .text          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
+ .data          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
+ .bss           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
+ .reginfo       0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
  .MIPS.abiflags
-                0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccwPNDhZ.o
- .pdr           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccwPNDhZ.o
- .text          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
- .data          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
- .bss           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
- .reginfo       0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
+                0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
+ .pdr           0x00000000       0xa0 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
+ .text          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccplVfFz.o
+ .data          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccplVfFz.o
+ .bss           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccplVfFz.o
+ .reginfo       0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccplVfFz.o
  .MIPS.abiflags
-                0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
- .pdr           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
- .text          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccuIv2jD.o
- .data          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccuIv2jD.o
- .bss           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccuIv2jD.o
- .reginfo       0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccuIv2jD.o
+                0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccplVfFz.o
+ .pdr           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccplVfFz.o
+ .text          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
+ .data          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
+ .bss           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
+ .reginfo       0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
  .MIPS.abiflags
-                0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccuIv2jD.o
- .pdr           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccuIv2jD.o
- .discard       0x00000000        0x4 C:\Users\HP\AppData\Local\Temp\ccuIv2jD.o
+                0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
+ .pdr           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
+ .text          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\cc1aC3GX.o
+ .data          0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\cc1aC3GX.o
+ .bss           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\cc1aC3GX.o
+ .reginfo       0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\cc1aC3GX.o
+ .MIPS.abiflags
+                0x00000000       0x18 C:\Users\HP\AppData\Local\Temp\cc1aC3GX.o
+ .pdr           0x00000000        0x0 C:\Users\HP\AppData\Local\Temp\cc1aC3GX.o
+ .discard       0x00000000        0x4 C:\Users\HP\AppData\Local\Temp\cc1aC3GX.o
  .text          0x00000000        0x0 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
  .data          0x00000000        0x0 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
  .bss           0x00000000        0x0 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
@@ -736,20 +744,20 @@ reserve_data_0xa0000000_kseg1
                 0x00000370                        . = 0x370
  *fill*         0xa0000002      0x36e 
                 0xa0000370                        . = ALIGN (0x4)
+LOAD build/default/debug/_ext/1748409734/bootloader_can.o
+LOAD build/default/debug/_ext/1748409734/bootloader_common.o
 LOAD build/default/debug/_ext/1984168316/plib_canfd1.o
 LOAD build/default/debug/_ext/60165520/plib_clk.o
-LOAD build/default/debug/_ext/1865254177/plib_gpio.o
 LOAD build/default/debug/_ext/1865200349/plib_evic.o
-LOAD build/default/debug/_ext/1748409734/bootloader_can.o
-LOAD build/default/debug/_ext/1360937237/main.o
-LOAD build/default/debug/_ext/1171490990/initialization.o
-LOAD build/default/debug/_ext/1748409734/bootloader_common.o
+LOAD build/default/debug/_ext/1865254177/plib_gpio.o
 LOAD build/default/debug/_ext/60176403/plib_nvm.o
+LOAD build/default/debug/_ext/1171490990/initialization.o
 LOAD build/default/debug/_ext/362756510/driver_CANbus.o
 LOAD build/default/debug/_ext/362756510/flash_eeprom.o
 LOAD build/default/debug/_ext/1375476428/boot_handler.o
 LOAD build/default/debug/_ext/1375476428/device_startup.o
 LOAD build/default/debug/_ext/1200941409/state_engine.o
+LOAD build/default/debug/_ext/1360937237/main.o
                 0x00000001                        __MPLAB_BUILD = 0x1
                 0x00000400                        PROVIDE (_min_stack_size = 0x400)
 START GROUP
@@ -998,20 +1006,20 @@ END GROUP
 
 .reset          0xbfc00000      0x178
  *(.reset)
- .reset         0xbfc00000       0x18 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
+ .reset         0xbfc00000       0x18 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
                 0xbfc00000                _reset
  *(.reset.startup)
  .reset.startup
-                0xbfc00018      0x160 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
+                0xbfc00018      0x160 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
                 0xbfc00018                _startup
 
 .bev_excpt      0xbfc00380       0x10
  *(.bev_handler)
- .bev_handler   0xbfc00380       0x10 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
+ .bev_handler   0xbfc00380       0x10 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
 
 .app_excpt      0x9fc01180       0x10
  *(.gen_handler)
- .gen_handler   0x9fc01180       0x10 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
+ .gen_handler   0x9fc01180       0x10 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
 
 .vectors        0x9fc01200       0x48
                 0x9fc01200                        . = ALIGN (0x4)
@@ -1981,20 +1989,20 @@ END GROUP
 
 .mdebug.abi32   0x00000000        0x0
  *(.mdebug.abi32)
+ .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_can.o
+ .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_common.o
  .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1984168316/plib_canfd1.o
  .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/60165520/plib_clk.o
- .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1865254177/plib_gpio.o
  .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1865200349/plib_evic.o
- .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_can.o
- .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1360937237/main.o
- .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1171490990/initialization.o
- .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1748409734/bootloader_common.o
+ .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1865254177/plib_gpio.o
  .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/60176403/plib_nvm.o
+ .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1171490990/initialization.o
  .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/362756510/driver_CANbus.o
  .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/362756510/flash_eeprom.o
  .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1375476428/boot_handler.o
  .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1375476428/device_startup.o
  .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1200941409/state_engine.o
+ .mdebug.abi32  0x00000000        0x0 build/default/debug/_ext/1360937237/main.o
  .mdebug.abi32  0x00000000        0x0 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
  .mdebug.abi32  0x00000000        0x0 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
  .mdebug.abi32  0x00000000        0x0 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
@@ -2049,16 +2057,16 @@ END GROUP
  .comment       0x00000000       0x35 build/default/debug/_ext/1984168316/plib_canfd1.o
                                  0x36 (size before relaxing)
  .comment       0x00000035       0x36 build/default/debug/_ext/60165520/plib_clk.o
- .comment       0x00000035       0x36 build/default/debug/_ext/1865254177/plib_gpio.o
  .comment       0x00000035       0x36 build/default/debug/_ext/1865200349/plib_evic.o
- .comment       0x00000035       0x36 build/default/debug/_ext/1360937237/main.o
- .comment       0x00000035       0x36 build/default/debug/_ext/1171490990/initialization.o
+ .comment       0x00000035       0x36 build/default/debug/_ext/1865254177/plib_gpio.o
  .comment       0x00000035       0x36 build/default/debug/_ext/60176403/plib_nvm.o
+ .comment       0x00000035       0x36 build/default/debug/_ext/1171490990/initialization.o
  .comment       0x00000035       0x36 build/default/debug/_ext/362756510/driver_CANbus.o
  .comment       0x00000035       0x36 build/default/debug/_ext/362756510/flash_eeprom.o
  .comment       0x00000035       0x36 build/default/debug/_ext/1375476428/boot_handler.o
  .comment       0x00000035       0x36 build/default/debug/_ext/1375476428/device_startup.o
  .comment       0x00000035       0x36 build/default/debug/_ext/1200941409/state_engine.o
+ .comment       0x00000035       0x36 build/default/debug/_ext/1360937237/main.o
  .comment       0x00000035       0x36 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
  .comment       0x00000035       0x36 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
  .comment       0x00000035       0x36 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
@@ -2085,7 +2093,7 @@ END GROUP
  *.elf(.debug_sfnames)
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x518
+.debug_aranges  0x00000000      0x530
  *.elf(.debug_aranges)
  *(.debug_aranges)
  .debug_aranges
@@ -2093,199 +2101,199 @@ END GROUP
  .debug_aranges
                 0x00000098       0x20 build/default/debug/_ext/60165520/plib_clk.o
  .debug_aranges
-                0x000000b8       0x60 build/default/debug/_ext/1865254177/plib_gpio.o
+                0x000000b8       0x78 build/default/debug/_ext/1865200349/plib_evic.o
  .debug_aranges
-                0x00000118       0x78 build/default/debug/_ext/1865200349/plib_evic.o
+                0x00000130       0x60 build/default/debug/_ext/1865254177/plib_gpio.o
  .debug_aranges
-                0x00000190       0x20 build/default/debug/_ext/1360937237/main.o
+                0x00000190       0x90 build/default/debug/_ext/60176403/plib_nvm.o
  .debug_aranges
-                0x000001b0       0x20 build/default/debug/_ext/1171490990/initialization.o
+                0x00000220       0x20 build/default/debug/_ext/1171490990/initialization.o
  .debug_aranges
-                0x000001d0       0x90 build/default/debug/_ext/60176403/plib_nvm.o
+                0x00000240       0x30 build/default/debug/_ext/362756510/driver_CANbus.o
  .debug_aranges
-                0x00000260       0x30 build/default/debug/_ext/362756510/driver_CANbus.o
+                0x00000270       0x50 build/default/debug/_ext/362756510/flash_eeprom.o
  .debug_aranges
-                0x00000290       0x50 build/default/debug/_ext/362756510/flash_eeprom.o
+                0x000002c0       0xa0 build/default/debug/_ext/1375476428/boot_handler.o
  .debug_aranges
-                0x000002e0       0x88 build/default/debug/_ext/1375476428/boot_handler.o
+                0x00000360       0x30 build/default/debug/_ext/1375476428/device_startup.o
  .debug_aranges
-                0x00000368       0x30 build/default/debug/_ext/1375476428/device_startup.o
+                0x00000390       0x20 build/default/debug/_ext/1200941409/state_engine.o
  .debug_aranges
-                0x00000398       0x20 build/default/debug/_ext/1200941409/state_engine.o
+                0x000003b0       0x20 build/default/debug/_ext/1360937237/main.o
  .debug_aranges
-                0x000003b8       0x40 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
+                0x000003d0       0x40 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
  .debug_aranges
-                0x000003f8       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
+                0x00000410       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
  .debug_aranges
-                0x00000418       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
+                0x00000430       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
  .debug_aranges
-                0x00000438       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
+                0x00000450       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
  .debug_aranges
-                0x00000458       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
+                0x00000470       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
  .debug_aranges
-                0x00000478       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
+                0x00000490       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
  .debug_aranges
-                0x00000498       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
+                0x000004b0       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
  .debug_aranges
-                0x000004b8       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
+                0x000004d0       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
  .debug_aranges
-                0x000004d8       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
+                0x000004f0       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
  .debug_aranges
-                0x000004f8       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
+                0x00000510       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
 
 .debug_pubnames
  *.elf(.debug_pubnames)
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x4ee5
+.debug_info     0x00000000     0x4faa
  *.elf(.debug_info .gnu.linkonce.wi.*)
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xd7b build/default/debug/_ext/1984168316/plib_canfd1.o
  .debug_info    0x00000d7b      0x125 build/default/debug/_ext/60165520/plib_clk.o
- .debug_info    0x00000ea0      0x361 build/default/debug/_ext/1865254177/plib_gpio.o
- .debug_info    0x00001201      0x558 build/default/debug/_ext/1865200349/plib_evic.o
- .debug_info    0x00001759      0x12c build/default/debug/_ext/1360937237/main.o
- .debug_info    0x00001885      0x2be build/default/debug/_ext/1171490990/initialization.o
- .debug_info    0x00001b43      0xa19 build/default/debug/_ext/60176403/plib_nvm.o
- .debug_info    0x0000255c      0x4c3 build/default/debug/_ext/362756510/driver_CANbus.o
- .debug_info    0x00002a1f      0xa93 build/default/debug/_ext/362756510/flash_eeprom.o
- .debug_info    0x000034b2      0xfd4 build/default/debug/_ext/1375476428/boot_handler.o
- .debug_info    0x00004486      0x3fd build/default/debug/_ext/1375476428/device_startup.o
- .debug_info    0x00004883      0x10d build/default/debug/_ext/1200941409/state_engine.o
- .debug_info    0x00004990       0x69 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
- .debug_info    0x000049f9       0x40 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
- .debug_info    0x00004a39       0x72 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_info    0x00004aab       0x40 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
- .debug_info    0x00004aeb       0x40 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
- .debug_info    0x00004b2b       0x9b C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
- .debug_info    0x00004bc6       0x72 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
- .debug_info    0x00004c38       0xe6 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
- .debug_info    0x00004d1e       0xff C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
- .debug_info    0x00004e1d       0xc8 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
+ .debug_info    0x00000ea0      0x558 build/default/debug/_ext/1865200349/plib_evic.o
+ .debug_info    0x000013f8      0x361 build/default/debug/_ext/1865254177/plib_gpio.o
+ .debug_info    0x00001759      0xa19 build/default/debug/_ext/60176403/plib_nvm.o
+ .debug_info    0x00002172      0x2be build/default/debug/_ext/1171490990/initialization.o
+ .debug_info    0x00002430      0x4c3 build/default/debug/_ext/362756510/driver_CANbus.o
+ .debug_info    0x000028f3      0xa93 build/default/debug/_ext/362756510/flash_eeprom.o
+ .debug_info    0x00003386     0x1099 build/default/debug/_ext/1375476428/boot_handler.o
+ .debug_info    0x0000441f      0x3fd build/default/debug/_ext/1375476428/device_startup.o
+ .debug_info    0x0000481c      0x10d build/default/debug/_ext/1200941409/state_engine.o
+ .debug_info    0x00004929      0x12c build/default/debug/_ext/1360937237/main.o
+ .debug_info    0x00004a55       0x69 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
+ .debug_info    0x00004abe       0x40 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
+ .debug_info    0x00004afe       0x72 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_info    0x00004b70       0x40 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
+ .debug_info    0x00004bb0       0x40 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
+ .debug_info    0x00004bf0       0x9b C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
+ .debug_info    0x00004c8b       0x72 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
+ .debug_info    0x00004cfd       0xe6 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
+ .debug_info    0x00004de3       0xff C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
+ .debug_info    0x00004ee2       0xc8 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
 
-.debug_abbrev   0x00000000     0x1a89
+.debug_abbrev   0x00000000     0x1a63
  *.elf(.debug_abbrev)
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x262 build/default/debug/_ext/1984168316/plib_canfd1.o
  .debug_abbrev  0x00000262       0x72 build/default/debug/_ext/60165520/plib_clk.o
- .debug_abbrev  0x000002d4       0xe0 build/default/debug/_ext/1865254177/plib_gpio.o
- .debug_abbrev  0x000003b4      0x221 build/default/debug/_ext/1865200349/plib_evic.o
- .debug_abbrev  0x000005d5       0xce build/default/debug/_ext/1360937237/main.o
- .debug_abbrev  0x000006a3      0x13d build/default/debug/_ext/1171490990/initialization.o
- .debug_abbrev  0x000007e0      0x378 build/default/debug/_ext/60176403/plib_nvm.o
- .debug_abbrev  0x00000b58      0x1ba build/default/debug/_ext/362756510/driver_CANbus.o
- .debug_abbrev  0x00000d12      0x329 build/default/debug/_ext/362756510/flash_eeprom.o
- .debug_abbrev  0x0000103b      0x3c3 build/default/debug/_ext/1375476428/boot_handler.o
- .debug_abbrev  0x000013fe      0x1d0 build/default/debug/_ext/1375476428/device_startup.o
- .debug_abbrev  0x000015ce       0xae build/default/debug/_ext/1200941409/state_engine.o
- .debug_abbrev  0x0000167c       0x1f C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
- .debug_abbrev  0x0000169b       0x30 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
- .debug_abbrev  0x000016cb       0x7d C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_abbrev  0x00001748       0x30 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
- .debug_abbrev  0x00001778       0x30 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
- .debug_abbrev  0x000017a8       0x93 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
- .debug_abbrev  0x0000183b       0x7d C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
- .debug_abbrev  0x000018b8       0x96 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
- .debug_abbrev  0x0000194e       0xaa C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
- .debug_abbrev  0x000019f8       0x91 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
+ .debug_abbrev  0x000002d4      0x221 build/default/debug/_ext/1865200349/plib_evic.o
+ .debug_abbrev  0x000004f5       0xe0 build/default/debug/_ext/1865254177/plib_gpio.o
+ .debug_abbrev  0x000005d5      0x378 build/default/debug/_ext/60176403/plib_nvm.o
+ .debug_abbrev  0x0000094d      0x13d build/default/debug/_ext/1171490990/initialization.o
+ .debug_abbrev  0x00000a8a      0x1ba build/default/debug/_ext/362756510/driver_CANbus.o
+ .debug_abbrev  0x00000c44      0x329 build/default/debug/_ext/362756510/flash_eeprom.o
+ .debug_abbrev  0x00000f6d      0x39d build/default/debug/_ext/1375476428/boot_handler.o
+ .debug_abbrev  0x0000130a      0x1d0 build/default/debug/_ext/1375476428/device_startup.o
+ .debug_abbrev  0x000014da       0xae build/default/debug/_ext/1200941409/state_engine.o
+ .debug_abbrev  0x00001588       0xce build/default/debug/_ext/1360937237/main.o
+ .debug_abbrev  0x00001656       0x1f C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
+ .debug_abbrev  0x00001675       0x30 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
+ .debug_abbrev  0x000016a5       0x7d C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_abbrev  0x00001722       0x30 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
+ .debug_abbrev  0x00001752       0x30 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
+ .debug_abbrev  0x00001782       0x93 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
+ .debug_abbrev  0x00001815       0x7d C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
+ .debug_abbrev  0x00001892       0x96 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
+ .debug_abbrev  0x00001928       0xaa C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
+ .debug_abbrev  0x000019d2       0x91 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
 
-.debug_line     0x00000000     0x4223
+.debug_line     0x00000000     0x42f4
  *.elf(.debug_line)
  *(.debug_line)
  .debug_line    0x00000000      0xb23 build/default/debug/_ext/1984168316/plib_canfd1.o
  .debug_line    0x00000b23      0x183 build/default/debug/_ext/60165520/plib_clk.o
- .debug_line    0x00000ca6      0x28d build/default/debug/_ext/1865254177/plib_gpio.o
- .debug_line    0x00000f33      0x434 build/default/debug/_ext/1865200349/plib_evic.o
- .debug_line    0x00001367      0x188 build/default/debug/_ext/1360937237/main.o
- .debug_line    0x000014ef      0x2b2 build/default/debug/_ext/1171490990/initialization.o
- .debug_line    0x000017a1      0x819 build/default/debug/_ext/60176403/plib_nvm.o
- .debug_line    0x00001fba      0x217 build/default/debug/_ext/362756510/driver_CANbus.o
- .debug_line    0x000021d1      0x62d build/default/debug/_ext/362756510/flash_eeprom.o
- .debug_line    0x000027fe      0xd47 build/default/debug/_ext/1375476428/boot_handler.o
- .debug_line    0x00003545      0x281 build/default/debug/_ext/1375476428/device_startup.o
- .debug_line    0x000037c6       0xd8 build/default/debug/_ext/1200941409/state_engine.o
- .debug_line    0x0000389e      0x149 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
- .debug_line    0x000039e7       0xb1 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
- .debug_line    0x00003a98       0xe2 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_line    0x00003b7a       0xa5 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
- .debug_line    0x00003c1f       0xa9 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
- .debug_line    0x00003cc8       0xd3 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
- .debug_line    0x00003d9b       0xe0 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
- .debug_line    0x00003e7b       0xd7 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
- .debug_line    0x00003f52      0x16d C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
- .debug_line    0x000040bf      0x164 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
+ .debug_line    0x00000ca6      0x434 build/default/debug/_ext/1865200349/plib_evic.o
+ .debug_line    0x000010da      0x28d build/default/debug/_ext/1865254177/plib_gpio.o
+ .debug_line    0x00001367      0x819 build/default/debug/_ext/60176403/plib_nvm.o
+ .debug_line    0x00001b80      0x2b2 build/default/debug/_ext/1171490990/initialization.o
+ .debug_line    0x00001e32      0x217 build/default/debug/_ext/362756510/driver_CANbus.o
+ .debug_line    0x00002049      0x62d build/default/debug/_ext/362756510/flash_eeprom.o
+ .debug_line    0x00002676      0xe18 build/default/debug/_ext/1375476428/boot_handler.o
+ .debug_line    0x0000348e      0x281 build/default/debug/_ext/1375476428/device_startup.o
+ .debug_line    0x0000370f       0xd8 build/default/debug/_ext/1200941409/state_engine.o
+ .debug_line    0x000037e7      0x188 build/default/debug/_ext/1360937237/main.o
+ .debug_line    0x0000396f      0x149 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
+ .debug_line    0x00003ab8       0xb1 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
+ .debug_line    0x00003b69       0xe2 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_line    0x00003c4b       0xa5 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
+ .debug_line    0x00003cf0       0xa9 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
+ .debug_line    0x00003d99       0xd3 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
+ .debug_line    0x00003e6c       0xe0 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
+ .debug_line    0x00003f4c       0xd7 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
+ .debug_line    0x00004023      0x16d C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
+ .debug_line    0x00004190      0x164 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
 
-.debug_frame    0x00000000      0xa10
+.debug_frame    0x00000000      0xa4c
  *.elf(.debug_frame)
  *(.debug_frame)
  .debug_frame   0x00000000      0x110 build/default/debug/_ext/1984168316/plib_canfd1.o
  .debug_frame   0x00000110       0x20 build/default/debug/_ext/60165520/plib_clk.o
- .debug_frame   0x00000130       0xa0 build/default/debug/_ext/1865254177/plib_gpio.o
- .debug_frame   0x000001d0      0x100 build/default/debug/_ext/1865200349/plib_evic.o
- .debug_frame   0x000002d0       0x28 build/default/debug/_ext/1360937237/main.o
- .debug_frame   0x000002f8       0x2c build/default/debug/_ext/1171490990/initialization.o
- .debug_frame   0x00000324      0x19c build/default/debug/_ext/60176403/plib_nvm.o
- .debug_frame   0x000004c0       0x5c build/default/debug/_ext/362756510/driver_CANbus.o
- .debug_frame   0x0000051c      0x110 build/default/debug/_ext/362756510/flash_eeprom.o
- .debug_frame   0x0000062c      0x20c build/default/debug/_ext/1375476428/boot_handler.o
- .debug_frame   0x00000838       0x6c build/default/debug/_ext/1375476428/device_startup.o
- .debug_frame   0x000008a4       0x34 build/default/debug/_ext/1200941409/state_engine.o
- .debug_frame   0x000008d8       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
- .debug_frame   0x000008f8       0x2c C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_frame   0x00000924       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
- .debug_frame   0x00000944       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
- .debug_frame   0x00000964       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
- .debug_frame   0x00000984       0x2c C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
- .debug_frame   0x000009b0       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
- .debug_frame   0x000009d0       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
- .debug_frame   0x000009f0       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
+ .debug_frame   0x00000130      0x100 build/default/debug/_ext/1865200349/plib_evic.o
+ .debug_frame   0x00000230       0xa0 build/default/debug/_ext/1865254177/plib_gpio.o
+ .debug_frame   0x000002d0      0x19c build/default/debug/_ext/60176403/plib_nvm.o
+ .debug_frame   0x0000046c       0x2c build/default/debug/_ext/1171490990/initialization.o
+ .debug_frame   0x00000498       0x5c build/default/debug/_ext/362756510/driver_CANbus.o
+ .debug_frame   0x000004f4      0x110 build/default/debug/_ext/362756510/flash_eeprom.o
+ .debug_frame   0x00000604      0x248 build/default/debug/_ext/1375476428/boot_handler.o
+ .debug_frame   0x0000084c       0x6c build/default/debug/_ext/1375476428/device_startup.o
+ .debug_frame   0x000008b8       0x34 build/default/debug/_ext/1200941409/state_engine.o
+ .debug_frame   0x000008ec       0x28 build/default/debug/_ext/1360937237/main.o
+ .debug_frame   0x00000914       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
+ .debug_frame   0x00000934       0x2c C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_frame   0x00000960       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
+ .debug_frame   0x00000980       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
+ .debug_frame   0x000009a0       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
+ .debug_frame   0x000009c0       0x2c C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
+ .debug_frame   0x000009ec       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
+ .debug_frame   0x00000a0c       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
+ .debug_frame   0x00000a2c       0x20 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
 
-.debug_str      0x00000000     0x2b6a
+.debug_str      0x00000000     0x2b6e
  *.elf(.debug_str)
  *(.debug_str)
- .debug_str     0x00000000     0x2b6a build/default/debug/_ext/1984168316/plib_canfd1.o
+ .debug_str     0x00000000     0x2b6e build/default/debug/_ext/1984168316/plib_canfd1.o
                                 0xc17 (size before relaxing)
- .debug_str     0x00002b6a      0x3ef build/default/debug/_ext/60165520/plib_clk.o
- .debug_str     0x00002b6a      0x4c2 build/default/debug/_ext/1865254177/plib_gpio.o
- .debug_str     0x00002b6a      0x562 build/default/debug/_ext/1865200349/plib_evic.o
- .debug_str     0x00002b6a      0x3e1 build/default/debug/_ext/1360937237/main.o
- .debug_str     0x00002b6a      0x4eb build/default/debug/_ext/1171490990/initialization.o
- .debug_str     0x00002b6a      0x811 build/default/debug/_ext/60176403/plib_nvm.o
- .debug_str     0x00002b6a      0x5cd build/default/debug/_ext/362756510/driver_CANbus.o
- .debug_str     0x00002b6a      0x5f1 build/default/debug/_ext/362756510/flash_eeprom.o
- .debug_str     0x00002b6a      0xb18 build/default/debug/_ext/1375476428/boot_handler.o
- .debug_str     0x00002b6a      0x559 build/default/debug/_ext/1375476428/device_startup.o
- .debug_str     0x00002b6a      0x408 build/default/debug/_ext/1200941409/state_engine.o
- .debug_str     0x00002b6a      0x107 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
- .debug_str     0x00002b6a      0x2da C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
- .debug_str     0x00002b6a      0x325 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_str     0x00002b6a      0x2c4 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
- .debug_str     0x00002b6a      0x2cc C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
- .debug_str     0x00002b6a      0x356 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
- .debug_str     0x00002b6a      0x321 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
- .debug_str     0x00002b6a      0x26d C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
- .debug_str     0x00002b6a      0x283 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
- .debug_str     0x00002b6a      0x26f C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
+ .debug_str     0x00002b6e      0x3ef build/default/debug/_ext/60165520/plib_clk.o
+ .debug_str     0x00002b6e      0x562 build/default/debug/_ext/1865200349/plib_evic.o
+ .debug_str     0x00002b6e      0x4c2 build/default/debug/_ext/1865254177/plib_gpio.o
+ .debug_str     0x00002b6e      0x811 build/default/debug/_ext/60176403/plib_nvm.o
+ .debug_str     0x00002b6e      0x4eb build/default/debug/_ext/1171490990/initialization.o
+ .debug_str     0x00002b6e      0x5cd build/default/debug/_ext/362756510/driver_CANbus.o
+ .debug_str     0x00002b6e      0x5f1 build/default/debug/_ext/362756510/flash_eeprom.o
+ .debug_str     0x00002b6e      0xb18 build/default/debug/_ext/1375476428/boot_handler.o
+ .debug_str     0x00002b6e      0x55d build/default/debug/_ext/1375476428/device_startup.o
+ .debug_str     0x00002b6e      0x408 build/default/debug/_ext/1200941409/state_engine.o
+ .debug_str     0x00002b6e      0x3e5 build/default/debug/_ext/1360937237/main.o
+ .debug_str     0x00002b6e      0x107 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
+ .debug_str     0x00002b6e      0x2da C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
+ .debug_str     0x00002b6e      0x325 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_str     0x00002b6e      0x2c4 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
+ .debug_str     0x00002b6e      0x2cc C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
+ .debug_str     0x00002b6e      0x356 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
+ .debug_str     0x00002b6e      0x321 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
+ .debug_str     0x00002b6e      0x26d C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
+ .debug_str     0x00002b6e      0x283 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
+ .debug_str     0x00002b6e      0x26f C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
 
-.debug_loc      0x00000000     0x2f13
+.debug_loc      0x00000000     0x3096
  *.elf(.debug_loc)
  *(.debug_loc)
  .debug_loc     0x00000000      0xc95 build/default/debug/_ext/1984168316/plib_canfd1.o
- .debug_loc     0x00000c95      0x183 build/default/debug/_ext/1865254177/plib_gpio.o
- .debug_loc     0x00000e18      0x2f3 build/default/debug/_ext/1865200349/plib_evic.o
- .debug_loc     0x0000110b       0x20 build/default/debug/_ext/1360937237/main.o
- .debug_loc     0x0000112b       0x57 build/default/debug/_ext/1171490990/initialization.o
- .debug_loc     0x00001182      0x570 build/default/debug/_ext/60176403/plib_nvm.o
- .debug_loc     0x000016f2      0x148 build/default/debug/_ext/362756510/driver_CANbus.o
- .debug_loc     0x0000183a      0x99a build/default/debug/_ext/362756510/flash_eeprom.o
- .debug_loc     0x000021d4      0x99e build/default/debug/_ext/1375476428/boot_handler.o
- .debug_loc     0x00002b72       0x7c build/default/debug/_ext/1375476428/device_startup.o
- .debug_loc     0x00002bee       0x2c build/default/debug/_ext/1200941409/state_engine.o
- .debug_loc     0x00002c1a       0x2c C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_loc     0x00002c46       0x2c C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
- .debug_loc     0x00002c72       0xa2 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
- .debug_loc     0x00002d14       0xfe C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
- .debug_loc     0x00002e12      0x101 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
+ .debug_loc     0x00000c95      0x2f3 build/default/debug/_ext/1865200349/plib_evic.o
+ .debug_loc     0x00000f88      0x183 build/default/debug/_ext/1865254177/plib_gpio.o
+ .debug_loc     0x0000110b      0x570 build/default/debug/_ext/60176403/plib_nvm.o
+ .debug_loc     0x0000167b       0x57 build/default/debug/_ext/1171490990/initialization.o
+ .debug_loc     0x000016d2      0x148 build/default/debug/_ext/362756510/driver_CANbus.o
+ .debug_loc     0x0000181a      0x99a build/default/debug/_ext/362756510/flash_eeprom.o
+ .debug_loc     0x000021b4      0xb21 build/default/debug/_ext/1375476428/boot_handler.o
+ .debug_loc     0x00002cd5       0x7c build/default/debug/_ext/1375476428/device_startup.o
+ .debug_loc     0x00002d51       0x2c build/default/debug/_ext/1200941409/state_engine.o
+ .debug_loc     0x00002d7d       0x20 build/default/debug/_ext/1360937237/main.o
+ .debug_loc     0x00002d9d       0x2c C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_loc     0x00002dc9       0x2c C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
+ .debug_loc     0x00002df5       0xa2 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
+ .debug_loc     0x00002e97       0xfe C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
+ .debug_loc     0x00002f95      0x101 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
 
 .debug_macinfo
  *.elf(.debug_macinfo)
@@ -2311,31 +2319,31 @@ END GROUP
  *.elf(.debug_pubtypes)
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x638
+.debug_ranges   0x00000000      0x650
  *.elf(.debug_ranges)
  *(.debug_ranges)
  .debug_ranges  0x00000000       0xa8 build/default/debug/_ext/1984168316/plib_canfd1.o
  .debug_ranges  0x000000a8       0x10 build/default/debug/_ext/60165520/plib_clk.o
- .debug_ranges  0x000000b8       0x50 build/default/debug/_ext/1865254177/plib_gpio.o
- .debug_ranges  0x00000108       0xd8 build/default/debug/_ext/1865200349/plib_evic.o
- .debug_ranges  0x000001e0       0x10 build/default/debug/_ext/1360937237/main.o
- .debug_ranges  0x000001f0       0x10 build/default/debug/_ext/1171490990/initialization.o
- .debug_ranges  0x00000200       0xe0 build/default/debug/_ext/60176403/plib_nvm.o
- .debug_ranges  0x000002e0       0x20 build/default/debug/_ext/362756510/driver_CANbus.o
- .debug_ranges  0x00000300      0x158 build/default/debug/_ext/362756510/flash_eeprom.o
- .debug_ranges  0x00000458       0xe8 build/default/debug/_ext/1375476428/boot_handler.o
- .debug_ranges  0x00000540       0x20 build/default/debug/_ext/1375476428/device_startup.o
- .debug_ranges  0x00000560       0x10 build/default/debug/_ext/1200941409/state_engine.o
- .debug_ranges  0x00000570       0x38 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
- .debug_ranges  0x000005a8       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
- .debug_ranges  0x000005b8       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_ranges  0x000005c8       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
- .debug_ranges  0x000005d8       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
- .debug_ranges  0x000005e8       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
- .debug_ranges  0x000005f8       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
- .debug_ranges  0x00000608       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
- .debug_ranges  0x00000618       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
- .debug_ranges  0x00000628       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
+ .debug_ranges  0x000000b8       0xd8 build/default/debug/_ext/1865200349/plib_evic.o
+ .debug_ranges  0x00000190       0x50 build/default/debug/_ext/1865254177/plib_gpio.o
+ .debug_ranges  0x000001e0       0xe0 build/default/debug/_ext/60176403/plib_nvm.o
+ .debug_ranges  0x000002c0       0x10 build/default/debug/_ext/1171490990/initialization.o
+ .debug_ranges  0x000002d0       0x20 build/default/debug/_ext/362756510/driver_CANbus.o
+ .debug_ranges  0x000002f0      0x158 build/default/debug/_ext/362756510/flash_eeprom.o
+ .debug_ranges  0x00000448      0x100 build/default/debug/_ext/1375476428/boot_handler.o
+ .debug_ranges  0x00000548       0x20 build/default/debug/_ext/1375476428/device_startup.o
+ .debug_ranges  0x00000568       0x10 build/default/debug/_ext/1200941409/state_engine.o
+ .debug_ranges  0x00000578       0x10 build/default/debug/_ext/1360937237/main.o
+ .debug_ranges  0x00000588       0x38 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
+ .debug_ranges  0x000005c0       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
+ .debug_ranges  0x000005d0       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_ranges  0x000005e0       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-reset.o)
+ .debug_ranges  0x000005f0       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-on-bootstrap.o)
+ .debug_ranges  0x00000600       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(defaultinterrupt.o)
+ .debug_ranges  0x00000610       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-general-exception-handler.o)
+ .debug_ranges  0x00000620       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcmp.o)
+ .debug_ranges  0x00000630       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memcpy.o)
+ .debug_ranges  0x00000640       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libc-size-musl.a(memset.o)
 
 /DISCARD/
  *(.rel.dyn)
@@ -2344,41 +2352,41 @@ END GROUP
                 0x00000000       0x10
  *(.gnu.attributes)
  .gnu.attributes
-                0x00000000       0x10 build/default/debug/_ext/1984168316/plib_canfd1.o
+                0x00000000       0x10 build/default/debug/_ext/1748409734/bootloader_can.o
  .gnu.attributes
-                0x00000010       0x10 build/default/debug/_ext/60165520/plib_clk.o
+                0x00000010       0x10 build/default/debug/_ext/1748409734/bootloader_common.o
  .gnu.attributes
-                0x00000020       0x10 build/default/debug/_ext/1865254177/plib_gpio.o
+                0x00000020       0x10 build/default/debug/_ext/1984168316/plib_canfd1.o
  .gnu.attributes
-                0x00000030       0x10 build/default/debug/_ext/1865200349/plib_evic.o
+                0x00000030       0x10 build/default/debug/_ext/60165520/plib_clk.o
  .gnu.attributes
-                0x00000040       0x10 build/default/debug/_ext/1748409734/bootloader_can.o
+                0x00000040       0x10 build/default/debug/_ext/1865200349/plib_evic.o
  .gnu.attributes
-                0x00000050       0x10 build/default/debug/_ext/1360937237/main.o
+                0x00000050       0x10 build/default/debug/_ext/1865254177/plib_gpio.o
  .gnu.attributes
-                0x00000060       0x10 build/default/debug/_ext/1171490990/initialization.o
+                0x00000060       0x10 build/default/debug/_ext/60176403/plib_nvm.o
  .gnu.attributes
-                0x00000070       0x10 build/default/debug/_ext/1748409734/bootloader_common.o
+                0x00000070       0x10 build/default/debug/_ext/1171490990/initialization.o
  .gnu.attributes
-                0x00000080       0x10 build/default/debug/_ext/60176403/plib_nvm.o
+                0x00000080       0x10 build/default/debug/_ext/362756510/driver_CANbus.o
  .gnu.attributes
-                0x00000090       0x10 build/default/debug/_ext/362756510/driver_CANbus.o
+                0x00000090       0x10 build/default/debug/_ext/362756510/flash_eeprom.o
  .gnu.attributes
-                0x000000a0       0x10 build/default/debug/_ext/362756510/flash_eeprom.o
+                0x000000a0       0x10 build/default/debug/_ext/1375476428/boot_handler.o
  .gnu.attributes
-                0x000000b0       0x10 build/default/debug/_ext/1375476428/boot_handler.o
+                0x000000b0       0x10 build/default/debug/_ext/1375476428/device_startup.o
  .gnu.attributes
-                0x000000c0       0x10 build/default/debug/_ext/1375476428/device_startup.o
+                0x000000c0       0x10 build/default/debug/_ext/1200941409/state_engine.o
  .gnu.attributes
-                0x000000d0       0x10 build/default/debug/_ext/1200941409/state_engine.o
+                0x000000d0       0x10 build/default/debug/_ext/1360937237/main.o
  .gnu.attributes
-                0x000000e0       0x10 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
+                0x000000e0       0x10 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
  .gnu.attributes
-                0x000000f0       0x10 C:\Users\HP\AppData\Local\Temp\ccwPNDhZ.o
+                0x000000f0       0x10 C:\Users\HP\AppData\Local\Temp\ccplVfFz.o
  .gnu.attributes
-                0x00000100       0x10 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
+                0x00000100       0x10 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
  .gnu.attributes
-                0x00000110       0x10 C:\Users\HP\AppData\Local\Temp\ccuIv2jD.o
+                0x00000110       0x10 C:\Users\HP\AppData\Local\Temp\cc1aC3GX.o
  .gnu.attributes
                 0x00000120       0x10 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
  .gnu.attributes
@@ -2420,12 +2428,12 @@ END GROUP
  *(.discard)
                 0x00000001                        __MPLAB_DEBUG = 0x1
                 0x00000001                        __DEBUG = 0x1
-                0x00000001                        __MPLAB_DEBUGGER_PICKITBASIC = 0x1
+                0x00000001                        __MPLAB_DEBUGGER_PK4 = 0x1
                 0x00000200                        _min_heap_size = 0x200
-LOAD C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
-LOAD C:\Users\HP\AppData\Local\Temp\ccwPNDhZ.o
-LOAD C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
-LOAD C:\Users\HP\AppData\Local\Temp\ccuIv2jD.o
+LOAD C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
+LOAD C:\Users\HP\AppData\Local\Temp\ccplVfFz.o
+LOAD C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
+LOAD C:\Users\HP\AppData\Local\Temp\cc1aC3GX.o
 LOAD C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
 LOAD C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\pic32_software_reset.o
 LOAD C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/fpu64\libgcc.a
@@ -2444,24 +2452,24 @@ OUTPUT(dist/default/debug/PIC32MK0512_CAN_BOOTLOADER.X.debug.elf elf32-tradlittl
 LOAD data_init
 
 .note           0x00000000      0x654
- .note          0x00000000       0x48 build/default/debug/_ext/1984168316/plib_canfd1.o
- .note          0x00000048       0x18 build/default/debug/_ext/60165520/plib_clk.o
- .note          0x00000060       0x18 build/default/debug/_ext/1865254177/plib_gpio.o
- .note          0x00000078       0x18 build/default/debug/_ext/1865200349/plib_evic.o
- .note          0x00000090       0x18 build/default/debug/_ext/1748409734/bootloader_can.o
- .note          0x000000a8       0x18 build/default/debug/_ext/1360937237/main.o
- .note          0x000000c0      0x108 build/default/debug/_ext/1171490990/initialization.o
- .note          0x000001c8       0x18 build/default/debug/_ext/1748409734/bootloader_common.o
- .note          0x000001e0       0x18 build/default/debug/_ext/60176403/plib_nvm.o
- .note          0x000001f8       0x18 build/default/debug/_ext/362756510/driver_CANbus.o
- .note          0x00000210       0x18 build/default/debug/_ext/362756510/flash_eeprom.o
- .note          0x00000228       0x18 build/default/debug/_ext/1375476428/boot_handler.o
- .note          0x00000240       0x18 build/default/debug/_ext/1375476428/device_startup.o
- .note          0x00000258       0x18 build/default/debug/_ext/1200941409/state_engine.o
- .note          0x00000270       0x18 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
- .note          0x00000288       0x18 C:\Users\HP\AppData\Local\Temp\ccwPNDhZ.o
- .note          0x000002a0      0x234 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
- .note          0x000004d4       0x18 C:\Users\HP\AppData\Local\Temp\ccuIv2jD.o
+ .note          0x00000000       0x18 build/default/debug/_ext/1748409734/bootloader_can.o
+ .note          0x00000018       0x18 build/default/debug/_ext/1748409734/bootloader_common.o
+ .note          0x00000030       0x48 build/default/debug/_ext/1984168316/plib_canfd1.o
+ .note          0x00000078       0x18 build/default/debug/_ext/60165520/plib_clk.o
+ .note          0x00000090       0x18 build/default/debug/_ext/1865200349/plib_evic.o
+ .note          0x000000a8       0x18 build/default/debug/_ext/1865254177/plib_gpio.o
+ .note          0x000000c0       0x18 build/default/debug/_ext/60176403/plib_nvm.o
+ .note          0x000000d8      0x108 build/default/debug/_ext/1171490990/initialization.o
+ .note          0x000001e0       0x18 build/default/debug/_ext/362756510/driver_CANbus.o
+ .note          0x000001f8       0x18 build/default/debug/_ext/362756510/flash_eeprom.o
+ .note          0x00000210       0x18 build/default/debug/_ext/1375476428/boot_handler.o
+ .note          0x00000228       0x18 build/default/debug/_ext/1375476428/device_startup.o
+ .note          0x00000240       0x18 build/default/debug/_ext/1200941409/state_engine.o
+ .note          0x00000258       0x18 build/default/debug/_ext/1360937237/main.o
+ .note          0x00000270       0x18 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
+ .note          0x00000288       0x18 C:\Users\HP\AppData\Local\Temp\ccplVfFz.o
+ .note          0x000002a0      0x234 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
+ .note          0x000004d4       0x18 C:\Users\HP\AppData\Local\Temp\cc1aC3GX.o
  .note          0x000004ec       0x18 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\software-debug-break.o
  .note          0x00000504       0x18 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\pic32_software_reset.o
  .note          0x0000051c       0x18 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-bootstrap-exception-handler.o)
@@ -2478,55 +2486,52 @@ LOAD data_init
  .note          0x00000624       0x18 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(pic32_data_init_clear.o)
  .note          0x0000063c       0x18 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(pic32_data_init_copy.o)
 
-.reginfo        0x00000000       0x18
- .reginfo       0x00000000       0x18 build/default/debug/_ext/1984168316/plib_canfd1.o
-
 .rodata.cst4%1
 
 .__vector_offset_BF8105B8_data
                 0xbf8105b8       0xfc
  .__vector_offset_BF8105B8_data
-                0xbf8105b8       0xfc C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
+                0xbf8105b8       0xfc C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
 
 .__vector_offset_BF8106B8_data
                 0xbf8106b8       0xa0
  .__vector_offset_BF8106B8_data
-                0xbf8106b8       0xa0 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
+                0xbf8106b8       0xa0 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
 
 .__vector_offset_BF810848_data
                 0xbf810848       0x94
  .__vector_offset_BF810848_data
-                0xbf810848       0x94 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
+                0xbf810848       0x94 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
 
 .__vector_offset_BF8107D0_data
                 0xbf8107d0       0x74
  .__vector_offset_BF8107D0_data
-                0xbf8107d0       0x74 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
+                0xbf8107d0       0x74 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
 
 .__vector_offset_BF810540_data
                 0xbf810540       0x70
  .__vector_offset_BF810540_data
-                0xbf810540       0x70 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
+                0xbf810540       0x70 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
 
 .__vector_offset_BF81079C_data
                 0xbf81079c       0x30
  .__vector_offset_BF81079C_data
-                0xbf81079c       0x30 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
+                0xbf81079c       0x30 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
 
 .__vector_offset_BF8108F8_data
                 0xbf8108f8       0x28
  .__vector_offset_BF8108F8_data
-                0xbf8108f8       0x28 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
+                0xbf8108f8       0x28 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
 
 .__vector_offset_BF81076C_data
                 0xbf81076c       0x24
  .__vector_offset_BF81076C_data
-                0xbf81076c       0x24 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
+                0xbf81076c       0x24 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
 
 .__vector_offset_BF810938_data
                 0xbf810938        0x8
  .__vector_offset_BF810938_data
-                0xbf810938        0x8 C:\Users\HP\AppData\Local\Temp\ccAClHnf.o
+                0xbf810938        0x8 C:\Users\HP\AppData\Local\Temp\ccPCdFTF.o
 
 .COHERENTBSS$   0xa00003a0       0xe0
  .COHERENTBSS$  0xa00003a0       0xe0 build/default/debug/_ext/1984168316/plib_canfd1.o
@@ -2610,6 +2615,7 @@ LOAD data_init
                 0x9fc023d4      0x18c
  .text.App_Firmware_Write_Flash
                 0x9fc023d4      0x18c build/default/debug/_ext/1375476428/boot_handler.o
+                0x9fc023d4                App_Firmware_Write_Flash
 
 .text.Boot_App_Chunk_Handler
                 0x9fc01000      0x160
@@ -2728,7 +2734,7 @@ LOAD data_init
 .text.main_entry
                 0x9fc03260       0x54
  .text.main_entry
-                0x9fc03260       0x54 C:\Users\HP\AppData\Local\Temp\ccutvZ3U.o
+                0x9fc03260       0x54 C:\Users\HP\AppData\Local\Temp\ccgkLTkw.o
                 0x9fc03294                __crt0_exit
 
 .text.Boot_App_Jump
@@ -2809,15 +2815,15 @@ LOAD data_init
                 0x9fc01160                __dinit_copy_needed
                 0x9fc01160                __dinit_copy
 
-.text.EEPROM_Initialize
+.text.NVM_EEPROM_Initialize
                 0x9fc035e0       0x1c
- .text.EEPROM_Initialize
+ .text.NVM_EEPROM_Initialize
                 0x9fc035e0       0x1c build/default/debug/_ext/1375476428/device_startup.o
-                0x9fc035e0                EEPROM_Initialize
+                0x9fc035e0                NVM_EEPROM_Initialize
 
 .MIPS.abiflags  0x9fc03600       0x18
  .MIPS.abiflags
-                0x9fc03600       0x18 build/default/debug/_ext/1984168316/plib_canfd1.o
+                0x9fc03600       0x18 build/default/debug/_ext/1748409734/bootloader_can.o
 
 .text           0x9fc03618       0x30
  .text          0x9fc03618       0x18 C:/Program Files/Microchip/xc32/v5.00/bin/bin/../../lib/gcc/pic32m/13.2.1/../../../../pic32m/lib/fpu64\libpic32.a(default-nmi-handler.o)
