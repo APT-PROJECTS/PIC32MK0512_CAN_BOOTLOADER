@@ -34,12 +34,12 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f1" displayName="driver" projectFiles="true">
-        <itemPath>../src/driver/driver_CANbus.h</itemPath>
         <itemPath>../src/driver/flash_eeprom.h</itemPath>
+        <itemPath>../src/driver/driver_can.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="middleware" projectFiles="true">
-        <itemPath>../src/middleware/boot_handler.h</itemPath>
-        <itemPath>../src/middleware/device_startup.h</itemPath>
+        <itemPath>../src/middleware/boot.h</itemPath>
+        <itemPath>../src/middleware/metadata.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="software" projectFiles="true">
         <itemPath>../src/software/state_engine.h</itemPath>
@@ -55,11 +55,11 @@
                      displayName="PIC32MK0512_CAN_BOOTLOADER_default"
                      projectFiles="true">
         <logicalFolder name="components" displayName="components" projectFiles="true">
-          <itemPath>PIC32MK0512_CAN_BOOTLOADER_default/components/can1.yml</itemPath>
-          <itemPath>PIC32MK0512_CAN_BOOTLOADER_default/components/nvm.yml</itemPath>
-          <itemPath>PIC32MK0512_CAN_BOOTLOADER_default/components/can_bootloader.yml</itemPath>
           <itemPath>PIC32MK0512_CAN_BOOTLOADER_default/components/dfp.yml</itemPath>
+          <itemPath>PIC32MK0512_CAN_BOOTLOADER_default/components/nvm.yml</itemPath>
           <itemPath>PIC32MK0512_CAN_BOOTLOADER_default/components/core.yml</itemPath>
+          <itemPath>PIC32MK0512_CAN_BOOTLOADER_default/components/can1.yml</itemPath>
+          <itemPath>PIC32MK0512_CAN_BOOTLOADER_default/components/can_bootloader.yml</itemPath>
         </logicalFolder>
         <itemPath>PIC32MK0512_CAN_BOOTLOADER_default/mcc-config.mc4</itemPath>
       </logicalFolder>
@@ -104,12 +104,12 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f1" displayName="driver" projectFiles="true">
-        <itemPath>../src/driver/driver_CANbus.c</itemPath>
         <itemPath>../src/driver/flash_eeprom.c</itemPath>
+        <itemPath>../src/driver/driver_can.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="middleware" projectFiles="true">
-        <itemPath>../src/middleware/boot_handler.c</itemPath>
-        <itemPath>../src/middleware/device_startup.c</itemPath>
+        <itemPath>../src/middleware/metadata.c</itemPath>
+        <itemPath>../src/middleware/boot.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="software" projectFiles="true">
         <itemPath>../src/software/state_engine.c</itemPath>
@@ -128,7 +128,7 @@
         <targetDevice>PIC32MK0512MCM064</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>pk4hybrid</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>5.00</languageToolchainVersion>
         <platform>3</platform>
@@ -194,7 +194,7 @@
         <property key="oXC16gcc-sfr-warn" value="false"/>
         <property key="oXC16gcc-smar-io-lvl" value="1"/>
         <property key="oXC16gcc-smart-io-fmt" value=""/>
-        <property key="optimization-level" value="-O2"/>
+        <property key="optimization-level" value="-Os"/>
         <property key="place-data-into-section" value="true"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>

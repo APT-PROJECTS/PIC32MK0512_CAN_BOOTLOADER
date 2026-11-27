@@ -10,9 +10,9 @@ build/default/debug/_ext/1200941409/state_engine.o: \
  ../src/config/default/bootloader/bootloader_can.h \
  ../src/config/default/bootloader/bootloader_common.h \
  ../src/config/default/peripheral/nvm/plib_nvm.h ../src/driver.h \
- ../src/driver/driver_CANbus.h ../src/driver/flash_eeprom.h \
- ../src/middleware.h ../src/middleware/boot_handler.h \
- ../src/middleware/device_startup.h ../src/software.h \
+ ../src/driver/driver_can.h ../src/driver/flash_eeprom.h \
+ ../src/middleware.h ../src/middleware/boot.h \
+ ../src/middleware/metadata.h ../src/software.h \
  ../src/software/state_engine.h
 ../src/config/default/definitions.h:
 ../src/config/default/peripheral/canfd/plib_canfd1.h:
@@ -26,10 +26,10 @@ build/default/debug/_ext/1200941409/state_engine.o: \
 ../src/config/default/bootloader/bootloader_common.h:
 ../src/config/default/peripheral/nvm/plib_nvm.h:
 ../src/driver.h:
-../src/driver/driver_CANbus.h:
+../src/driver/driver_can.h:
 ../src/driver/flash_eeprom.h:
 ../src/middleware.h:
-../src/middleware/boot_handler.h:
-../src/middleware/device_startup.h:
+../src/middleware/boot.h:
+../src/middleware/metadata.h:
 ../src/software.h:
 ../src/software/state_engine.h:

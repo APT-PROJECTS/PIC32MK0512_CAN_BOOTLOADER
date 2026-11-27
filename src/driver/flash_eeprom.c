@@ -12,6 +12,8 @@ typedef struct {
 
 static uint32_t activePage = EEPROM_PAGE_ADDR;
 
+uint8_t eepromBuffer[EEPROM_DATA_SIZE];
+
 static uint32_t calculate_crc(uint8_t *data, uint32_t len) {
     uint32_t crc = 0;
 
@@ -86,13 +88,17 @@ static bool page_is_valid(uint32_t addr, EEPROM_HEADER *header) {
     return true;
 }
 
-FLASH_EEPROM_STATUS FLASH_EEPROM_Init(void) {
+FLASH_EEPROM_STATUS Flash_EEPROM_Init(void) {
     /* A blank page is valid startup state; it is erased on the first write. */
     activePage = EEPROM_PAGE_ADDR;
+    
+    __builtin_memset(eepromBuffer, 0, sizeof (eepromBuffer));
+    Flash_EEPROM_Read_Page(eepromBuffer, sizeof (eepromBuffer));
+    
     return FLASH_EEPROM_OK;
 }
 
-FLASH_EEPROM_STATUS FLASH_EEPROM_Write_Page(uint8_t *data, uint32_t length) {
+FLASH_EEPROM_STATUS Flash_EEPROM_Write_Page(uint8_t *data, uint32_t length) {
     if (length > EEPROM_DATA_SIZE)
         return FLASH_EEPROM_ERROR;
 
@@ -146,7 +152,7 @@ FLASH_EEPROM_STATUS FLASH_EEPROM_Write_Page(uint8_t *data, uint32_t length) {
     return FLASH_EEPROM_OK;
 }
 
-FLASH_EEPROM_STATUS FLASH_EEPROM_Read_Page(uint8_t *data, uint32_t length) {
+FLASH_EEPROM_STATUS Flash_EEPROM_Read_Page(uint8_t *data, uint32_t length) {
     EEPROM_HEADER hdr;
 
     if (!page_is_valid(activePage, &hdr))
@@ -176,7 +182,7 @@ FLASH_EEPROM_STATUS FLASH_EEPROM_WriteWord(uint32_t address, uint32_t data) {
 
     FLASH_EEPROM_STATUS status;
 
-    status = FLASH_EEPROM_Read_Page(buffer, EEPROM_DATA_SIZE);
+    status = Flash_EEPROM_Read_Page(buffer, EEPROM_DATA_SIZE);
 
     if ((status != FLASH_EEPROM_OK) &&
             (status != FLASH_EEPROM_NO_VALID_PAGE)) {
@@ -187,7 +193,7 @@ FLASH_EEPROM_STATUS FLASH_EEPROM_WriteWord(uint32_t address, uint32_t data) {
 
     wordBuffer[address] = data;
 
-    return FLASH_EEPROM_Write_Page(buffer, EEPROM_DATA_SIZE);
+    return Flash_EEPROM_Write_Page(buffer, EEPROM_DATA_SIZE);
 }
 
 FLASH_EEPROM_STATUS FLASH_EEPROM_ReadWord(uint32_t address, uint32_t *data) {
@@ -199,7 +205,7 @@ FLASH_EEPROM_STATUS FLASH_EEPROM_ReadWord(uint32_t address, uint32_t *data) {
 
     FLASH_EEPROM_STATUS status;
 
-    status = FLASH_EEPROM_Read_Page(buffer, EEPROM_DATA_SIZE);
+    status = Flash_EEPROM_Read_Page(buffer, EEPROM_DATA_SIZE);
 
     if (status != FLASH_EEPROM_OK) {
         return status;

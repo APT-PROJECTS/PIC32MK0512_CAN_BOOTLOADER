@@ -16,28 +16,22 @@ static STATE_ENGINE_STATES currentState = STATE_INIT;
 void STATE_ENGINE_Tasks(void) {
 
     switch (currentState) {
-            //--------------------------------------------------
         case STATE_INIT:
-            //--------------------------------------------------
         {
-            Get_PIC_ID();
+            Flash_EEPROM_Init();
+            Metadata_Init();
+            Boot_Init();
             currentState = STATE_RUN;
             break;
         }
 
-            //--------------------------------------------------
         case STATE_RUN:
-            //--------------------------------------------------
         {
             CANbus_read();
             break;
         }
 
-            //--------------------------------------------------
         default:
-            //--------------------------------------------------
-        {
             break;
-        }
     }
 }

@@ -1,0 +1,1 @@
+ $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -Os -fno-common -I"../src" -I"../src/config/default"   -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  D:\APT-PROJECTS\BOOT_APP\PIC32MK_BOOT_APP\PIC32MK0512_CAN_BOOTLOADER\src\middleware\metadata.c

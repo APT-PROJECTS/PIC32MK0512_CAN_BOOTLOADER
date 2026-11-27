@@ -10,7 +10,7 @@ build/default/debug/_ext/362756510/flash_eeprom.o: \
  ../src/config/default/bootloader/bootloader_can.h \
  ../src/config/default/bootloader/bootloader_common.h \
  ../src/config/default/peripheral/nvm/plib_nvm.h ../src/driver.h \
- ../src/driver/driver_CANbus.h ../src/driver/flash_eeprom.h
+ ../src/driver/driver_can.h ../src/driver/flash_eeprom.h
 ../src/config/default/definitions.h:
 ../src/config/default/peripheral/canfd/plib_canfd1.h:
 ../src/config/default/device.h:
@@ -23,5 +23,5 @@ build/default/debug/_ext/362756510/flash_eeprom.o: \
 ../src/config/default/bootloader/bootloader_common.h:
 ../src/config/default/peripheral/nvm/plib_nvm.h:
 ../src/driver.h:
-../src/driver/driver_CANbus.h:
+../src/driver/driver_can.h:
 ../src/driver/flash_eeprom.h:

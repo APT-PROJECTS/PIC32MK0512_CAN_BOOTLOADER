@@ -10,8 +10,6 @@ int main(void) {
 
     RED_LED_Set();
 
-    NVM_EEPROM_Initialize();
-
     while (true) {
         STATE_ENGINE_Tasks();
     }

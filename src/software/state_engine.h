@@ -1,10 +1,6 @@
 #ifndef STATE_ENGINE_H
 #define STATE_ENGINE_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include "definitions.h"
 
 //--------------------------------------------------
@@ -20,9 +16,5 @@ typedef enum
 // PUBLIC FUNCTIONS
 //--------------------------------------------------
 void STATE_ENGINE_Tasks(void);
-
-#ifdef __cplusplus
-}
-#endif
  
-#endif // STATE_ENGINE_H
+#endif

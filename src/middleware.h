@@ -11,8 +11,8 @@
 #include <stdbool.h>
 #include <string.h>
 #include <math.h>
-#include "middleware/boot_handler.h"
-#include "middleware/device_startup.h"
+#include "middleware/boot.h"
+#include "middleware/metadata.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
